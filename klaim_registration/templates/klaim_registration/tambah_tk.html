@@ -1,0 +1,148 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}{% endblock  %}
+
+{% block stylesheets %}{% endblock  %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col mt-3">
+            <div class="card">
+                <div class="card-header">Pendaftaran TK</div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_nama">Nama</label>
+                                <input type="text" class="form-control" id="id_nama" placeholder="Nama Lengkap">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_nik">NIK</label>
+                                <input type="text" class="form-control" id="id_nik" placeholder="No KTP">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_tempatlhr">Tempat Lahir</label>
+                                <input type="text" class="form-control" id="id_tempatlhr" placeholder="Tempat Lahir">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_tgllhr">Tanggal Lahir</label>
+                                <input type="date" class="form-control" id="id_tgllhr">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_alamat">Alamat Lengkap</label>
+                            <input type="text" class="form-control" id="id_alamat" placeholder="Alamat Lengkap">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_ibu">Nama Ibu Kandung</label>
+                                <input type="text" class="form-control" id="id_ibu" placeholder="Nama Lengkap Ibu Kandung">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_status">Status</label>
+                                <select name="status" id="id_status" class="custom-select">
+                                    <option selected>Status Pernikahan</option>
+                                    <option value="1">BELUM MENIKAH</option>
+                                    <option value="2">MENIKAH</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_namapasangan">Nama Pasangan</label>
+                                <input type="text" class="form-control" id="id_namapasangan" placeholder="Nama Suami/Istri">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_tgllhrpasangan">Tgl. Lahir</label>
+                                <input type="date" class="form-control" id="id_tgllhrpasangan">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_anak1">Nama Anak I.</label>
+                                <input type="text" class="form-control" id="id_anak1" placeholder="Nama Anak 1">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_tgllhr1">Tgl. Lahir</label>
+                                <input type="date" name="" id="id_tgllhr1" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_anak2">Nama Anak II.</label>
+                                <input type="text" class="form-control" id="id_anak2" placeholder="Nama Anak 2">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_tgllhr2">Tgl. Lahir</label>
+                                <input type="date" name="" id="id_tgllhr2" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_email">Email</label>
+                                <input type="email" name="" id="id_email" class="form-control" placeholder="Email Aktif">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_nohp">No. Handphone</label>
+                                <input type="text" name="" id="id_nohp" class="form-control" placeholder="No. Handphone">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_norek">No. Rekening</label>
+                                <input type="text" class="form-control" id="id_norek" placeholder="Nomor Rekening Aktif">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_namarek">Nama Pemilik Rekening</label>
+                                <input type="text" class="form-control" id="id_namarek" placeholder="Nama Pemilik Rekening">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_propic">Photo</label>
+                            <input type="file" name="" id="id_propic" class="form-control">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_ktp">Foto KTP</label>
+                                <input type="file" name="" id="id_ktp" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_kk">Foto KK</label>
+                                <input type="file" name="" id="id_kk" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_paklaring">Paklaring</label>
+                                <input type="file" name="" id="id_paklaring" class="form-control">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_lain">File Lain</label>
+                                <input type="file" name="" id="id_lain" class="form-control" multiple>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success float-right">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}
+
+{% block javascripts %}
+<script>
+$(document).ready(function() {
+    
+})
+
+</script>
+{% endblock  %}
