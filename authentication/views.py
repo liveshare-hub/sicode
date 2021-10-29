@@ -60,12 +60,13 @@ def register_user_ajax(request):
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
         npp_id = request.POST.get('no_npp')
+        print(npp_id)
 
         if password1 != password2:
             msg = 'Password Tidak Sama!'
         else:
             password = make_password(password1, salt=['username'])
-            User.objects.create(username=username, password=password, email=email, is_active=False)
+            User.objects.update_or_create(username=username, password=password, email=email, is_active=False)
             user = User.objects.get(username=username)
             current_site = get_current_site(request)
             mail_subject = 'Activate your account.'

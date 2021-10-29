@@ -4,7 +4,7 @@ from django import forms
 from .models import DataKlaim, DataTK
 
 
-class DataTKForm(forms.ModelForm):
+class DataTKForm(forms.Form):
     file_lain = forms.FileField(
         required=False,
         widget=forms.FileInput(
@@ -16,20 +16,20 @@ class DataTKForm(forms.ModelForm):
     email = forms.EmailField(
         required=False,
         widget=forms.EmailInput(attrs={
-            'class': 'form-control',
+            'class': 'form-control email',
             'placeholder': 'Masukkan Email Anda'
         })
     )
 
     class Meta:
-        model = DataTK
-        exclude = ('hrd',)
+        
         widgets = {
             'nama': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'INPUT NAMA',
+                'class': 'form-control besar', 'placeholder': 'INPUT NAMA',
             }),
             'nik': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'INPUT NIK',
+                'class': 'form-control angka', 'placeholder': 'INPUT NIK',
+                'maxlength':"16",
             }),
             'tgl_lahir': forms.DateInput(attrs={
                 'class': 'form-control', 'type': 'date'
@@ -38,40 +38,41 @@ class DataTKForm(forms.ModelForm):
                 'class': 'form-control', 'placeholder': 'INPUT TEMPAT LAHIR',
             }),
             'alamat': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'INPUT ALAMAT'
+                'class': 'form-control besar', 'placeholder': 'INPUT ALAMAT'
             }),
             'nama_ibu': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'NAMA GADIS IBU KANDUNG'
+                'class': 'form-control besar', 'placeholder': 'NAMA GADIS IBU KANDUNG'
             }),
             'status': forms.Select(attrs={
                 'class': 'form-control'
             }),
             'nama_pasangan': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'NAMA SUAMI/ISTRI'
+                'class': 'form-control besar', 'placeholder': 'NAMA SUAMI/ISTRI'
             }),
             'tgl_lahir_pasangan': forms.DateInput(attrs={
                 'class': 'form-control', 'type': 'date'
             }, format="dd-mm-yyyy"),
             'nama_anak_s': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'NAMA ANAK PERTAMA'
+                'class': 'form-control besar', 'placeholder': 'NAMA ANAK PERTAMA'
             }),
             'tgl_lahir_s': forms.DateInput(attrs={
                 'class': 'form-control', 'type': 'date'
             }, format="dd-mm-yyyy"),
             'nama_anak_d': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'NAMA ANAK KEDUA'
+                'class': 'form-control besar', 'placeholder': 'NAMA ANAK KEDUA'
             }),
             'tgl_lahir_d': forms.DateInput(attrs={
                 'class': 'form-control', 'type': 'date'
             }, format="dd-mm-yyyy"),
             'no_hp': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'NO HANDPHONE/WA'
+                'class': 'form-control angka', 'placeholder': 'NO HANDPHONE/WA',
+                'maxlength':"13"
             }),
             'nama_rekening': forms.TextInput(attrs={
                 'class': 'form-control', 'placeholder': 'NAMA PEMILIK REKENING'
             }),
             'no_rekening': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'NO REKENING'
+                'class': 'form-control angka', 'placeholder': 'NO REKENING'
             }),
             'propic': forms.FileInput(attrs={
                 'class': 'form-control'

@@ -111,7 +111,7 @@ $(document).ready(function() {
     $(this).val($(this).val().toUpperCase());
     event.preventDefault();
     $("div input#id_hasil_npp").show();
-    
+    $(".text-muted").hide();
     var value = $(this).val().toUpperCase();
     $.ajax({
       type:'GET',
@@ -156,6 +156,7 @@ $(document).ready(function() {
       success: function(data){
         console.log(data)
         $("p.text-muted").html(data.msg);
+        $("p.text-muted").show();
         $("input.form-control").val("");
         $("div input#id_hasil_npp").hide();
       },

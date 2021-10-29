@@ -8,7 +8,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='home-klaim'),
     path('tambah/tk', views.TambahTK, name='tambah-tk'),
-
+    path('tambah/tk/ajax', views.TambahTK_ajax, name='tambah-tk-ajax'),
     # path('daftar/', views.tambahKlaim1, name='add'),
     # path('hrd/klaim/', views.daftarKlaimHRD,
     #      name='hrd-klaim'),

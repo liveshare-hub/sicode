@@ -89,7 +89,7 @@ class DataTK(models.Model):
     file_ktp = models.FileField(
         upload_to='tk/ktp/', validators=[EKSTENSI_VALIDATOR], blank=True, null=True)
     file_paklaring = models.FileField(
-        upload_to='tk/paklaring/', validators=[EKSTENSI_VALIDATOR])
+        upload_to='tk/paklaring/', validators=[EKSTENSI_VALIDATOR], blank=True, null=True)
     # file_lain = models.FileField(
     #     upload_to='lain/', null=True, blank=True, validators=[EKSTENSI_VALIDATOR])
     created_on = models.DateField(auto_now_add=True)
