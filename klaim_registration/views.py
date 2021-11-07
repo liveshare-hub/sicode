@@ -13,8 +13,8 @@ import string
 
 from django.core import serializers
 
-from .form import DataTKForm
-from .models import DataKlaim, ApprovalHRD, DataTK, toQRCode
+from .form import DataTKForm, KPJForm, KpjInlineFormset
+from .models import KPJ, DataKlaim, ApprovalHRD, DataTK, toQRCode
 from authentication.models import Perusahaan, Profile
 from .decorators import admin_only
 
@@ -31,33 +31,82 @@ from email import encoders
 
 @login_required(login_url='/accounts/login/')
 def index(request):
+    datas = KPJ.objects.select_related(
+        'data_tk').filter(data_tk__hrd=request.user.profile)
+    context = {
+        'datas': datas
+    }
+    return render(request, 'klaim_registration/index.html', context)
 
-    return HttpResponse('Ini Rumah')
 
 @login_required(login_url='/accounts/login/')
 def TambahTK(request):
     if request.method == 'POST':
         form = DataTKForm(request.POST, request.FILES)
         if form.is_valid():
-            nama = request.POST.get('nama')
-            nik = request.POST.get('nik')
-            tgl_lahir = request.POST.get('tgl_lahir')
-            tempat_lhr = request.POST.get('tempat_lhr')
-            alamat = request.POST.get('alamat')
-            nama_ibu = request.POST.get('nama_ibu')
-            status = request.POST.get('status')
-            nama_pasangan = request.POST.get('nama_pasangan')
-            tgl_lhr_pasangan = request.POST.get('tgl_lhr_pasangan')
-            anak_1 = request.POST.get('anak_1')
-            tgl_lhr1 = request.POST.get('tgl_lhr1')
-            anak_2 = request.POST.get('anak_2')
-            tgl_lhr2 = request.POST.get('tgl_lhr2')
-            email = request.POST.get('email')
-            no_hp = request.POST.get('no_hp')
-            no_rek = request.POST.get('no_rek')
-            nama_rek = request.POST.get('nama_rek')
+            post = form.save(commit=False)
+            post.hrd = request.user.profile
+            post.nama = form.cleaned_data['nama']
+            post.nik = form.cleaned_data['nik']
+            post.tgl_lahir = form.cleaned_data['tgl_lahir']
+            post.tempat_lhr = form.cleaned_data['tempat_lahir']
+            post.alamat = form.cleaned_data['alamat']
+            post.nama_ibu = form.cleaned_data['nama_ibu']
+            post.status = form.cleaned_data['status']
+            post.nama_pasangan = form.cleaned_data['nama_pasangan']
+            post.tgl_lhr_pasangan = form.cleaned_data['tgl_lahir_pasangan']
+            post.anak_1 = form.cleaned_data['nama_anak_s']
+            post.tgl_lhr1 = form.cleaned_data['tgl_lahir_s']
+            post.anak_2 = form.cleaned_data['nama_anak_d']
+            post.tgl_lhr2 = form.cleaned_data['tgl_lahir_d']
+            post.email = form.cleaned_data['email']
+            post.no_hp = form.cleaned_data['no_hp']
+            post.no_rek = form.cleaned_data['no_rekening']
+            post.nama_rek = form.cleaned_data['nama_rekening']
+            post.propic = form.cleaned_data['propic']
+            post.file_kk = form.cleaned_data['file_kk']
+            post.file_ktp = form.cleaned_data['file_ktp']
+            post.file_paklaring = form.cleaned_data['file_paklaring']
+            post.file_lain = form.cleaned_data['file_lain']
+            post.save()
 
-    return render(request, 'klaim_registration/tambah_tk.html')
+            return redirect('home-klaim')
+    else:
+        form = DataTKForm()
+
+    return render(request, 'klaim_registration/tambah_tk.html', {'form': form})
+
+
+def tambah_kpj(request, pk):
+    id_tk = DataTK.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = KPJForm(request.POST or None)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.data_tk_id = id_tk.pk
+            post.no_kpj = form.cleaned_data['no_kpj']
+            post.tgl_keps = form.cleaned_data['tgl_keps']
+            aktif_na = form.cleaned_data['tgl_na']
+            print(aktif_na)
+            post.tgl_na = aktif_na
+            if aktif_na is not None:
+                post.is_aktif = False
+
+            post.save()
+
+            return redirect('home-klaim')
+    else:
+        form = KPJForm()
+
+    return render(request, 'klaim_registration/input_kpj.html', {'form': form})
+    # if request.method == 'POST':
+    #     formset = KpjInlineFormset(request.POST or None, instance=id_tk)
+    #     if formset.is_valid():
+    #         formset.save()
+    #         return redirect('home-klaim')
+    # else:
+    #     formset = KpjInlineFormset(queryset=DataTK.objects.none())
+    # return render(request, 'klaim_registration/input_kpj.html', {'forms': formset})
 
 
 @login_required(login_url='/accounts/login/')
@@ -100,12 +149,11 @@ def TambahTK_ajax(request):
         # lain_f = request.POST.get('lain_f')
 
         DataTK.objects.create(hrd=user, nama=nama, nik=nik, tgl_lahir=tgl_lahir, tempat_lahir=tempat_lhr, alamat=alamat, nama_ibu=nama_ibu,
-            status=status, nama_pasangan=nama_pasangan, tgl_lahir_pasangan=tgl_lhr_pasangan, nama_anak_s=anak_1, tgl_lahir_s=tgl_lhr1,
-            nama_anak_d=anak_2, tgl_lahir_d=tgl_lhr2, email=email, no_hp=no_hp, nama_rekening=nama_rek, no_rekening=no_rek, propic=photo_f,
-            file_ktp=ktp_f, file_kk=kk_f, file_paklaring=paklaring_f, )
+                              status=status, nama_pasangan=nama_pasangan, tgl_lahir_pasangan=tgl_lhr_pasangan, nama_anak_s=anak_1, tgl_lahir_s=tgl_lhr1,
+                              nama_anak_d=anak_2, tgl_lahir_d=tgl_lhr2, email=email, no_hp=no_hp, nama_rekening=nama_rek, no_rekening=no_rek, propic=photo_f,
+                              file_ktp=ktp_f, file_kk=kk_f, file_paklaring=paklaring_f, )
 
         msg = 'Data TK Berhasil di Input!'
-        return JsonResponse({'msg':msg})
-
+        return JsonResponse({'msg': msg})
 
     return render(request, 'klaim_registration/tambah_tk.html')

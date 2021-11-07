@@ -19,115 +19,111 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_nama">Nama</label>
-                                <input type="text" class="form-control besar" id="id_nama" placeholder="Nama Lengkap">
+                                {{form.nama}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_nik">NIK</label>
-                                <input type="text" class="form-control angka" id="id_nik" placeholder="No KTP" maxlength="16">
+                                {{form.nik}}
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_tempatlhr">Tempat Lahir</label>
-                                <input type="text" class="form-control besar" id="id_tempatlhr" placeholder="Tempat Lahir">
+                                {{form.tempat_lahir}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_tgllhr">Tanggal Lahir</label>
-                                <input type="date" class="form-control" id="id_tgllhr">
+                                {{form.tgl_lahir}}
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="id_alamat">Alamat Lengkap</label>
-                            <input type="text" class="form-control besar" id="id_alamat" placeholder="Alamat Lengkap">
+                            {{form.alamat}}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_ibu">Nama Ibu Kandung</label>
-                                <input type="text" class="form-control besar" id="id_ibu" placeholder="Nama Lengkap Ibu Kandung">
+                                {{form.nama_ibu}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_status">Status</label>
-                                <select name="status" id="id_status" class="custom-select">
-                                    <option selected>Status Pernikahan</option>
-                                    <option value="BELUM MENIKAH">BELUM MENIKAH</option>
-                                    <option value="MENIKAH">MENIKAH</option>
-                                </select>
+                                {{form.status}}
                             </div>
                         </div>
                         <div class="form-group keluarga">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_namapasangan">Nama Pasangan</label>
-                                <input type="text" class="form-control besar" id="id_namapasangan" placeholder="Nama Suami/Istri">
+                                {{form.nama_pasangan}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_tgllhrpasangan">Tgl. Lahir</label>
-                                <input type="date" class="form-control" id="id_tgllhrpasangan">
+                                {{form.tgl_lahir_pasangan}}
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_anak1">Nama Anak I.</label>
-                                <input type="text" class="form-control besar" id="id_anak1" placeholder="Nama Anak 1">
+                                {{form.nama_anak_s}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_tgllhr1">Tgl. Lahir</label>
-                                <input type="date" name="" id="id_tgllhr1" class="form-control">
+                                {{form.tgl_lahir_s}}
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_anak2">Nama Anak II.</label>
-                                <input type="text" class="form-control besar" id="id_anak2" placeholder="Nama Anak 2">
+                                {{form.nama_anak_d}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_tgllhr2">Tgl. Lahir</label>
-                                <input type="date" name="" id="id_tgllhr2" class="form-control">
+                                {{form.tgl_lahir_d}}
                             </div>
                         </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_email">Email</label>
-                                <input type="email" name="" id="id_email" class="form-control email" placeholder="Email Aktif">
+                                {{form.email}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_nohp">No. Handphone</label>
-                                <input type="text" name="" id="id_nohp" class="form-control angka" placeholder="08xxxxxxxxx" maxlength="13">
+                                {{form.no_hp}}
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_norek">No. Rekening</label>
-                                <input type="text" class="form-control angka" id="id_norek" placeholder="Nomor Rekening Aktif">
+                                {{form.no_rekening}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_namarek">Nama Pemilik Rekening</label>
-                                <input type="text" class="form-control besar" id="id_namarek" placeholder="Nama Pemilik Rekening">
+                                {{form.nama_rekening}}
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_ktp">Foto KTP</label>
-                                <input type="file" name="" id="id_ktp" class="form-control">
+                                {{form.file_ktp}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_kk">Foto KK</label>
-                                <input type="file" name="" id="id_kk" class="form-control">
+                                {{form.file_kk}}
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_paklaring">Paklaring</label>
-                                <input type="file" name="" id="id_paklaring" class="form-control">
+                                {{form.file_paklaring}}
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_propic">Photo</label>
-                                <input type="file" name="" id="id_propic" class="form-control">
+                                {{form.propic}}
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="submit" class="btn btn-primary float-right" value="Simpan">
+                            <button type="submit" name="submit" class="btn btn-primary float-right">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -165,58 +161,17 @@ $(document).ready(function() {
             this.value = this.value.toLocaleLowerCase()
         })
     })
-
-    $(document).on('submit','#id_formtk', function() {
-        $.ajax({
-            type:'POST',
-            url:"{% url 'tambah-tk-ajax' %}",
-            data:{
-                nama: $("#id_nama").val(),
-                nik: $("#id_nik").val(),
-                tempat_lhr: $("#id_tempatlhr").val(),
-                tgl_lhr: $("#id_tgllhr").val(),
-                alamat: $("#id_alamat").val(),
-                nama_ibu: $("#id_ibu").val(),
-                status: $("select[name'status']").val(),
-                nama_pasangan: $("#id_namapasangan").val(),
-                tgl_lhr_pasangan: $("#id_tgllhrpasangan").val(),
-                anak_1: $("#id_anak1").val(),
-                tgl_lhr1: $("#id_tgllhr1").val(),
-                anak_2:$("#id_anak2").val(),
-                tgl_lhr2: $("#id_tgllhr2").val(),
-                email: $("#id_email").val(),
-                no_hp: $("#id_nohp").val(),
-                no_rek: $("#id_norek").val(),
-                nama_rek: $("#id_namarek").val(),                
-                photo: $("#id_propic").val(),
-                photo_f: $("#id_propic")[0].files[0],
-                ktp: $("#id_ktp").val(),
-                ktp_f: $("#id_ktp")[0].files[0],
-                kk: $("#id_kk").val(),
-                kk_f: $("#id_kk")[0].files[0],
-                paklaring: $("#id_paklaring").val(),
-                paklaring_f: $("#id_paklaring")[0].files[0],
-               // lain: $("#id_lain").val(),
-               // lain_f: $("#id_lain")[0].files[0],
-                csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
-                dataType: "json",
-            },
-            success: function(data){
-                console.log(data)
-            },
-            error: function(err){
-                console.log(err)
-            }
-        })
-    })
 });
+
 
 function showhide(){
     if($('select[name="status"]').val() == 'MENIKAH'){
+        console.log('1')
         $('.keluarga').show();
     }
     else{
         $('.keluarga').hide();
+        console.log('2')
     }
 }
 

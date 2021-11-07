@@ -1,10 +1,11 @@
 from django import forms
+from django.forms import inlineformset_factory
 # from dal import autocomplete
 
-from .models import DataKlaim, DataTK
+from .models import KPJ, DataKlaim, DataTK
 
 
-class DataTKForm(forms.Form):
+class DataTKForm(forms.ModelForm):
     file_lain = forms.FileField(
         required=False,
         widget=forms.FileInput(
@@ -22,14 +23,15 @@ class DataTKForm(forms.Form):
     )
 
     class Meta:
-        
+        model = DataTK
+        exclude = ('hrd',)
         widgets = {
             'nama': forms.TextInput(attrs={
                 'class': 'form-control besar', 'placeholder': 'INPUT NAMA',
             }),
             'nik': forms.TextInput(attrs={
                 'class': 'form-control angka', 'placeholder': 'INPUT NIK',
-                'maxlength':"16",
+                'maxlength': "16",
             }),
             'tgl_lahir': forms.DateInput(attrs={
                 'class': 'form-control', 'type': 'date'
@@ -66,7 +68,7 @@ class DataTKForm(forms.Form):
             }, format="dd-mm-yyyy"),
             'no_hp': forms.TextInput(attrs={
                 'class': 'form-control angka', 'placeholder': 'NO HANDPHONE/WA',
-                'maxlength':"13"
+                'maxlength': "13"
             }),
             'nama_rekening': forms.TextInput(attrs={
                 'class': 'form-control', 'placeholder': 'NAMA PEMILIK REKENING'
@@ -90,3 +92,25 @@ class DataTKForm(forms.Form):
             #     'class':'form-control'
             # }),
         }
+
+
+class KPJForm(forms.ModelForm):
+    class Meta:
+        model = KPJ
+        exclude = ('data_tk',)
+        widgets = {
+            'no_kpj': forms.TextInput(attrs={
+                'class': 'form-control', 'placeholder': 'Input No KPJ',
+                'maxlength': '11'
+            }),
+            'tgl_keps': forms.DateInput(attrs={
+                'class': 'form-control', 'type': 'date'
+            }),
+            'tgl_na': forms.DateInput(attrs={
+                'class': 'form-control', 'type': 'date'
+            })
+        }
+
+
+KpjInlineFormset = inlineformset_factory(DataTK, KPJ, fields=(
+    'no_kpj', 'tgl_keps', 'tgl_na',), extra=1, can_delete=False)

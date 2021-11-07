@@ -104,13 +104,28 @@ class DataTK(models.Model):
 
 class KPJ(models.Model):
     data_tk = models.ForeignKey(DataTK, on_delete=models.CASCADE)
-    no_kpj = models.CharField(max_length=11)
-    tgl_keps = models.DateField()
-    tgl_na = models.DateField()
+    no_kpj = models.CharField(max_length=11, null=True, blank=True)
+    tgl_keps = models.DateField(null=True, blank=True)
+    tgl_na = models.DateField(blank=True, null=True)
     is_aktif = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.no_kpj
+        if self.no_kpj:
+            return '{} - {}'.format(self.no_kpj, self.data_tk.nama)
+        else:
+            return self.data_tk.nama
+
+    # def save(self, *args, **kwargs):
+    #     if self.tgl_na is not None:
+
+    #         self.is_aktif = False
+    #     super().save(*args, **kwargs)
+
+
+# @receiver(post_save, sender=DataTK)
+# def post_save_KPJ(sender, instance, created, **kwargs):
+#     if created:
+#         KPJ.objects.create(data_tk=instance)
 
 
 class DataKlaim(models.Model):
