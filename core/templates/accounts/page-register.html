@@ -32,69 +32,39 @@
 								<div class="logo text-center"><img src="/static/assets/img/logo-dark.png" width="200px" alt="Klorofil Logo"></div>
 								<p class="lead">Register New Account</p>
 							</div>
-                            
+
 							<form class="form-auth-small" action="" method="POST">
 								{% csrf_token %}
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend"><span class="input-group-text">
-                                        <svg class="c-icon">
-                                        <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-magnifying-glass"></use>
-                                        </svg></span></div>
-                                        <input type="text" id="id_npp" name="npp" class="form-control" placeholder="NPP">
-                                        
+                                <div class="form-group mb-3">
+                                    <label for="id_npp">NPP</label>
+                                    <input type="text" class="form-control" id="id_npp" name="npp" placeholder="NPP" maxlength="8">
                                 </div>
-                                <div class="input-group mb-3">  
-                                    <input type="text" id="id_hasil_npp" name="hasil_npp" class="form-control" disabled>
-                                    
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" id="id_hasil_npp" name="hasil_npp" diasbled>
                                 </div>
-                                <div class="input-group mb-3">
-                                <input type="text" id="id_no_npp" name="no_npp" class="form-control" style="display:none" disabled>
+                                <div class="form-group mb-3">
+                                    <input type="text" class="form-control" id="id_no_npp" name="no_pp" style="display:none" disabled>
                                 </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend"><span class="input-group-text">
-                                        <svg class="c-icon">
-                                        <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-                                        </svg></span></div>
-                                        <input type="text" id="id_username" name="username" class="form-control">
+                                <div class="form-group mb-3">
+                                    <label for="id_username">Username</label>
+                                    <input type="text" class="form-control" id="id_username" name="username">
                                 </div>
-                                <span class="text-error"></span>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend"><span class="input-group-text">
-                                        <svg class="c-icon">
-                                        <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-envelope-closed"></use>
-                                        </svg></span></div>
-                                        <input type="email" id="id_email" name="email" class="form-control">
-                                </div>  
-                                <span class="text-error"></span>
-
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend"><span class="input-group-text">
-                                        <svg class="c-icon">
-                                        <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
-                                        </svg></span></div>
-                                        <input type="password" id="id_password1" name="password1" class="form-control">
-                                </div>  
-                                <span class="text-error"></span>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend"><span class="input-group-text">
-                                        <svg class="c-icon">
-                                        <use xlink:href="/static/assets/vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
-                                        </svg></span></div>
-                                        <input type="password" id="id_password2" name="password2" class="form-control">
-                                </div>  
-                                <span class="text-error"></span>
-
-                                <div class="row">
-                                    <div class="col-6">
-                                    <input type="submit" name="submit" class="btn btn-primary px-4" value="Register">
-                                    </div>
-                                    <div class="col-6 text-right">
-                                    <a href={% url 'login' %} class="btn btn-link px-0">Login</a>
-                                    </div>
+                                <div class="form-group mb-3">
+                                    <label for="id_email">Email</label>
+                                    <input type="email" name="email" id="id_email" class="form-control">
                                 </div>
+                                <div class="form-group mb-3">
+                                    <label for="id_password1">Password</label>
+                                    <input type="password" name="password1" id="id_password1" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="id_password2">Konfirmasi Password</label>
+                                    <input type="password" name="password2" id="id_password2" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Daftar</button>
+								<div class="bottom">
+									<span class="helper-text"><i class="fa fa-user"></i> <a href="{% url 'login' %}">Login</a></span>
+								</div>
 							</form>
 						</div>
 					</div>
@@ -118,7 +88,7 @@
 	</div>
 	<!-- END WRAPPER -->
 
-<script src="/static/assets/js/obfuscated_register.js" />
+<script src="/static/assets/js/obfuscated_register.js"></script>
 </body>
 
 </html>
