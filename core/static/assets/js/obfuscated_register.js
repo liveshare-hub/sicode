@@ -42,6 +42,7 @@ $(document).ready(function() {
       
       data: {
         username:$("#id_username").val(),
+        email:$("#id_email").val(),
         password1:$("#id_password1").val(),
         password2:$("#id_password2").val(),
         no_npp:$("#id_no_npp").val(),
