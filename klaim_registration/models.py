@@ -107,7 +107,7 @@ class KPJ(models.Model):
     no_kpj = models.CharField(max_length=11, null=True, blank=True)
     tgl_keps = models.DateField(null=True, blank=True)
     tgl_na = models.DateField(blank=True, null=True)
-    is_aktif = models.BooleanField()
+    is_aktif = models.BooleanField(default=False)
 
     def __str__(self):
         if self.no_kpj:
@@ -116,11 +116,11 @@ class KPJ(models.Model):
             return self.data_tk.nama
 
     def save(self, *args, **kwargs):
-        if self.tgl_na is not None:
+        if self.tgl_na is None:
 
-            self.is_aktif = False
-        else:
             self.is_aktif = True
+        else:
+            self.is_aktif = False
         super(KPJ, self).save(*args, **kwargs)
 
 
