@@ -38,7 +38,7 @@
 								{% csrf_token %}
                                 <div class="form-group">
                                     <label for="id_npp">NPP</label>
-                                    <input type="text" class="form-control" id="id_npp" name="npp" placeholder="NPP" maxlength="8">
+                                    <input type="text" class="form-control" id="id_npp" name="npp" maxlength="8">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="id_hasil_npp" name="hasil_npp" disabled>
@@ -62,7 +62,7 @@
                                     <label for="id_password2">Konfirmasi Password</label>
                                     <input type="password" name="password2" id="id_password2" class="form-control">
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Daftar</button>
+                                <button type="submit" class="btn btn-primary btn-block">Daftar</button>
 								<div class="bottom">
 									<span class="helper-text"><i class="fa fa-user"></i> <a href="{% url 'login' %}">Login</a></span>
 								</div>
