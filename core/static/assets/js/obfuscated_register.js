@@ -12,7 +12,7 @@ $(document).ready(function() {
     var value = $(this).val().toUpperCase();
     $.ajax({
       type:'GET',
-      url:"{% url 'api-perusahaan' %}" + `?search=${value}`,
+      url:`/accounts/api/perusahaan?search=${value}`,
       async: true,
       success:function(data){
         if(data.length > 0) {
