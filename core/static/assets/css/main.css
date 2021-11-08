@@ -1369,8 +1369,8 @@ ul.activity-list>li .timestamp {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  width: 65%;
-  height: 75%;
+  width: 75%;
+  height: 500px;
   margin: 0 auto;
   background-color: #fff;
 }
@@ -1421,7 +1421,7 @@ ul.activity-list>li .timestamp {
   height: 100%;
   position: relative;
   background-image: url("../../assets/img/login-bg.jpg");
-  background-repeat: repeat-x repeat-y;
+  background-repeat: repeat-y;
   background-size: cover;
 }
 
