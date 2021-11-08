@@ -154,7 +154,7 @@ $(document).ready(function() {
   var anik = $("a#id_kpj").text()
   console.log(anik)
   if (anik === 'Add KPJ') {
-    $("a#id_add-kpj").attr('disabled', true)
+    $("a#id_add-kpj").remove();
     $("input#id_add-kpj").attr('disabled', true)
   }
   else{
