@@ -89,10 +89,10 @@ def tambah_kpj(request, pk):
             post.data_tk_id = id_tk.pk
             post.no_kpj = form.cleaned_data['no_kpj']
             post.tgl_keps = form.cleaned_data['tgl_keps']
-            post.tgl_na = form.cleaned_data['tgl_na']
-            # if aktif_na is not None:
-            #     post.tgl_na = aktif_na
-            #     post.is_aktif = False
+            aktif_na = form.cleaned_data['tgl_na']
+            if aktif_na is not None:
+                post.tgl_na = aktif_na
+                post.is_aktif = False
 
             post.save()
 

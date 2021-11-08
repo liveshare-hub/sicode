@@ -115,11 +115,11 @@ class KPJ(models.Model):
         else:
             return self.data_tk.nama
 
-    def save(self, *args, **kwargs):
-        if self.tgl_na is not None:
+    # def save(self, *args, **kwargs):
+    #     if self.tgl_na is not None:
 
-            self.is_aktif = False
-        super(KPJ, self).save(*args, **kwargs)
+    #         self.is_aktif = False
+    #     super(KPJ, self).save(*args, **kwargs)
 
 
 # @receiver(post_save, sender=DataTK)
