@@ -155,7 +155,8 @@ $(document).ready(function() {
   console.log(anik)
   if (anik === 'Add KPJ') {
     $("a#id_add-kpj").remove();
-    $("input#id_add-kpj").attr('disabled', true)
+    var html = "<td><input type='button' class='btn btn-sm btn-success' value='Add KPJ' disabled></td>"
+    $("td:last").append(html)
   }
   else{
     $("a#id_add-kpj").removeAttr("disabled")
