@@ -50,7 +50,7 @@ def login_view(request):
 
 def register_user(request):
 
-    return render(request, "accounts/register.html")
+    return render(request, "accounts/page-register.html")
 
 
 def register_user_ajax(request):
