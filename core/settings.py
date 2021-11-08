@@ -148,18 +148,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'core/static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'core/static'),
+# )
 #############################################################
 #############################################################
 
-# STATIC_ROOT = '/home/sicm6455/python/public/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+STATIC_ROOT = '/home/sicm6455/python/sicode/core/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
 
 MEDIA_URL = '/media/'
-# MEDIA_ROOT = '/home/sicm6455/python/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/home/sicm6455/python/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
