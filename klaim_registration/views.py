@@ -31,9 +31,10 @@ from email import encoders
 
 @login_required(login_url='/accounts/login/')
 def index(request):
-    
-    datas = DataTK.objects.select_related('hrd').filter(hrd=request.user.profile).annotate(data_kpj=Subquery(KPJ.objects.filter(data_tk=OuterRef('pk')).values('no_kpj'))).annotate(aktif=Subquery(KPJ.objects.filter(data_tk=OuterRef('pk')).values('is_aktif')))
-    
+
+    datas = DataTK.objects.select_related('hrd').filter(hrd=request.user.profile).annotate(data_kpj=Subquery(KPJ.objects.filter(
+        data_tk=OuterRef('pk')).values('no_kpj'))).annotate(aktif=Subquery(KPJ.objects.filter(data_tk=OuterRef('pk')).values('is_aktif')))
+
     # datas = DataTK.objects.select_related('hrd').filter(hrd=request.user.profile).all()
     context = {
         'datas': datas
@@ -71,7 +72,6 @@ def TambahTK(request):
             post.file_paklaring = form.cleaned_data['file_paklaring']
             post.file_lain = form.cleaned_data['file_lain']
             post.save()
-                        
 
             return redirect('home-klaim')
     else:
@@ -100,7 +100,7 @@ def tambah_kpj(request, pk):
     else:
         form = KPJForm()
 
-    return render(request, 'klaim_registration/input_kpj.html', {'form': form, 'pk':id_tk})
+    return render(request, 'klaim_registration/input_kpj.html', {'form': form, 'pk': id_tk})
     # if request.method == 'POST':
     #     formset = KpjInlineFormset(request.POST or None, instance=id_tk)
     #     if formset.is_valid():
@@ -109,6 +109,18 @@ def tambah_kpj(request, pk):
     # else:
     #     formset = KpjInlineFormset(queryset=DataTK.objects.none())
     # return render(request, 'klaim_registration/input_kpj.html', {'forms': formset})
+
+
+@login_required(login_url='/accounts/login/')
+def DetilTK(request, pk):
+    datas = DataTK.objects.select_related('hrd').filter(pk=pk)
+    data_kpj = KPJ.objects.select_related('data_tk').filter(data_tk__id=pk)
+    context = {
+        'datas': datas,
+        'data_kpj': data_kpj,
+    }
+
+    return render(request, 'klaim_registration/detail_tk.html', context)
 
 
 @login_required(login_url='/accounts/login/')

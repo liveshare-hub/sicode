@@ -10,6 +10,7 @@ urlpatterns = [
     path('tambah/tk', views.TambahTK, name='tambah-tk'),
     path('tambah/tk/ajax', views.TambahTK_ajax, name='tambah-tk-ajax'),
     path('tambah/kpj/<int:pk>', views.tambah_kpj, name='tambah-kpj'),
+    path('detil/tk/<int:pk>', views.DetilTK, name='detil-tk'),
     # path('hrd/klaim/', views.daftarKlaimHRD,
     #      name='hrd-klaim'),
     # path('hrd/klaim/', views.get_detail_tk, name='get-detail'),

@@ -52,7 +52,7 @@
     {% for data in datas  %}
       <tr>
           <td>{{forloop.counter}}</td>
-          <td>{{data.nama}}</td>
+          <td><a href="{% url 'detil-tk' pk=data.pk %}">{{data.nama}}</a></td>
           {% if data.data_kpj %}
             <td id="id_kpj">{{data.data_kpj}}</td>
           {% else %}
