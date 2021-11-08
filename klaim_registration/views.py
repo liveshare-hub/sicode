@@ -31,8 +31,10 @@ from email import encoders
 
 @login_required(login_url='/accounts/login/')
 def index(request):
-    datas = KPJ.objects.select_related(
-        'data_tk').filter(data_tk__hrd=request.user.profile)
+    
+    datas = DataTK.objects.select_related('hrd').filter(hrd=request.user.profile).annotate(data_kpj=Subquery(KPJ.objects.filter(data_tk=OuterRef('pk')).values('no_kpj'))).annotate(aktif=Subquery(KPJ.objects.filter(data_tk=OuterRef('pk')).values('is_aktif')))
+    
+    # datas = DataTK.objects.select_related('hrd').filter(hrd=request.user.profile).all()
     context = {
         'datas': datas
     }
@@ -69,6 +71,7 @@ def TambahTK(request):
             post.file_paklaring = form.cleaned_data['file_paklaring']
             post.file_lain = form.cleaned_data['file_lain']
             post.save()
+                        
 
             return redirect('home-klaim')
     else:
@@ -86,11 +89,10 @@ def tambah_kpj(request, pk):
             post.data_tk_id = id_tk.pk
             post.no_kpj = form.cleaned_data['no_kpj']
             post.tgl_keps = form.cleaned_data['tgl_keps']
-            aktif_na = form.cleaned_data['tgl_na']
-            print(aktif_na)
-            post.tgl_na = aktif_na
-            if aktif_na is not None:
-                post.is_aktif = False
+            post.tgl_na = form.cleaned_data['tgl_na']
+            # if aktif_na is not None:
+            #     post.tgl_na = aktif_na
+            #     post.is_aktif = False
 
             post.save()
 
@@ -98,7 +100,7 @@ def tambah_kpj(request, pk):
     else:
         form = KPJForm()
 
-    return render(request, 'klaim_registration/input_kpj.html', {'form': form})
+    return render(request, 'klaim_registration/input_kpj.html', {'form': form, 'pk':id_tk})
     # if request.method == 'POST':
     #     formset = KpjInlineFormset(request.POST or None, instance=id_tk)
     #     if formset.is_valid():

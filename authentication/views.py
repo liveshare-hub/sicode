@@ -128,6 +128,7 @@ class ListPerusahaan(ListCreateAPIView):
     search_fields = ['npp',]
 
     def get_queryset(self):
+        
         qs = Perusahaan.objects.all()
         if qs.exists():
             return qs

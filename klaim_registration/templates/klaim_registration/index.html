@@ -52,28 +52,29 @@
     {% for data in datas  %}
       <tr>
           <td>{{forloop.counter}}</td>
-          <td>{{data.data_tk.nama}}</td>
-          {% if data.no_kpj and data.is_aktif %}
-            <td>{{data.no_kpj}} - {{data.is_aktif}}</td>
+          <td>{{data.nama}}</td>
+          {% if data.data_kpj %}
+            <td id="id_kpj">{{data.data_kpj}}</td>
           {% else %}
-            <td><a href="{% url 'tambah-kpj' pk=data.data_tk.pk%}">Add KPJ</a></td>
+            <td><a href="{% url 'tambah-kpj' pk=data.pk%}" id="id_kpj">Add KPJ</a></td>
           {% endif %}
-          <td>{{data.data_tk.tempat_lahir}}</br>{{data.data_tk.tgl_lahir}}</td>
-          <td>{{data.data_tk.nik}}</td>
-          <td>{{data.data_tk.alamat}}</td>
-          <td>{{data.data_tk.nama_ibu}}</td>
-          <td>{{data.data_tk.get_status_display}}</td>
-          <td>{{data.data_tk.no_rekening}}</td>
-          <td><a href="{{ data.data_tk.file_kk.url }}" class="badge bg-info text-dark" rel="noopener noreferrer">Download</a></td>
-          <td><a href="{{ data.data_tk.file_ktp.url }}" class="badge bg-info text-dark" rel="noopener noreferrer">Download</a></td>
-          <td><a href="{{ data.data_tk.file_paklaring.url }}" class="badge bg-info text-dark" rel="noopener noreferrer">Download</a></td>
-          {% if data.data_tk.file_lain %}
-            <td><a href="{{ data.data_tk.file_lain.url }}" class="badge bg-info text-dark" rel="noopener noreferrer">Download</a></td>
+          <td>{{data.tempat_lahir}}</br>{{data.tgl_lahir}}</td>
+          <td>{{data.nik}}</td>
+          <td>{{data.alamat}}</td>
+          <td>{{data.nama_ibu}}</td>
+          <td>{{data.get_status_display}}</td>
+          <td>{{data.no_rekening}}</td>
+          <td><a href="{{ data.file_kk.url }}" class="badge bg-info text-dark" rel="noopener noreferrer">Download</a></td>
+          <td><a href="{{ data.file_ktp.url }}" class="badge bg-info text-dark" rel="noopener noreferrer">Download</a></td>
+          <td><a href="{{ data.file_paklaring.url }}" class="badge bg-info text-dark" rel="noopener noreferrer">Download</a></td>
+          {% if data.file_lain %}
+            <td><a href="{{ data.file_lain.url }}" class="badge bg-info text-dark" rel="noopener noreferrer">Download</a></td>
           {% else %}
             <td>Belum Upload</td>
           {% endif %}
-          <td><button type="button" class="btn btn-info btn-sm"><a href="{% url 'tambah-kpj' pk=data.data_tk.pk %}">Add KPJ</a></button></td>
-          
+         
+          <td><a href="{% url 'tambah-kpj' pk=data.pk%}"><input type="button" class="btn btn-sm btn-success" name="" id="id_add-kpj" value="Add KPJ"></a></td>
+         
       </tr>
     
     {% endfor %}
@@ -145,6 +146,20 @@ $(document).ready(function() {
 $("#warning-alert").fadeTo(2000, 500).slideUp(500, function(){
     $("#warning-alert").slideUp(500);
 });
+</script>
+
+<script>
+$(document).ready(function() {
+  var nik = $("td#id_kpj").text()
+  var anik = $("a#id_kpj").text()
+  console.log(anik)
+  if (anik === 'Add KPJ') {
+    $("#id_add-kpj").attr('disabled', 'disabled')
+  }
+  else{
+    $("#id_add-kpj").removeAttr("disabled")
+  }
+})
 </script>
 
 {% endblock javascripts %}
