@@ -52,30 +52,7 @@
                             <td>Status</td>
                             <td id="id_status">{{data.get_status_display}}</td>
                         </tr>
-                        <tr id="id_keluarga">
-                            <td>Nama Pasangan</td>
-                            <td>{{data.nama_pasangan}}</td>
-                        </tr>
-                        <tr id="id_keluarga">
-                            <td>Tgl. Lahir</td>
-                            <td>{{data.tgl_lahir_pasangan}}</td>
-                        </tr>
-                        <tr id="id_keluarga">
-                            <td>Nama Anak I.</td>
-                            <td>{{data.nama_anak_s}}</td>
-                        </tr>
-                        <tr id="id_keluarga">
-                            <td>Tgl. Lahir</td>
-                            <td>{{data.tgl_lahir_s}}</td>
-                        </tr>
-                        <tr id="id_keluarga">
-                            <td>Nama Anak II.</td>
-                            <td>{{data.nama_anak_d}}</td>
-                        </tr>
-                        <tr id="id_keluarga">
-                            <td>Tgl. Lahir</td>
-                            <td>{{data.tgl_lahir_d}}</td>
-                        </tr>
+                        
                         {% endfor %}
                     </tbody>
                 </table>
@@ -83,8 +60,32 @@
         </div>
         
     </div>
-    <div class="row">
-        
+    <div class="row mt-2">
+        <div class="col">
+            <div class="card">
+                <h5 class="card-title">Data Keluarga</h5>
+                <table class="table-sm">
+                    <thead>
+                        <th>Nama Pasangan</th>
+                        <th>Tgl. Lahir</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{datas.0.nama_pasangan}}</td>
+                            <td>{{datas.0.tgl_lahir_pasangan}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{datas.0.nama_anak_s}}</td>
+                            <td>{{datas.0.tgl_lahir_s}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{datas.0.nama_anak_d}}</td>
+                            <td>{{datas.0.tgl_lahir_d}}</td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>   
 </div>
 {% endblock  %}
 
