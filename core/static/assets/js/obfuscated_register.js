@@ -38,7 +38,7 @@ $(document).ready(function() {
     
     $.ajax({
       type:'POST',
-      url:"{% url 'create-user' %}",
+      url:"/accounts/register/ajax",
       
       data: {
         username:$("#id_username").val(),
