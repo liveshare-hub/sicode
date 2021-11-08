@@ -45,12 +45,13 @@ def login_view(request):
         else:
             msg = 'Error validating the form'
 
-    return render(request, "accounts/login.html", {"form": form, "msg": msg})
+    return render(request, "accounts/page-login.html", {"form": form, "msg": msg})
 
 
 def register_user(request):
 
     return render(request, "accounts/register.html")
+
 
 def register_user_ajax(request):
     msg = None
@@ -66,14 +67,15 @@ def register_user_ajax(request):
             msg = 'Password Tidak Sama!'
         else:
             password = make_password(password1, salt=['username'])
-            User.objects.update_or_create(username=username, password=password, email=email, is_active=False)
+            User.objects.update_or_create(
+                username=username, password=password, email=email, is_active=False)
             user = User.objects.get(username=username)
             current_site = get_current_site(request)
             mail_subject = 'Activate your account.'
             message = render_to_string('authentication/acc_activate_email.html', {
-                'user':user, 'domain':current_site.domain,
-                'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-                'token':account_activation_token.make_token(user),})
+                'user': user, 'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user), })
             to_mail = EmailMessage(mail_subject, message, to=[email])
             to_mail.send()
             try:
@@ -86,6 +88,7 @@ def register_user_ajax(request):
                 'msg': msg
             }
             return JsonResponse(response)
+
 
 def activate_email(request, uidb64, token):
     msg = None
@@ -105,6 +108,7 @@ def activate_email(request, uidb64, token):
     else:
         return HttpResponse('Akctivation link is invalid!')
 
+
 def settingProfile(request):
 
     if request.method == 'POST':
@@ -122,13 +126,13 @@ def settingProfile(request):
 
 class ListPerusahaan(ListCreateAPIView):
     serializer_class = PerusahaanSerializer
-    permission_classes = [permissions.AllowAny,]
+    permission_classes = [permissions.AllowAny, ]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    filterset_fields = ['npp',]
-    search_fields = ['npp',]
+    filterset_fields = ['npp', ]
+    search_fields = ['npp', ]
 
     def get_queryset(self):
-        
+
         qs = Perusahaan.objects.all()
         if qs.exists():
             return qs
