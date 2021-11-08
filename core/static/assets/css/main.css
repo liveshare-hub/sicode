@@ -1391,7 +1391,7 @@ ul.activity-list>li .timestamp {
   vertical-align: middle;
   *vertical-align: auto;
   *zoom: 1;
-  *display: inline;
+  *display: flex;
   width: 99%;
   vertical-align: middle;
 }
