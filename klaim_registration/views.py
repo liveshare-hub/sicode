@@ -33,7 +33,7 @@ from email import encoders
 def index(request):
 
     datas = DataTK.objects.select_related('hrd').filter(hrd=request.user.profile).annotate(data_kpj=Subquery(KPJ.objects.filter(
-        data_tk=OuterRef('pk'), is_aktif=True).values('no_kpj'))).annotate(aktif=Subquery(KPJ.objects.filter(data_tk=OuterRef('pk')).values('is_aktif')))
+        data_tk=OuterRef('pk')).values('no_kpj'))).annotate(aktif=Subquery(KPJ.objects.filter(data_tk=OuterRef('pk')).values('is_aktif')))
 
     # datas = DataTK.objects.select_related('hrd').filter(hrd=request.user.profile).all()
     context = {
