@@ -99,8 +99,8 @@
                     {% for d in data_kpj %}
                         <tr>
                             <td>{{d.no_kpj}}</td>
-                            <td>{{d.blth_keps}}</td>
-                            {% if d.blth_na is None %}
+                            <td>{{d.tgl_keps}}</td>
+                            {% if d.tgl_na is None %}
                             <td> - </td>
                             {% else %}
                             <td>{{d.blth_na}}</td>
