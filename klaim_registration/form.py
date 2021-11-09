@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import inlineformset_factory
+from django.forms.widgets import Select
 # from dal import autocomplete
 
 from .models import KPJ, DataKlaim, DataTK, SebabKlaim, TipeKlaim
@@ -117,10 +118,32 @@ KpjInlineFormset = inlineformset_factory(DataTK, KPJ, fields=(
 
 
 class KlaimForm(forms.ModelForm):
+    tipe_klaim = forms.ModelChoiceField(queryset=TipeKlaim.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
+
     class Meta:
         model = DataKlaim
         exclude = ('no_kpj',)
-        
+
+        widgets = {
+            'sebab_klaim':forms.Select(attrs={
+                'class':'form-control',
+            }),
+            'surat_meninggal':forms.FileInput(attrs={'class':'form-control'}),
+            'ktp_ahli_waris':forms.FileInput(attrs={'class':'form-control'}),
+            'kk_baru':forms.FileInput(attrs={'class':'form-control'}),
+            'no_rek_waris':forms.FileInput(attrs={'class':'form-control'}),
+            'form_I':forms.FileInput(attrs={'class':'form-control'}),
+            'kronologis':forms.FileInput(attrs={'class':'form-control'}),
+            'ktp_saksi':forms.FileInput(attrs={'class':'form-control'}),
+            'absen_1':forms.FileInput(attrs={'class':'form-control'}),
+            'surat_pernyataan':forms.FileInput(attrs={'class':'form-control'}),
+            'form_II':forms.FileInput(attrs={'class':'form-control'}),
+            'absensi_2':forms.FileInput(attrs={'class':'form-control'}),
+            'no_rek_perusahaan':forms.FileInput(attrs={'class':'form-control'}),
+            'no_rek_tk':forms.FileInput(attrs={'class':'form-control'}),
+            'slip_gaji':forms.FileInput(attrs={'class':'form-control'}),
+            'paklaring':forms.FileInput(attrs={'class':'form-control'}),
+        }    
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

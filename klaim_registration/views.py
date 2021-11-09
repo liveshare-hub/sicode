@@ -183,6 +183,15 @@ class KlaimUpdateView(UpdateView):
     success_url = reverse_lazy('klaim_changelist')
 
 
+def DaftarKlaim(request):
+    form = KlaimForm()
+    if request.method == 'POST':
+        form = KlaimForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home-klaim')
+    return render(request, 'klaim_registration/dataklaim_form.html',{'form':form})
+
 def load_sebab(request):
     klaim_id = request.GET.get('klaim_id')
     print(klaim_id)
