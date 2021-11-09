@@ -2,7 +2,7 @@ from django import forms
 from django.forms import inlineformset_factory
 # from dal import autocomplete
 
-from .models import KPJ, DataKlaim, DataTK
+from .models import KPJ, DataKlaim, DataTK, SebabKlaim
 
 
 class DataTKForm(forms.ModelForm):
@@ -114,3 +114,14 @@ class KPJForm(forms.ModelForm):
 
 KpjInlineFormset = inlineformset_factory(DataTK, KPJ, fields=(
     'no_kpj', 'tgl_keps', 'tgl_na',), extra=1, can_delete=False)
+
+
+class KlaimForm(forms.ModelForm):
+    class Meta:
+        model = DataKlaim
+        exclude = ('no_kpj',)
+        
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['sebab_klaim'].queryset = SebabKlaim.objects.none()

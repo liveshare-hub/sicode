@@ -61,7 +61,6 @@ def register_user_ajax(request):
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
         npp_id = request.POST.get('no_npp')
-        print(npp_id)
 
         if password1 != password2:
             msg = 'Password Tidak Sama!'

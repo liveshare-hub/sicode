@@ -1,30 +1,34 @@
+from django.contrib.messages.api import success
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
-from django.contrib.auth.models import User, Group
+# from django.contrib.auth.models import User, Group
 from django.shortcuts import get_object_or_404
 from django.db.models import Subquery, OuterRef, IntegerField
 from django.http import JsonResponse
+from django.views.generic import CreateView, UpdateView
+from django.urls import reverse_lazy
 # from dal import autocomplete
 import random
 import string
 
 from django.core import serializers
+from django.views.generic.list import ListView
 
-from .form import DataTKForm, KPJForm, KpjInlineFormset
-from .models import KPJ, DataKlaim, ApprovalHRD, DataTK, toQRCode
+from .form import DataTKForm, KPJForm, KlaimForm, KpjInlineFormset
+from .models import KPJ, DataKlaim, ApprovalHRD, DataTK, SebabKlaim, toQRCode
 from authentication.models import Perusahaan, Profile
-from .decorators import admin_only
+# from .decorators import admin_only
 
 from django.core.mail import EmailMessage, EmailMultiAlternatives
 
-from django.conf import settings
+# from django.conf import settings
 
 from django.template.loader import render_to_string
 from email.mime.image import MIMEImage
-from django.utils.html import strip_tags
+# from django.utils.html import strip_tags
 from email.mime.base import MIMEBase
 from email import encoders
 
@@ -164,6 +168,22 @@ def TambahTK_ajax(request):
 
     return render(request, 'klaim_registration/tambah_tk.html')
 
-    # def TambahKlaim(request, pk):
-    #     pk = KPJ.objects.select_related('data_tk').get(pk=pk)
-    #     return HttpResponse('FIX')
+class KlaimListView(ListView):
+    model = DataKlaim
+    contex_object_name = 'datas'
+
+class KlaimCreateView(CreateView):
+    model = DataKlaim
+    form_class = KlaimForm
+    success_url = reverse_lazy('klaim_changelist')
+
+class KlaimUpdateView(UpdateView):
+    model = DataKlaim
+    form_class = KlaimForm
+    success_url = reverse_lazy('klaim_changelist')
+
+
+def load_sebab(request):
+    sebab_id = request.GET.get('sebab_klaim')
+    sebab = SebabKlaim.objects.filter(sebab_klaim_id=sebab_id).order_by('kode')
+    return render(request, 'klaim_registration/sebab_dropdown.html', {'sebab':sebab})
