@@ -184,6 +184,6 @@ class KlaimUpdateView(UpdateView):
 
 
 def load_sebab(request):
-    sebab_id = request.GET.get('tipe_klaim')
-    sebab = SebabKlaim.objects.filter(sebab_klaim__id=sebab_id).order_by('kode')
+    sebab_id = request.GET.get('sebab_klaim')
+    sebab = SebabKlaim.objects.filter(sebab_klaim_id=sebab_id).order_by('kode')
     return render(request, 'klaim_registration/sebab_dropdown.html', {'sebab':sebab})
