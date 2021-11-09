@@ -28,7 +28,7 @@ $(document).ready(function() {
       },
       error: function(xhr, status, error){
         var err = JSON.parse(xhr.responseText);
-        console.log(status)
+        
         alert(err)
       }
     });
@@ -39,7 +39,7 @@ $(document).ready(function() {
     $.ajax({
       type:'POST',
       url:"/accounts/register/ajax",
-      
+      async:true,
       data: {
         username:$("#id_username").val(),
         email:$("#id_email").val(),
@@ -50,7 +50,7 @@ $(document).ready(function() {
         dataType: "json",
       },
       success: function(data){
-        console.log(data)
+        
         $("p.text-muted").html(data.msg);
         $("input.form-control").val("");
         $("div input#id_hasil_npp").hide();
