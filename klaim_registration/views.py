@@ -79,7 +79,7 @@ def TambahTK(request):
 
     return render(request, 'klaim_registration/tambah_tk.html', {'form': form})
 
-
+@login_required(login_url='/accounts/login/')
 def tambah_kpj(request, pk):
     id_tk = DataTK.objects.get(pk=pk)
     if request.method == 'POST':
@@ -101,14 +101,6 @@ def tambah_kpj(request, pk):
         form = KPJForm()
 
     return render(request, 'klaim_registration/input_kpj.html', {'form': form, 'pk': id_tk})
-    # if request.method == 'POST':
-    #     formset = KpjInlineFormset(request.POST or None, instance=id_tk)
-    #     if formset.is_valid():
-    #         formset.save()
-    #         return redirect('home-klaim')
-    # else:
-    #     formset = KpjInlineFormset(queryset=DataTK.objects.none())
-    # return render(request, 'klaim_registration/input_kpj.html', {'forms': formset})
 
 
 @login_required(login_url='/accounts/login/')
@@ -171,3 +163,7 @@ def TambahTK_ajax(request):
         return JsonResponse({'msg': msg})
 
     return render(request, 'klaim_registration/tambah_tk.html')
+
+    # def TambahKlaim(request, pk):
+    #     pk = KPJ.objects.select_related('data_tk').get(pk=pk)
+    #     return HttpResponse('FIX')
