@@ -124,4 +124,13 @@ class KlaimForm(forms.ModelForm):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['tipe_klaim'].queryset = TipeKlaim.objects.none()
+        self.fields['sebab_klaim'].queryset = SebabKlaim.objects.none()
+
+        if 'tipe_klaim' in self.data:
+            try:
+                tipe_klaim_id = int(self.data.get('tipe_klaim'))
+                self.fields['sebab_klaim'].queryset = SebabKlaim.objects.filter(sebab_klaim_id=tipe_klaim_id).order_by('kode')
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['sebab_klaim'].queryset = self.instance.sebab_klaim.tipe_klaim_set.order_by('kode')
