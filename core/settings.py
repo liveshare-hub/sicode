@@ -174,8 +174,9 @@ MEDIA_ROOT = '/home/sicm6455/python/media/'
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
+# EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'mail.sicode.id'
+EMAIL_PORT = '465'
 EMAIL_HOST_USER = config('user_email')
 EMAIL_HOST_PASSWORD = config('user_pass')
 EMAIL_USE_TLS = True
