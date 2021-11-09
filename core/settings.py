@@ -176,8 +176,8 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 # EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST = 'mail.sicode.id'
-EMAIL_PORT = '465'
-# EMAIL_PORT = '587'
+# EMAIL_PORT = '465'
+EMAIL_PORT = '587'
 EMAIL_HOST_USER = config('user_email2')
 EMAIL_HOST_PASSWORD = config('user_pass2')
 EMAIL_USE_TLS = True
