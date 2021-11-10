@@ -10513,7 +10513,8 @@ html:not([dir="rtl"]) .c-sidebar.c-sidebar-show.c-sidebar-right, html:not([dir="
 }
 
 .c-sidebar .c-sidebar-minimizer {
-  background-color: rgba(0, 0, 21, 0.2);
+  /* background-color: rgba(0, 0, 21, 0.2); */
+  background-color: #5680e9;
 }
 
 .c-sidebar .c-sidebar-minimizer::before {
@@ -10525,7 +10526,8 @@ html:not([dir="rtl"]) .c-sidebar.c-sidebar-show.c-sidebar-right, html:not([dir="
 }
 
 .c-sidebar .c-sidebar-minimizer:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  background-color: rgba(65, 113, 232, 0.3);
 }
 
 .c-sidebar .c-sidebar-minimizer:hover::before {
