@@ -29,9 +29,9 @@
 
 .c-app {
   overflow-x: hidden;
-  color: #3c4b64;
+  color: #8d8741;
   background-color: #ebedef;
-  --color: #3c4b64;
+  --color: #8d8741;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
