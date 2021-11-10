@@ -6924,6 +6924,7 @@ html:not([dir="rtl"]) .c-header-nav .c-header-nav-link .badge, html:not([dir="rt
 .c-header-nav .c-header-nav-link:hover,
 .c-header-nav .c-header-nav-btn:hover {
   text-decoration: none;
+  color: #84ceeb;
 }
 
 .c-header-nav .dropdown-item {
