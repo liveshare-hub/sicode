@@ -128,7 +128,7 @@ class KlaimForm(forms.ModelForm):
             'sebab_klaim':forms.Select(attrs={
                 'class':'form-control',
             }),
-            'surat_meninggal':forms.FileInput(attrs={'class':'form-control'}),
+            'surat_meinggal':forms.FileInput(attrs={'class':'form-control'}),
             'ktp_ahli_waris':forms.FileInput(attrs={'class':'form-control'}),
             'kk_baru':forms.FileInput(attrs={'class':'form-control'}),
             'no_rek_waris':forms.FileInput(attrs={'class':'form-control'}),
