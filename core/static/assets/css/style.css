@@ -24,7 +24,7 @@
   --warning: #f9b115;
   --danger: #e55353;
   --light: #ebedef;
-  --dark: #636f83;
+  --dark: #5ab9ea;
 }
 
 .c-app {
@@ -17150,7 +17150,7 @@ a.text-dark:hover, a.text-dark:focus {
   warning: #f9b115;
   danger: #e55353;
   light: #ebedef;
-  dark: #5ab9ea;
+  dark: #636f83;
   breakpoint-xs: 0;
   breakpoint-sm: 576px;
   breakpoint-md: 768px;
