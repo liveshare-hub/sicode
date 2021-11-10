@@ -1,4 +1,6 @@
-<option value="">---------</option>
-{% for sb in sebab %}
-<option value="{{ sb.pk }}">{{ sb.kode }} - {{sb.sebab_klaim}}</option>
-{% endfor %}
+<select class="form-select" aria-label="Default select example">
+    <option value="">---------</option>
+    {% for sb in sebab %}
+    <option value="{{ sb.pk }}">{{ sb.kode }} - {{sb.sebab_klaim}}</option>
+    {% endfor %}
+</select>
