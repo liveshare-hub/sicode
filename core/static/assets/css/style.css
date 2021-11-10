@@ -29,9 +29,9 @@
 
 .c-app {
   overflow-x: hidden;
-  color: #8d8741;
+  color: #3c4b64;
   background-color: #ebedef;
-  --color: #8d8741;
+  --color: #3c4b64;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -6843,6 +6843,10 @@ html:not([dir="rtl"]) .c-header-brand.c-header-brand-xl-down-center {
   *[dir="rtl"] .c-header-brand.c-header-brand-xl-up-center {
     right: 50%;
   }
+}
+
+.c-header-light {
+  background-color: #8d8741;
 }
 
 .c-header-toggler {
