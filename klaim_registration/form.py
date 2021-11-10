@@ -142,7 +142,7 @@ class KlaimForm(forms.ModelForm):
             'no_rek_perusahaan':forms.FileInput(attrs={'class':'form-control'}),
             'no_rek_tk':forms.FileInput(attrs={'class':'form-control'}),
             'slip_gaji':forms.FileInput(attrs={'class':'form-control'}),
-            'paklaring':forms.FileInput(attrs={'class':'form-control'}),
+            'parklaring':forms.FileInput(attrs={'class':'form-control'}),
         }    
     
     def __init__(self, *args, **kwargs):
