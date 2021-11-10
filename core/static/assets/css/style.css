@@ -6935,6 +6935,11 @@ html:not([dir="rtl"]) .c-header-nav .c-header-nav-link .badge, html:not([dir="rt
   border-bottom: 1px solid #636f83;
 }
 
+.c-header.c-header-light {
+  background: #5680e9;
+  border-bottom: 1px solid #636f83;
+}
+
 .c-header.c-header-dark .c-subheader {
   margin-top: -1px;
   border-top: 1px solid #636f83;
