@@ -3,38 +3,9 @@
 {% block title %}PENDAFTARAN KLAIM{% endblock  %}
 
 {% block content %}
-    <h2>Daftar Klaim</h2>
 
-    <form method="POST" id="klaimForm" data-klaim-url="{% url 'ajax_load_sebab' %}" novalidate>
-        {% csrf_token %}
-        <table class="table">
-            {{form.as_table}}
-        </table>
-        <button type="submit" class="btn btn-sm btn-primary">Save</button>
-        <a href="{% url 'klaim_changelist' %}">Nothing</a>
-    </form>
-{% endblock  %}
+<div class="container">
+    <h2 class="alert alert-primary text-center mt-3"> FORM PENDAFTARAN KLAIM </h2>
+</div>
 
-{% block javascripts %}
 
-<script>
-$("#id_tipe_klaim").change(function() {
-    var url = $("#klaimForm").attr("data-klaim-url");
-    var klaimId = $(this).val();
-
-    $.ajax({
-        url:url,
-        data: {
-            'klaim_id':klaimId
-        },
-        success: function(data) {
-            console.log(data)
-            $("#id_sebab_klaim").html(data);
-        },
-        errors: function(err){
-            console.log(err)
-        }
-    });
-});
-</script>
-{% endblock  %}
