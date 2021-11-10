@@ -10,25 +10,41 @@
 {% block content %}
 
 <div class="container">
-    <div class="card mt-2">
-        <h5 class="card-header ml-2">FORM INPUT KLAIM</h5>
-        <div class="card-body">
-            <form method="POST" id="klaimForm" data-klaim-url="{% url 'ajax_load_sebab' %}" enctype="multipart/form-data">
-                <div class="row row-8">
-                    <div class="col col-md-2">
-                        <div class="form-group">
-                            <label for="id_tipe_klaim" class="font-weight-bold">Tipe Klaim</label>
-                            {{form.tipe_klaim}}
+    <div class="row row-8">
+        <div class="card mt-2">
+            <h5 class="card-header">FORM INPUT KLAIM</h5>
+            <div class="card-body">
+                <form method="POST" id="klaimForm" data-klaim-url="{% url 'ajax_load_sebab' %}" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col col-md-2">
+                            <div class="form-group">
+                                <label for="id_tipe_klaim" class="font-weight-bold">Tipe Klaim</label>
+                                {{form.tipe_klaim}}
+                            </div>
+                        </div>
+                        <div class="col col-md-6">
+                            <div class="form-group">
+                                <label for="id_sebab_klaim" class="font-weight-bold">Sebab Klaim</label>
+                                {{form.sebab_klaim}}
+                            </div>
                         </div>
                     </div>
-                    <div class="col col-md-6">
-                        <div class="form-group">
-                            <label for="id_sebab_klaim" class="font-weight-bold">Sebab Klaim</label>
-                            {{form.sebab_klaim}}
+                    <div class="row">
+                        <div class="col col-md-4">
+                            <div class="form-group">
+                                <label for="id_paklaring">Paklaring</label>
+                                {{form.paklaring}}
+                            </div>
+                        </div>
+                        <div class="col col-md-4">
+                            <div class="form-group">
+                                <label for="id_surat_meninggal">Surat Meninggal Dunia</label>
+                                {{form.surat_meninggal}}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>
