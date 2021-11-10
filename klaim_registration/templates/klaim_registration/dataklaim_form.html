@@ -15,7 +15,7 @@
         <div class="card-body">
             <form method="POST" id="klaimForm" data-klaim-url="{% url 'ajax_load_sebab' %}" enctype="multipart/form-data">
                 <div class="row">
-                    <div class="col">
+                    <div class="col col-4">
                         <div class="form-group">
                             <label for="id_tipe_klaim" class="font-weight-bold">Tipe Klaim</label>
                             {{form.tipe_klaim}}
