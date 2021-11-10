@@ -24,7 +24,7 @@
   --warning: #f9b115;
   --danger: #e55353;
   --light: #ebedef;
-  --dark: #5ab9ea;
+  --dark: #636f83;
 }
 
 .c-app {
@@ -6931,8 +6931,8 @@ html:not([dir="rtl"]) .c-header-nav .c-header-nav-link .badge, html:not([dir="rt
 }
 
 .c-header.c-header-dark {
-  background: #3c4b64;
-  border-bottom: 1px solid #636f83;
+  background: #84ceeb;
+  /* border-bottom: 1px solid #636f83; */
 }
 
 .c-header.c-header-dark .c-subheader {
