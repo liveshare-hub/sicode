@@ -193,7 +193,7 @@ def DaftarKlaim(request):
     if request.method == 'POST':
         form = KlaimForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save(commit=False)
+            # form.save(commit=False)
             # post.no_kpj__data_tk__id = pk
             form.save()
             return redirect('home-klaim')
@@ -208,7 +208,7 @@ def DaftarKlaimPK(request, pk):
         if form.is_valid():
             post = form.save(commit=False)
             post.no_kpj__data_tk__id = pk
-            form.save()
+            post.save()
             return redirect('home-klaim')
     return render(request, 'klaim_registration/dataklaim_form.html', {'form': form, 'pk': pk})
 
