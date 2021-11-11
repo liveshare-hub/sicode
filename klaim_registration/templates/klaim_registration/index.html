@@ -74,7 +74,7 @@
           {% endif %}
          
           <td><a href="{% url 'tambah-kpj' pk=data.pk%}" id="id_add-kpj"><input type="button" class="btn btn-sm btn-success" name="" id="id_add-kpj" value="Add KPJ"></a></td>
-          <td><button type="button" class="btn btn-sm btn-info" id="id_klaim-btn">Klaim</button></td>
+          <td><a href="{% url 'tambah-klaim-pk' pk=data.pk %}" class="btn btn-sm btn-info">Add Klaim</a></td>
          
       </tr>
     
@@ -166,12 +166,5 @@ $(document).ready(function() {
 })
 </script>
 
-<script>
-$(document).ready(function() {
-  $("#id_klaim-btn").on('click', function() {
-    window.location = "{% url 'tambah-klaim-pk' pk=data.pk %}"
-  })
-})
-</script>
 
 {% endblock javascripts %}
