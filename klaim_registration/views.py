@@ -187,7 +187,20 @@ class KlaimUpdateView(UpdateView):
     success_url = reverse_lazy('klaim_changelist')
 
 
-def DaftarKlaim(request, pk):
+def DaftarKlaim(request):
+    # pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
+    form = KlaimForm()
+    if request.method == 'POST':
+        form = KlaimForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            # post.no_kpj__data_tk__id = pk
+            form.save()
+            return redirect('home-klaim')
+    return render(request, 'klaim_registration/dataklaim_form.html', {'form': form})
+
+
+def DaftarKlaimPK(request, pk):
     pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
     form = KlaimForm()
     if request.method == 'POST':
