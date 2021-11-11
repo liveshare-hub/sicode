@@ -83,6 +83,7 @@ def TambahTK(request):
 
     return render(request, 'klaim_registration/tambah_tk.html', {'form': form})
 
+
 @login_required(login_url='/accounts/login/')
 def tambah_kpj(request, pk):
     id_tk = DataTK.objects.get(pk=pk)
@@ -168,14 +169,17 @@ def TambahTK_ajax(request):
 
     return render(request, 'klaim_registration/tambah_tk.html')
 
+
 class KlaimListView(ListView):
     model = DataKlaim
     contex_object_name = 'datas'
+
 
 class KlaimCreateView(CreateView):
     model = DataKlaim
     form_class = KlaimForm
     success_url = reverse_lazy('klaim_changelist')
+
 
 class KlaimUpdateView(UpdateView):
     model = DataKlaim
@@ -183,17 +187,21 @@ class KlaimUpdateView(UpdateView):
     success_url = reverse_lazy('klaim_changelist')
 
 
-def DaftarKlaim(request):
+def DaftarKlaim(request, pk):
+    pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
     form = KlaimForm()
     if request.method == 'POST':
         form = KlaimForm(request.POST, request.FILES)
         if form.is_valid():
+            post = form.save(commit=False)
+            post.no_kpj__data_tk__id = pk
             form.save()
             return redirect('home-klaim')
-    return render(request, 'klaim_registration/dataklaim_form.html',{'form':form})
+    return render(request, 'klaim_registration/dataklaim_form.html', {'form': form, 'pk': pk})
+
 
 def load_sebab(request):
     klaim_id = request.GET.get('klaim_id')
     print(klaim_id)
     sebab = SebabKlaim.objects.filter(tipe_id=klaim_id).order_by('kode')
-    return render(request, 'klaim_registration/sebab_dropdown.html', {'sebab':sebab})
+    return render(request, 'klaim_registration/sebab_dropdown.html', {'sebab': sebab})

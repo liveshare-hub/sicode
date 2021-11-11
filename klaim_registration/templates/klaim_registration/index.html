@@ -74,6 +74,7 @@
           {% endif %}
          
           <td><a href="{% url 'tambah-kpj' pk=data.pk%}" id="id_add-kpj"><input type="button" class="btn btn-sm btn-success" name="" id="id_add-kpj" value="Add KPJ"></a></td>
+          <td><button type="button" class="btn btn-sm btn-info" id="id_klaim-btn">Klaim</button></td>
          
       </tr>
     
@@ -162,6 +163,14 @@ $(document).ready(function() {
     $("a#id_add-kpj").removeAttr("disabled")
     $("input#id_add-kpj").removeAttr("disabled")
   }
+})
+</script>
+
+<script>
+$(document).ready(function() {
+  $("#id_klaim-btn").on('click', function() {
+    window.location = "{% url 'tambah-klaim' pk=data.pk %}"
+  })
 })
 </script>
 
