@@ -123,6 +123,16 @@ def settingProfile(request):
     return render(request, "accounts/profile.html", {'form': form})
 
 
+def DetilProfile(request):
+    # pk = request.user.profile.id
+    qs = Profile.objects.select_related(
+        'user').filter(user__username=request.user)
+    context = {
+        'datas': qs
+    }
+    return render(request, 'authentication/profile.html', context)
+
+
 class ListPerusahaan(ListCreateAPIView):
     serializer_class = PerusahaanSerializer
     permission_classes = [permissions.AllowAny, ]
