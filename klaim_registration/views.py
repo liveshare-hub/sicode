@@ -201,7 +201,7 @@ def DaftarKlaim(request):
 
 
 def DaftarKlaimPK(request, pk):
-    pk = KPJ.objects.select_related('data_tk').get(data_tk=pk)
+    pk = KPJ.objects.select_related('data_tk').get(pk=pk)
     form = KlaimForm()
     if request.method == 'POST':
         form = KlaimForm(request.POST, request.FILES)
