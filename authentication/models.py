@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from PIL import Image as Img
 from io import BytesIO
+from django.core.validators import RegexValidator
 from django.db.models.signals import post_delete, post_save
 from django.utils.timezone import now
 
@@ -15,6 +16,10 @@ from django.dispatch import receiver
 
 from django.db import models
 # import datetime
+
+
+HP_VALIDATOR = RegexValidator(
+    "^(08+[1-9])([0-9]{7,9})$", "Format NO HP TIDAK SESUA!!!")
 
 
 class Perusahaan(models.Model):
@@ -36,6 +41,10 @@ class Profile(models.Model):
     nama = models.CharField(max_length=100, blank=True, null=True)
     npp = models.ForeignKey(
         Perusahaan, on_delete=models.CASCADE, blank=True, null=True)
+    no_hp = models.CharField(max_length=13, validators=[
+                             HP_VALIDATOR], blank=True, null=True)
+    email = models.EmailField(
+        max_length=50, blank=True, null=True, help_text="eg : .@mail.com")
     is_hrd = models.BooleanField(default=False)
     tgl_lahir = models.DateField(default=now)
     propic = models.ImageField(
