@@ -110,6 +110,7 @@
                             {% else %}
                             <td>T</td>
                             {% endif %}
+                            <td><a href="{% url 'tambah-klaim-pk' pk=d.pk %}" class="btn btn-sm btn-info">Klaim</a></td>
                         </tr>
                     {% endfor %}
                     </table>
