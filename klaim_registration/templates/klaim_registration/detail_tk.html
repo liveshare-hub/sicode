@@ -29,28 +29,28 @@
                     <tbody>
                         {% for data in datas %}
                         <tr>
-                            <td>Nama</td>
-                            <td>{{data.nama}}</td>
+                            <td class="caps">Nama</td>
+                            <td class="caps">{{data.nama}}</td>
                         </tr>
                         <tr>
-                            <td>NIK</td>
-                            <td>{{data.nik}}</td>
+                            <td class="caps">NIK</td>
+                            <td class="caps">{{data.nik}}</td>
                         </tr>
                         <tr>
-                            <td>Tempat / Tgl. Lahir</td>
-                            <td>{{data.tempat_lahir}} / {{data.tgl_lahir}}</td>
+                            <td class="caps">Tempat / Tgl. Lahir</td>
+                            <td class="caps">{{data.tempat_lahir}} / {{data.tgl_lahir}}</td>
                         </tr>
                         <tr>
-                            <td>Alamat</td>
-                            <td>{{data.alamat}}</td>
+                            <td class="caps">Alamat</td>
+                            <td class="caps">{{data.alamat}}</td>
                         </tr>
                         <tr>
-                            <td>Nama Gadis Ibu Kandung</td>
-                            <td>{{data.nama_ibu}}</td>
+                            <td class="caps">Nama Gadis Ibu Kandung</td>
+                            <td class="caps">{{data.nama_ibu}}</td>
                         </tr>
                         <tr>
-                            <td>Status</td>
-                            <td id="id_status">{{data.get_status_display}}</td>
+                            <td class="caps">Status</td>
+                            <td id="id_status caps">{{data.get_status_display}}</td>
                         </tr>
                         
                         {% endfor %}
@@ -68,22 +68,22 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Nama Pasangan</th>
-                            <th>Tgl. Lahir</th>
+                            <th class="caps">Nama Pasangan</th>
+                            <th class="caps">Tgl. Lahir</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{datas.0.nama_pasangan}}</td>
-                            <td>{{datas.0.tgl_lahir_pasangan}}</td>
+                            <td class="caps">{{datas.0.nama_pasangan}}</td>
+                            <td class="caps">{{datas.0.tgl_lahir_pasangan}}</td>
                         </tr>
                         <tr>
-                            <td>{{datas.0.nama_anak_s}}</td>
-                            <td>{{datas.0.tgl_lahir_s}}</td>
+                            <td class="caps">{{datas.0.nama_anak_s}}</td>
+                            <td class="caps">{{datas.0.tgl_lahir_s}}</td>
                         </tr>
                         <tr>
-                            <td>{{datas.0.nama_anak_d}}</td>
-                            <td>{{datas.0.tgl_lahir_d}}</td>
+                            <td class="caps">{{datas.0.nama_anak_d}}</td>
+                            <td class="caps">{{datas.0.tgl_lahir_d}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -98,19 +98,19 @@
                     <table class="table table-bordered">
                     {% for d in data_kpj %}
                         <tr>
-                            <td>{{d.no_kpj}}</td>
-                            <td>{{d.tgl_keps}}</td>
+                            <td class="caps">{{d.no_kpj}}</td>
+                            <td class="caps">{{d.tgl_keps}}</td>
                             {% if d.tgl_na is None %}
                             <td> - </td>
                             {% else %}
-                            <td>{{d.tgl_na}}</td>
+                            <td class="caps">{{d.tgl_na}}</td>
                             {% endif %}
                             {% if d.is_aktif %}
                             <td>Y</td>
                             {% else %}
                             <td>T</td>
                             {% endif %}
-                            <td class="link"><a href="{% url 'tambah-klaim-pk' pk=d.pk %}">Klaim</a></td>
+                            <td><a href="{% url 'tambah-klaim-pk' pk=d.pk %}">Klaim</a></td>
                         </tr>
                     {% endfor %}
                     </table>
@@ -124,7 +124,7 @@
 {% block javascripts %}
 <script>
 $(document).ready(function() {
-    $("td").text(function(i, val) {
+    $("td.caps").text(function(i, val) {
         return val.toUpperCase();
     })
     var status = $("#id_status").text()
