@@ -74,7 +74,7 @@
           {% endif %}
          
           <td><a href="{% url 'tambah-kpj' pk=data.pk%}" id="id_add-kpj"><input type="button" class="btn btn-sm btn-success" name="" id="id_add-kpj" value="Add KPJ"></a></td>
-          <td><a href="{% url 'tambah-klaim-pk' pk=data.pk %}" class="btn btn-sm btn-info">Add Klaim</a></td>
+          <td><a href="{% url 'tambah-klaim-pk' pk=data.data_kpj.pk %}" class="btn btn-sm btn-info">Add Klaim</a></td>
          
       </tr>
     
