@@ -111,7 +111,7 @@ def tambah_kpj(request, pk):
 @login_required(login_url='/accounts/login/')
 def DetilTK(request, pk):
     datas = DataTK.objects.select_related('hrd').filter(pk=pk)
-    data_kpj = KPJ.objects.select_related('data_tk').filter(data_tk_id=pk)
+    data_kpj = KPJ.objects.select_related('data_tk').filter(data_tk__id=pk)
     context = {
         'datas': datas,
         'data_kpj': data_kpj,
@@ -201,7 +201,7 @@ def DaftarKlaim(request):
 
 
 def DaftarKlaimPK(request, pk):
-    pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
+    pk = KPJ.objects.select_related('data_tk').get(data_tk_id=pk)
     form = KlaimForm()
     if request.method == 'POST':
         form = KlaimForm(request.POST, request.FILES)
