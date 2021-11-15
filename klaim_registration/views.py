@@ -227,7 +227,6 @@ def load_sebab(request):
     return render(request, 'klaim_registration/sebab_dropdown.html', {'sebab': sebab})
 
 
-@login_required(login_url='/accounts/login/')
 class ListKPJ(ListCreateAPIView):
     serializer_class = KPJSerializer
     permission_classes = [permissions.AllowAny, ]
