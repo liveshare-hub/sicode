@@ -7,4 +7,4 @@ class KPJSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = KPJ
-        fields = ['id', 'data_tk', 'no_kpj', 'data_tk']
+        fields = ['id', 'data_tk', 'no_kpj', ]
