@@ -3,6 +3,7 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
+from django.contrib.auth.decorators import login_required
 from django.http.response import JsonResponse
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView
@@ -108,6 +109,7 @@ def activate_email(request, uidb64, token):
         return HttpResponse('Akctivation link is invalid!')
 
 
+@login_required(login_url='/accounts/login/')
 def settingProfile(request):
 
     if request.method == 'POST':
@@ -123,6 +125,7 @@ def settingProfile(request):
     return render(request, "accounts/profile.html", {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def DetilProfile(request):
     # pk = request.user.profile.id
     qs = Profile.objects.select_related(
@@ -133,6 +136,7 @@ def DetilProfile(request):
     return render(request, 'authentication/profile.html', context)
 
 
+@login_required(login_url='/accounts/login/')
 class ListPerusahaan(ListCreateAPIView):
     serializer_class = PerusahaanSerializer
     permission_classes = [permissions.AllowAny, ]

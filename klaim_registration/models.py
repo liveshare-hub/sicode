@@ -8,6 +8,7 @@ from django.dispatch.dispatcher import receiver
 import qrcode
 from io import BytesIO
 from django.core.files import File
+from datetime import datetime
 
 from authentication.models import Profile
 # from .uuid_gen import autoGen
@@ -103,7 +104,8 @@ class DataTK(models.Model):
 
 
 class KPJ(models.Model):
-    data_tk = models.ForeignKey(DataTK, on_delete=models.CASCADE)
+    data_tk = models.ForeignKey(
+        DataTK, on_delete=models.CASCADE, related_name="list_kpj")
     no_kpj = models.CharField(max_length=11, null=True, blank=True)
     tgl_keps = models.DateField(null=True, blank=True)
     tgl_na = models.DateField(blank=True, null=True)
@@ -164,9 +166,18 @@ class DataKlaim(models.Model):
                                  validators=[EKSTENSI_VALIDATOR], blank=True, null=True)
     slip_gaji = models.FileField(
         upload_to='jkk/tahap_II/slip/', validators=[EKSTENSI_VALIDATOR], blank=True, null=True)
+    flag_klaim = models.BooleanField(default=False)
 
     def __str__(self):
         return self.no_kpj
+
+    def save(self, *args, **kwargs):
+        self.flag_klaim = True
+        if self.flag_klaim and self.no_kpj.blth_na is None:
+            self.no_kpj.is_aktif = False
+            self.no_kpj.tgl_na = datetime.today()
+
+        super().save(*args, **kwargs)
 
 
 @receiver(post_save, sender=DataKlaim)

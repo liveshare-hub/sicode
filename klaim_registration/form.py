@@ -117,34 +117,35 @@ KpjInlineFormset = inlineformset_factory(DataTK, KPJ, fields=(
     'no_kpj', 'tgl_keps', 'tgl_na',), extra=1, can_delete=False)
 
 
-class KlaimForm(forms.ModelForm):
-    tipe_klaim = forms.ModelChoiceField(queryset=TipeKlaim.objects.all(), widget=forms.Select(attrs={'class':'form-control'}))
+class KlaimFormPK(forms.ModelForm):
+    tipe_klaim = forms.ModelChoiceField(queryset=TipeKlaim.objects.all(
+    ), widget=forms.Select(attrs={'class': 'form-control'}))
 
     class Meta:
         model = DataKlaim
         exclude = ('no_kpj',)
 
         widgets = {
-            'sebab_klaim':forms.Select(attrs={
-                'class':'form-control',
+            'sebab_klaim': forms.Select(attrs={
+                'class': 'form-control',
             }),
-            'surat_meinggal':forms.FileInput(attrs={'class':'form-control'}),
-            'ktp_ahli_waris':forms.FileInput(attrs={'class':'form-control'}),
-            'kk_baru':forms.FileInput(attrs={'class':'form-control'}),
-            'no_rek_waris':forms.FileInput(attrs={'class':'form-control'}),
-            'form_I':forms.FileInput(attrs={'class':'form-control'}),
-            'kronologis':forms.FileInput(attrs={'class':'form-control'}),
-            'ktp_saksi':forms.FileInput(attrs={'class':'form-control'}),
-            'absen_1':forms.FileInput(attrs={'class':'form-control'}),
-            'surat_pernyataan':forms.FileInput(attrs={'class':'form-control'}),
-            'form_II':forms.FileInput(attrs={'class':'form-control'}),
-            'absensi_2':forms.FileInput(attrs={'class':'form-control'}),
-            'no_rek_perusahaan':forms.FileInput(attrs={'class':'form-control'}),
-            'no_rek_tk':forms.FileInput(attrs={'class':'form-control'}),
-            'slip_gaji':forms.FileInput(attrs={'class':'form-control'}),
-            'parklaring':forms.FileInput(attrs={'class':'form-control'}),
-        }    
-    
+            'surat_meinggal': forms.FileInput(attrs={'class': 'form-control'}),
+            'ktp_ahli_waris': forms.FileInput(attrs={'class': 'form-control'}),
+            'kk_baru': forms.FileInput(attrs={'class': 'form-control'}),
+            'no_rek_waris': forms.FileInput(attrs={'class': 'form-control'}),
+            'form_I': forms.FileInput(attrs={'class': 'form-control'}),
+            'kronologis': forms.FileInput(attrs={'class': 'form-control'}),
+            'ktp_saksi': forms.FileInput(attrs={'class': 'form-control'}),
+            'absen_1': forms.FileInput(attrs={'class': 'form-control'}),
+            'surat_pernyataan': forms.FileInput(attrs={'class': 'form-control'}),
+            'form_II': forms.FileInput(attrs={'class': 'form-control'}),
+            'absensi_2': forms.FileInput(attrs={'class': 'form-control'}),
+            'no_rek_perusahaan': forms.FileInput(attrs={'class': 'form-control'}),
+            'no_rek_tk': forms.FileInput(attrs={'class': 'form-control'}),
+            'slip_gaji': forms.FileInput(attrs={'class': 'form-control'}),
+            'parklaring': forms.FileInput(attrs={'class': 'form-control'}),
+        }
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['sebab_klaim'].queryset = SebabKlaim.objects.none()
@@ -152,8 +153,10 @@ class KlaimForm(forms.ModelForm):
         if 'tipe_klaim' in self.data:
             try:
                 tipe_id = int(self.data.get('tipe_klaim'))
-                self.fields['sebab_klaim'].queryset = SebabKlaim.objects.filter(tipe_id=tipe_id).order_by('kode')
+                self.fields['sebab_klaim'].queryset = SebabKlaim.objects.filter(
+                    tipe_id=tipe_id).order_by('kode')
             except (ValueError, TypeError):
                 pass
         elif self.instance.pk:
-            self.fields['sebab_klaim'].queryset = self.instance.sebab_klaim.tipe_klaim_set.order_by('kode')
+            self.fields['sebab_klaim'].queryset = self.instance.sebab_klaim.tipe_klaim_set.order_by(
+                'kode')

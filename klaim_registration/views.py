@@ -3,21 +3,26 @@ from django.http.response import HttpResponse
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
-from django.contrib import messages
+# from django.contrib import messages
 # from django.contrib.auth.models import User, Group
 from django.shortcuts import get_object_or_404
-from django.db.models import Subquery, OuterRef, IntegerField
+from django.db.models import Subquery, OuterRef, Q
 from django.http import JsonResponse
-from django.views.generic import CreateView, UpdateView
-from django.urls import reverse_lazy
+# from django.views.generic import CreateView, UpdateView
+# from django.urls import reverse_lazy
 # from dal import autocomplete
 import random
 import string
 
 from django.core import serializers
 from django.views.generic.list import ListView
+from django_filters.rest_framework.backends import DjangoFilterBackend
+from rest_framework import permissions, filters
+from rest_framework.generics import ListCreateAPIView
 
-from .form import DataTKForm, KPJForm, KlaimForm, KpjInlineFormset
+from klaim_registration.serializer import KPJSerializer
+
+from .form import DataTKForm, KPJForm, KlaimFormPK
 from .models import KPJ, DataKlaim, ApprovalHRD, DataTK, SebabKlaim, toQRCode
 from authentication.models import Perusahaan, Profile
 # from .decorators import admin_only
@@ -170,41 +175,42 @@ def TambahTK_ajax(request):
     return render(request, 'klaim_registration/tambah_tk.html')
 
 
-class KlaimListView(ListView):
-    model = DataKlaim
-    contex_object_name = 'datas'
+# class KlaimListView(ListView):
+#     model = DataKlaim
+#     contex_object_name = 'datas'
 
 
-class KlaimCreateView(CreateView):
-    model = DataKlaim
-    form_class = KlaimForm
-    success_url = reverse_lazy('klaim_changelist')
+# class KlaimCreateView(CreateView):
+#     model = DataKlaim
+#     form_class = KlaimForm
+#     success_url = reverse_lazy('klaim_changelist')
 
 
-class KlaimUpdateView(UpdateView):
-    model = DataKlaim
-    form_class = KlaimForm
-    success_url = reverse_lazy('klaim_changelist')
+# class KlaimUpdateView(UpdateView):
+#     model = DataKlaim
+#     form_class = KlaimForm
+#     success_url = reverse_lazy('klaim_changelist')
 
-
+@login_required(login_url='/accounts/login/')
 def DaftarKlaim(request):
     # pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
-    form = KlaimForm()
+    form = KlaimFormPK()
     if request.method == 'POST':
-        form = KlaimForm(request.POST, request.FILES)
+        form = KlaimFormPK(request.POST, request.FILES)
         if form.is_valid():
             # form.save(commit=False)
             # post.no_kpj__data_tk__id = pk
             form.save()
             return redirect('home-klaim')
-    return render(request, 'klaim_registration/dataklaim_form.html', {'form': form})
+    return render(request, 'klaim_registration/klaim_form.html', {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def DaftarKlaimPK(request, pk):
     pk = KPJ.objects.select_related('data_tk').get(pk=pk)
-    form = KlaimForm()
+    form = KlaimFormPK()
     if request.method == 'POST':
-        form = KlaimForm(request.POST, request.FILES)
+        form = KlaimFormPK(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.no_kpj__data_tk__id = pk
@@ -213,8 +219,25 @@ def DaftarKlaimPK(request, pk):
     return render(request, 'klaim_registration/dataklaim_form.html', {'form': form, 'pk': pk})
 
 
+@login_required(login_url='/accounts/login/')
 def load_sebab(request):
     klaim_id = request.GET.get('klaim_id')
-    print(klaim_id)
+    # print(klaim_id)
     sebab = SebabKlaim.objects.filter(tipe_id=klaim_id).order_by('kode')
     return render(request, 'klaim_registration/sebab_dropdown.html', {'sebab': sebab})
+
+
+@login_required(login_url='/accounts/login/')
+class ListKPJ(ListCreateAPIView):
+    serializer_class = KPJSerializer
+    permission_classes = [permissions.AllowAny, ]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filterset_fields = ['no_kpj', ]
+    search_fields = ['no_kpj', ]
+
+    def get_queryset(self):
+        qs = KPJ.objects.select_related('data_tk').all()
+        if qs.exists():
+            return qs
+        else:
+            return qs.none()
