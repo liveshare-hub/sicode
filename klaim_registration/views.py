@@ -8,8 +8,8 @@ from django.contrib.auth.hashers import make_password
 from django.shortcuts import get_object_or_404
 from django.db.models import Subquery, OuterRef, Q
 from django.http import JsonResponse
-# from django.views.generic import CreateView, UpdateView
-# from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView
+from django.urls import reverse_lazy
 # from dal import autocomplete
 import random
 import string
@@ -186,10 +186,11 @@ def TambahTK_ajax(request):
 #     success_url = reverse_lazy('klaim_changelist')
 
 
-# class KlaimUpdateView(UpdateView):
-#     model = DataKlaim
-#     form_class = KlaimForm
-#     success_url = reverse_lazy('klaim_changelist')
+class KlaimUpdateView(UpdateView):
+    model = DataKlaim
+    form_class = KlaimFormPK
+    success_url = reverse_lazy('klaim_changelist')
+
 
 @login_required(login_url='/accounts/login/')
 def DaftarKlaim(request):
