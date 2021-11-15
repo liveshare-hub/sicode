@@ -136,7 +136,6 @@ def DetilProfile(request):
     return render(request, 'authentication/profile.html', context)
 
 
-@login_required(login_url='/accounts/login/')
 class ListPerusahaan(ListCreateAPIView):
     serializer_class = PerusahaanSerializer
     permission_classes = [permissions.AllowAny, ]
