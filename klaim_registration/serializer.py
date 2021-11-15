@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import KPJ
+from .models import KPJ, DataTK
 
 
 class KPJSerializer(serializers.ModelSerializer):
