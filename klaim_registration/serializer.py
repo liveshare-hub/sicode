@@ -3,8 +3,8 @@ from .models import KPJ
 
 
 class KPJSerializer(serializers.ModelSerializer):
-    data_tk = serializers.StringRelatedField(many=True)
+    data_tk = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = KPJ
-        fields = ['id', 'no_kpj', ]
+        fields = ['id', 'no_kpj', 'data_tk']
