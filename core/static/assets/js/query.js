@@ -16,7 +16,7 @@ $("#id_kpj").focusout(function() {
             variables: {"kpj":kpj}
         }),
         success:function(data){
-            $(this).attr("disabaled", true);
+            $(this).attr("disabled", true);
             var nama = data['data']['allKpjs'][0]['dataTk']['nama']
             $("#id_nama").val(nama)
 
