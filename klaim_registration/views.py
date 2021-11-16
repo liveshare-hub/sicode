@@ -196,6 +196,8 @@ class KlaimUpdateView(UpdateView):
 def DaftarKlaim(request):
     # pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
     form = KlaimFormPK()
+    nama = request.POST.get('kpj')
+    print(nama)
     if request.method == 'POST':
         form = KlaimFormPK(request.POST, request.FILES)
         if form.is_valid():
