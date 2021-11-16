@@ -21,7 +21,7 @@ $("#id_kpj").focusout(function() {
             success:function(data){
                 $(this).attr("disabled", true);
                 var nama = data['data']['allKpjs'][0]['dataTk']['nama']
-                if(typeof(nama) != 'undefined'){
+                if(typeof(nama) == 'undefined'){
                     $("#id_nama").val("KPJ TIDAK DITEMUKAN")
                 }else{
                     $("#id_nama").val(nama)
