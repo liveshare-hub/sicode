@@ -17,7 +17,7 @@ $("#id_kpj").focusout(function() {
         }),
         success:function(data){
             $(this).attr("disabaled", true);
-            var nama = data[0]
+            var nama = data['allKpjs']
             console.log(nama)
         },
         error:function(err){
