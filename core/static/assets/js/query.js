@@ -1,6 +1,7 @@
 var superQuery = `query ($kpj: String!) {allKpjs(noKpj:$kpj){
     dataTk{
         nama
+        nik
     }
 }}`
 
@@ -23,7 +24,9 @@ $("#id_kpj").focusout(function() {
                 if(dataNama.length != 0){
                     // $("#id_kpj").attr("disabled", true);
                     var nama = dataNama[0]['dataTk']['nama']
+                    var nik = dataNama[0]['dataTk']['nik']
                     $("#id_nama").val(nama)
+                    $("#id_nik").val(nik)
                 }else{
                     $("#id_kpj").attr("disabled", false);
                     $("#id_nama").val("KPJ TIDAK DITEMUKAN")
