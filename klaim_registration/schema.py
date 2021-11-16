@@ -23,7 +23,7 @@ class Query(graphene.ObjectType):
         if info.context.user.is_authenticated or info.context.user.is_superuser:
             return KPJ.objects.select_related('data_tk').filter(no_kpj=no_kpj)
         else:
-            return KPJ.objects.none()
+            return KPJ.objects.none
 
 
 schema = graphene.Schema(query=Query)
