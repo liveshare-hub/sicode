@@ -18,8 +18,8 @@ $("#id_kpj").focusout(function() {
         success:function(data){
             $(this).attr("disabaled", true);
             var nama = data['data']['allKpjs'][0]['dataTk']['nama']
-            console.log(nama)
-            console.log(data)
+            $("#id_nama").val(nama)
+
         },
         error:function(err){
             console.log(err)
