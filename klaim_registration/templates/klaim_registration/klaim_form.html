@@ -14,6 +14,7 @@
         <h5 class="card-header">FORM INPUT KLAIM</h5>
         <div class="card-body">
             <form method="POST" id="klaimForm" data-klaim-url="{% url 'ajax_load_sebab' %}" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row">
                     <div class="col col-4">
                         <label for="id_kpj">NO KPJ</label>
