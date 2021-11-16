@@ -19,9 +19,15 @@ $("#id_kpj").focusout(function() {
                 variables: {"kpj":kpj}
             }),
             success:function(data){
-                $(this).attr("disabled", true);
                 var dataNama = data['data']['allKpjs']
-                console.log(dataNama)
+                if(dataNama.length != 0){
+                    $(this).attr("disabled", true);
+                    var nama = dataNama[0]['dataTk']['nama']
+                    $("#id_nama").val(nama)
+                }else{
+                    $(this).attr("disabled", false);
+                    $("#id_nama").val("KPJ TIDAK DITEMUKAN")
+                }
             },
             error:function(err){
                 console.log(err)
