@@ -43,7 +43,7 @@ $("#id_kpj").focusout(function() {
 });
 
 $("#clear").click(function(){
-    $("#id_kpj").attr("disabled", false)
+    $("#id_kpj").attr("disabled", false).attr("value","")
     $("#id_kpj").val("")
 })
 // console.log(kpj)
