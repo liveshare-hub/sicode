@@ -4,8 +4,20 @@ var superQuery = `query ($kpj: String!) {allKpjs(noKpj:$kpj){
     }
 }}`
 
+function tc(func, msg){
+    msg = msg || "Handler Exception"
+    return function(e) {
+        try{
+            return func(e)
+        }
+        catch (exc){
+            $.post("Format KPJ SALAH!");
+            throw exc;
+        }
+    }
+}
 
-$("#id_kpj").focusout(function() {
+$("#id_kpj").focusout(tc(function(e) {
     var kpj = $(this).val()
     $.ajax({
         method:"POST",
@@ -26,5 +38,5 @@ $("#id_kpj").focusout(function() {
             $("#id_nama").val("Format KPJ SALAH!!!")
         }
     })
-})
+}, "FORMAT KPJ SALAH"));
 // console.log(kpj)
