@@ -200,7 +200,7 @@ def DaftarKlaim(request):
         form = KlaimFormPK(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            kpj = request.POST['kpj']
+            kpj = request.POST.get('kpj')
             post.no_kpj_id = kpj
             print(kpj)
             post.save()
