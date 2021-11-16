@@ -11,7 +11,7 @@ function tc(func, msg){
             return func(e)
         }
         catch (exc){
-            $.post("Format KPJ SALAH!");
+            $("#id_nama").val("FORMAT KPJ SALAH!!!");
             throw exc;
         }
     }
