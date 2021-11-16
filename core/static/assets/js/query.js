@@ -10,6 +10,7 @@ $("#id_kpj").focusout(function() {
     var kpj = $(this).val()
     if(kpj.length !== 11){
         $("#id_nama").val("FORMAT KPJ SALAH!")
+        $("#id_nik").val("FORMAT KPJ SALAH!")
     }else{
         $.ajax({
             method:"POST",
