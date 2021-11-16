@@ -21,11 +21,11 @@ $("#id_kpj").focusout(function() {
             success:function(data){
                 var dataNama = data['data']['allKpjs']
                 if(dataNama.length != 0){
-                    $(this).attr("disabled", "disabled");
+                    $("#id_kpj").attr("disabled", true);
                     var nama = dataNama[0]['dataTk']['nama']
                     $("#id_nama").val(nama)
                 }else{
-                    $(this).attr("disabled", false);
+                    $("#id_kpj").attr("disabled", false);
                     $("#id_nama").val("KPJ TIDAK DITEMUKAN")
                 }
             },
