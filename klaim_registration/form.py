@@ -123,7 +123,8 @@ class KlaimFormPK(forms.ModelForm):
 
     class Meta:
         model = DataKlaim
-        exclude = ('no_kpj',)
+        # exclude = ('no_kpj',)
+        fields = '__all__'
 
         widgets = {
             'sebab_klaim': forms.Select(attrs={
