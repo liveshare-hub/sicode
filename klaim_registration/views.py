@@ -197,7 +197,7 @@ def DaftarKlaim(request):
     # pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
     form = KlaimFormPK()
     if request.method == 'POST':
-        print(dir(request))
+        print(request.body)
         form = KlaimFormPK(request.POST, request.FILES)
         if form.is_valid():
             print(request.POST.get('kpj'))
