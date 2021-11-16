@@ -10,8 +10,6 @@ $("#id_kpj").focusout(function() {
     var nama = $("#id_nama").val()
     if(kpj.length !== 11){
         $("#id_nama").val("FORMAT KPJ SALAH!")
-    }else if(typeof(nama) === 'undefined'){
-        $("#id_nama").val("KPJ TIDAK DITEMUKAN!")
     }else{
         $.ajax({
             method:"POST",
@@ -24,7 +22,11 @@ $("#id_kpj").focusout(function() {
             success:function(data){
                 $(this).attr("disabled", true);
                 var nama = data['data']['allKpjs'][0]['dataTk']['nama']
-                $("#id_nama").val(nama)
+                if(typeof(nama) != 'undefined'){
+                    $("#id_nama").val("KPJ TIDAK DITEMUKAN")
+                }else{
+                    $("#id_nama").val(nama)
+                }
     
             },
             error:function(err){
