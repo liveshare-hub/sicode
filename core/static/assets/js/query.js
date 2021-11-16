@@ -19,14 +19,13 @@ $("#id_kpj").focusout(function() {
                 variables: {"kpj":kpj}
             }),
             success:function(data){
-                $(this).attr("disabled", true);
-                var nama = data['data']['allKpjs'][0]['dataTk']['nama']
-                if(typeof(nama) == 'undefined'){
-                    $("#id_nama").val("KPJ TIDAK DITEMUKAN")
-                }else{
+                if(typeof(data) != 'undefined') {
+                    $(this).attr("disabled", true);
+                    var nama = data['data']['allKpjs'][0]['dataTk']['nama']
                     $("#id_nama").val(nama)
+                }else{
+                    $("#id_nama").val("KPJ TIDAK DITEMUKAN")
                 }
-    
             },
             error:function(err){
                 console.log(err)
