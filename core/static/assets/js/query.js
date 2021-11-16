@@ -21,7 +21,7 @@ $("#id_kpj").focusout(function() {
             success:function(data){
                 var dataNama = data['data']['allKpjs']
                 if(dataNama.length != 0){
-                    $(this).attr("disabled", true);
+                    $(this).attr(disabled, true);
                     var nama = dataNama[0]['dataTk']['nama']
                     $("#id_nama").val(nama)
                 }else{
