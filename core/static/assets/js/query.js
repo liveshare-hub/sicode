@@ -28,8 +28,8 @@ $("#id_kpj").focusout(function() {
                     $("#id_nama").val(nama)
                     $("#id_nik").val(nik)
                 }else{
-                    $("#id_kpj").attr("disabled", false);
                     $("#id_nama").val("KPJ TIDAK DITEMUKAN")
+                    $("#id_nik").val("KPJ TIDAK DITEMUKAN")
                 }
             },
             error:function(err){
