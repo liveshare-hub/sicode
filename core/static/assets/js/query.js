@@ -6,18 +6,20 @@ $("#id_kpj").focusout(function() {
         url:"https://sicode.id/graphql",
         contentType:"application/json",
         data: JSON.stringify({
-            query: `{
-                allKpjs(noKpj:${kpj}){
-                  noKpj
-                  tglKeps
-                  tglNa
-                  isAktif
-                  dataTk{
-                    nik
-                    nama
-                  }
-                }
-              }`
+            query: `
+{
+    allKpjs(noKpj:${kpj}){
+        noKpj
+        tglKeps
+        tglNa
+        isAktif
+        dataTk{
+        nik
+        nama
+        }
+    }
+    }
+              `
         }),
         success:function(data){
             console.log(data)
