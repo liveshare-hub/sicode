@@ -201,6 +201,7 @@ def DaftarKlaim(request):
         if form.is_valid():
             post = form.save(commit=False)
             kpj = request.POST.get('kpj')
+            post.no_kpj_id = kpj
             print(kpj)
             post.save()
             return redirect('home-klaim')
