@@ -1,8 +1,4 @@
 var superQuery = `query ($kpj: String!) {allKpjs(noKpj:$kpj){
-    noKpj
-    tglKeps
-    tglNa
-    isAktif
     dataTk{
         nama
     }
@@ -20,7 +16,9 @@ $("#id_kpj").focusout(function() {
             variables: {"kpj":kpj}
         }),
         success:function(data){
-            console.log(data)
+            $(this).attr("disabaled", true);
+            var nama = data[0]['allKpjs']['dataTk']['nama']
+            console.log(nama)
         },
         error:function(err){
             console.log(err)
