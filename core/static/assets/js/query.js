@@ -1,2 +1,6 @@
 var kpj = $("#id_kpj").val()
-console.log(kpj)
+
+$("#id_kpj").focusout(function() {
+    console.log(kpj)
+})
+// console.log(kpj)
