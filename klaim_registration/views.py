@@ -12,10 +12,10 @@ from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 # from dal import autocomplete
 import random
-import string
+import string, json
 
 from django.core import serializers
-from django.views.generic.list import ListView
+
 from django_filters.rest_framework.backends import DjangoFilterBackend
 from rest_framework import permissions, filters
 from rest_framework.generics import ListCreateAPIView
@@ -197,6 +197,8 @@ def DaftarKlaim(request):
     # pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
     form = KlaimFormPK()
     if request.method == 'POST':
+        kpj = json.loads(request.body.decode('UTF-8'))
+        print(kpj)
         form = KlaimFormPK(request.POST, request.FILES)
         if form.is_valid():
             print(request.POST.get('kpj'))

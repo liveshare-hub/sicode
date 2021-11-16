@@ -20,6 +20,7 @@ $("#id_kpj").focusout(function() {
                 query:superQuery,
                 variables: {"kpj":kpj}
             }),
+            dataType:"json",
             success:function(data){
                 var dataNama = data['data']['allKpjs']
                 if(dataNama.length != 0){
