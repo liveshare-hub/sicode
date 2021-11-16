@@ -1,4 +1,4 @@
-var kpj = $("#id_kpj").val()
+var kpj = $("#id_kpj").text()
 
 $("#id_kpj").focusout(function() {
     console.log(kpj)
