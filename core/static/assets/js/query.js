@@ -8,7 +8,7 @@ var superQuery = `query ($kpj: String!) {allKpjs(noKpj:$kpj){
 $("#id_kpj").focusout(function() {
     var kpj = $(this).val()
     if($(this).length != 11){
-        console.log($(this).length)
+        console.log($(this).length())
         $("#id_nama").val("FORMAT KPJ SALAH!")
     }else{
         $.ajax({
