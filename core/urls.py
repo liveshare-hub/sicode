@@ -8,9 +8,11 @@ from django.urls import path, include, re_path  # add this
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
+from django.views.decorators.csrf import csrf_exempt
+from graphene_django.views import GraphQLView
 
 urlpatterns = [
-    # path("klaim/", include("klaim_registration.urls")),
+    path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=True))),
     path('admin/', admin.site.urls),          # Django admin route
     path('admin', admin.site.urls),          # Django admin route
     # path('qr_code/', include('qr_code.urls', namespace="qr_code")),

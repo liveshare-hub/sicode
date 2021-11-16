@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'graphene_django',
     'authentication',
     'app',  # Enable the inner app
     'klaim_registration',
@@ -184,3 +185,7 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+GRAPHENE = {
+    'SCHEMA':'klaim_registration.schema.schema',
+}
