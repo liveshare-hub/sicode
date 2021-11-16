@@ -200,8 +200,8 @@ def DaftarKlaim(request):
         form = KlaimFormPK(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            print(request.POST.get('kpj'))
-            post.no_kpj__id = request.POST.get('kpj')
+            kpj = request.POST.get('kpj')
+            print(kpj)
             post.save()
             return redirect('home-klaim')
     return render(request, 'klaim_registration/klaim_form.html', {'form': form})

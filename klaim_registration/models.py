@@ -173,9 +173,9 @@ class DataKlaim(models.Model):
 
     def save(self, *args, **kwargs):
         self.flag_klaim = True
-        if (self.flag_klaim is True and self.no_kpj.tgl_na is None):
-            self.no_kpj.is_aktif = False
-            self.no_kpj.tgl_na = datetime.today()
+        # if (self.flag_klaim is True and self.no_kpj.tgl_na is None):
+        #     self.no_kpj.is_aktif = False
+        #     self.no_kpj.tgl_na = datetime.today()
 
         super().save(*args, **kwargs)
 
