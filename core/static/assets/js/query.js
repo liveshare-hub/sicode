@@ -28,6 +28,7 @@ $("#id_kpj").focusout(function() {
                     var nik = dataNama[0]['dataTk']['nik']
                     $("#id_nama").val(nama)
                     $("#id_nik").val(nik)
+                    $("#id_kpj").attr("disabled",true)
                 }else{
                     $("#id_nama").val("KPJ TIDAK DITEMUKAN")
                     $("#id_nik").val("KPJ TIDAK DITEMUKAN")
@@ -40,4 +41,9 @@ $("#id_kpj").focusout(function() {
         })
     }
 });
+
+$("#clear").click(function(){
+    $("#id_kpj").attr("disabled", false)
+    $("#id_kpj").val("")
+})
 // console.log(kpj)
