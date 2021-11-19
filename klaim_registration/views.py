@@ -1,11 +1,10 @@
-from django.contrib.messages.api import success
-from django.http.response import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 # from django.contrib import messages
 # from django.contrib.auth.models import User, Group
-from django.shortcuts import get_object_or_404
 from django.db.models import Subquery, OuterRef, Q
 from django.http import JsonResponse
 from django.views.generic import CreateView, UpdateView
@@ -14,8 +13,6 @@ from django.urls import reverse_lazy
 import random
 import string
 
-from django.core import serializers
-from django.views.generic.list import ListView
 from django_filters.rest_framework.backends import DjangoFilterBackend
 from rest_framework import permissions, filters
 from rest_framework.generics import ListCreateAPIView
@@ -198,14 +195,38 @@ def DaftarKlaim(request):
     print(request.FILES)
     # pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
     form = KlaimFormPK()
-    if request.method == 'POST':
-        form = KlaimFormPK(request.POST, request.FILES)
-        if form.is_valid():
-            # form.save(commit=False)
-            # post.no_kpj__data_tk__id = pk
-            form.save()
-            return redirect('home-klaim')
+    # if request.method == 'POST':
+    #     form = KlaimFormPK(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         # form.save(commit=False)
+    #         # post.no_kpj__data_tk__id = pk
+    #         form.save()
+    #         return redirect('home-klaim')
     return render(request, 'klaim_registration/klaim_form.html', {'form': form})
+
+
+@csrf_exempt
+def ajaxKlaim(request):
+    parklaring = request.FILES.get('parklaring')
+    no_rek_tk = request.FILES.get('no_rek_tk')
+    tipe_klaim = request.POST.get('tipe_klaim')
+    sebab_klaim = request.POST.get('tipe_klaim')
+    no_kpj = request.POST.get('kpj')
+    kpj = KPJ.objects.get(no_kpj=no_kpj)
+    fss = FileSystemStorage()
+    filename1 = fss.save(parklaring.name, parklaring)
+    filename2 = fss.save(no_rek_tk.name, no_rek_tk)
+    url1 = fss.url(filename1)
+    url2 = fss.url(filename2)
+    DataKlaim.objects.create(
+        no_kpj_id=kpj.pk,
+        sebab_klaim_id=sebab_klaim,
+        tipe_klaim_id=tipe_klaim,
+        parklaring=url1,
+        no_rek_tk=url2
+
+    )
+    return JsonResponse({'success': 'Berhasil'})
 
 
 @login_required(login_url='/accounts/login/')
