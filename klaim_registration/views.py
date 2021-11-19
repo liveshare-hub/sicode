@@ -191,8 +191,6 @@ class KlaimUpdateView(UpdateView):
 
 @login_required(login_url='/accounts/login/')
 def DaftarKlaim(request):
-    print(request.POST)
-    print(request.FILES)
     # pk = KPJ.objects.select_related('data_tk').get(data_tk__id=pk)
     form = KlaimFormPK()
     # if request.method == 'POST':

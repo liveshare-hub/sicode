@@ -6,16 +6,16 @@ function uploadFile() {
     data.append("tipe_klaim", $("#id_tipe_klaim").val())
     data.append("sebab_klaim", $("#id_sebab_klaim").val())
     data.append("csrfmiddlewaretoken", $("input[name='csrfmiddlewaretoken']").val())
+    console.log($("#id_parklaring")[0].files[0])
     $.ajax({
         method:"POST",
         url:'/klaim/tambah/ajax',
-        processData:false,
-        contentType:false,
+        contentType:"json",
         data:data,
         success:function(res){
             console.log(res)
         },
-        error:function(err){
+        errors:function(err){
             console.log(err)
         }
     })
