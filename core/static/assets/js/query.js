@@ -53,8 +53,9 @@ String.prototype.replaceAt=function(index, char) {
     var a = this.split("");
     for(let i=3;i<index;i++){
         console.log(i++)
-        a[i] += char;
-        return a.join("");
+        a[i] = char;
+        b += a[i]
+        return b.join("");
     }
 }
 // console.log(kpj)
