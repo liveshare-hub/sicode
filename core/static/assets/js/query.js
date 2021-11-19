@@ -27,9 +27,9 @@ $("#id_kpj").focusout(function() {
                     // $("#id_kpj").attr("disabled", true);
                     var nama = dataNama[0]['dataTk']['nama']
                     var nik = dataNama[0]['dataTk']['nik']
-                    AsterixChange(nik)
+                    var nik_asx = AsterixChange(nik)
                     $("#id_nama").val(nama)
-                    $("#id_nik").val(nik)
+                    $("#id_nik").val(nik_asx)
                     $("#id_kpj").attr("disabled",true).attr("value",kpj)
                 }else{
                     $("#id_nama").val("KPJ TIDAK DITEMUKAN")
@@ -51,7 +51,10 @@ $("#clear").click(function(){
 
 function AsterixChange(nik){
     var nik_split = nik.split('')
-    console.log(nik_split)
-    console.log(nik_split.length)
+    nik_split.replace(function() {
+        for(let i=3;i<nik_split.length;i++){
+            nik_split[i]
+        }
+    }, "*")
 }
 // console.log(kpj)
