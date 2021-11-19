@@ -55,7 +55,7 @@ String.prototype.replaceAt=function(index, char) {
     for(let i=3;i<index;i++){
         console.log(i++)
         a[i] = char;
-        b += a[i]
+        char += b
         return b.join("");
     }
 }
