@@ -51,6 +51,7 @@ $("#clear").click(function(){
 
 String.prototype.replaceAt=function(index, char) {
     var a = this.split("");
+    var b = []
     for(let i=3;i<index;i++){
         console.log(i++)
         a[i] = char;
