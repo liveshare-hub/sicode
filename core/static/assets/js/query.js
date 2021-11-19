@@ -50,8 +50,8 @@ $("#clear").click(function(){
 })
 
 function AsterixChange(nik){
-    for(let i=0;i < nik.length;i++){
-        console.log(i)
-    }
+    var nik_split = nik.split('')
+    console.log(nik_split)
+    console.log(nik_split.length)
 }
 // console.log(kpj)
