@@ -52,8 +52,8 @@ $("#clear").click(function(){
 String.prototype.replaceAt=function(index, char) {
     var a = this.split("");
     for(let i=3;i<index;i++){
-        console.log(i)
-        a[i] = char;
+        console.log(i++)
+        a[i] += char;
         return a.join("");
     }
 }
