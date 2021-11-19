@@ -51,12 +51,11 @@ $("#clear").click(function(){
 
 String.prototype.replaceAt=function(index, char) {
     var a = this.split("");
-    var b = []
     for(let i=3;i<index;i++){
         a[i] = char;
         console.log(char)
-        b.append(a[i])
+        console.log(index)
+        return a.join("");
     }
-    return b.join("");
 }
 // console.log(kpj)
