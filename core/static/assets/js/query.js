@@ -29,7 +29,7 @@ $("#id_kpj").focusout(function() {
                     var nik = dataNama[0]['dataTk']['nik']
                     
                     $("#id_nama").val(nama)
-                    $("#id_nik").val(nik.replaceAt(12,"*"))
+                    $("#id_nik").val(nik.replaceAt(4,"*"))
                     $("#id_kpj").attr("disabled",true).attr("value",kpj)
                 }else{
                     $("#id_nama").val("KPJ TIDAK DITEMUKAN")
@@ -51,8 +51,8 @@ $("#clear").click(function(){
 
 String.prototype.replaceAt=function(index, char) {
     var a = this.split("");
-    for(let i=3;i<index;i++){
-        a[i] = char;
+    for(; index < a.length; index++){
+        a[index] = char;
         console.log(char)
         console.log(index)
         return a.join("");
