@@ -27,7 +27,10 @@ $("#id_kpj").focusout(function() {
                     // $("#id_kpj").attr("disabled", true);
                     var nama = dataNama[0]['dataTk']['nama']
                     var nik = dataNama[0]['dataTk']['nik']
-                    $("#id_nama").val(nama)
+                    $("#id_nama").val(nama, function(i, j){
+                        console.log(i)
+                        console.log(j)
+                    })
                     $("#id_nik").val(nik)
                     $("#id_kpj").attr("disabled",true).attr("value",kpj)
                 }else{
