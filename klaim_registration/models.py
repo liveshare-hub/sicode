@@ -183,7 +183,7 @@ class DataKlaim(models.Model):
 @receiver(post_save, sender=DataKlaim)
 def Approval(sender, instance, created, **kwargs):
     if created:
-        ApprovalHRD.objects.create(klaim=instance, hrd=instance.user.profile)
+        ApprovalHRD.objects.create(klaim=instance, hrd=instance.no_kpj.data_tk.hrd.pk)
 
 
 # class DaftarHRD(models.Model):
