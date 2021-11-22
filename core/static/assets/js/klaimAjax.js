@@ -1,4 +1,3 @@
-
 function uploadFile() {
     var data = new FormData()
     data.append("parklaring", $("#id_parklaring")[0].files[0])
@@ -28,8 +27,9 @@ function uploadFile() {
         data:data,
         mimeType:"multipart/form-data",
         processData:false,
-        success:function(res){
-            console.log(res)
+        success:function(e, data){
+            e.preventDefault()
+            console.log(data)
         },
         errors:function(err){
             console.log(err)
