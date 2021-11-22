@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#id_simpan").on("submit",function(){
+    $("#id_simpan").on("click",function(){
     //    uploadFile()
             console.log($("#id_tipe_klaim").val())
             console.log($("#id_parklaring")[0].files[0])
