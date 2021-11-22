@@ -30,8 +30,8 @@ function uploadFile() {
         data:data,
         success:function(data){
             
-            $(".card-body").append("<div class='alert alert-success' role='alert'>Klaim Berhasil di Simpan</div>")
-            console.log(data)
+            $(".card-header").append("<div class='alert alert-success' role='alert'>Klaim Berhasil di Simpan</div>")
+            console.log(data['success'])
         },
         errors:function(err){
             console.log(err)
