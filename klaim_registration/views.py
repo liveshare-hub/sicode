@@ -244,25 +244,38 @@ def ajaxKlaim(request):
         file15 = fss.save(slip_gaji.name, slip_gaji)
         url1 = fss.url(filename1)
         url2 = fss.url(filename2)
+        url3 = fss.url(file3)
+        url4 = fss.url(file4)
+        url5 = fss.url(file5)
+        url6 = fss.url(file6)
+        url7 = fss.url(file7)
+        url8 = fss.url(file8)
+        url9 = fss.url(file9)
+        url10 = fss.url(file10)
+        url11 = fss.url(file11)
+        url12 = fss.url(file12)
+        url13 = fss.url(file13)
+        url14 = fss.url(file14)
+        url15 = fss.url(file15)
         try:
             DataKlaim.objects.create(
                 no_kpj_id=kpj.pk,
                 sebab_klaim_id=sebab_klaim,
                 tipe_klaim_id=tipe_klaim,
                 parklaring=url1,
-                surat_meninggal=file3,
-                ktp_ahli_waris=file4,
-                kk_baru=file5,
-                no_rek_waris=file6,
-                form_I=file7,
-                kronologis=file8,
-                ktp_saksi=file9,
-                absen_1=file10,
-                surat_pernyataan=file11,
-                form_II=file12,
-                absensi_2=file13,
-                no_rek_perusahaan=file14,
-                slip_gaji=file15,
+                surat_meninggal=url3,
+                ktp_ahli_waris=url4,
+                kk_baru=url5,
+                no_rek_waris=url6,
+                form_I=url7,
+                kronologis=url8,
+                ktp_saksi=url9,
+                absen_1=url10,
+                surat_pernyataan=url11,
+                form_II=url12,
+                absensi_2=url13,
+                no_rek_perusahaan=url14,
+                slip_gaji=url15,
                 no_rek_tk=url2
 
             )
