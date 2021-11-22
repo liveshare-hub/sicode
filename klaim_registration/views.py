@@ -205,7 +205,9 @@ def DaftarKlaim(request):
 
 @csrf_exempt
 def ajaxKlaim(request):
+    
     if request.is_ajax:
+        print(request.POST.get('kpj'))
         parklaring = request.FILES.get('parklaring')
         print(request.is_ajax)
         # surat_meninggal = request.FILES.get('surat_meninggal')
