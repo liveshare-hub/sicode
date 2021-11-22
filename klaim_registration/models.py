@@ -169,7 +169,7 @@ class DataKlaim(models.Model):
     flag_klaim = models.BooleanField(default=False)
 
     def __str__(self):
-        return '{} - {}'.format(self.no_kpj.no_kpj, self.no_kpj.nama)
+        return '{} - {}'.format(self.no_kpj.no_kpj, self.no_kpj.data_tk.nama)
 
     def save(self, *args, **kwargs):
         self.flag_klaim = True
