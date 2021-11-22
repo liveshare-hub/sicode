@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    $("#id_simpan").on("click",function(){
+       uploadFile()
+    })
+})
+
 function uploadFile() {
     var data = new FormData()
     data.append("parklaring", $("#id_parklaring")[0].files[0])
