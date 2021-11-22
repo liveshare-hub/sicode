@@ -225,7 +225,6 @@ def ajaxKlaim(request):
     tipe_klaim = request.POST.get('tipe_klaim')
     sebab_klaim = request.POST.get('tipe_klaim')
     no_kpj = request.POST.get('kpj')
-    print(no_kpj)
     kpj = KPJ.objects.get(no_kpj=no_kpj)
     fss = FileSystemStorage()
     filename1 = fss.save(parklaring.name, parklaring)
