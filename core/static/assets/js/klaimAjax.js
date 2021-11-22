@@ -24,12 +24,11 @@ function uploadFile() {
         method:"POST",
         url:'/klaim/tambah/ajax',
         contentType:false,
-        data:data,
         mimeType:"multipart/form-data",
         processData:false,
-        success:function(e, data){
+        data:data,
+        success:function(data){
             $(".card-body").append("<div class='alert alert-success' role='alert'>Klaim Berhasil di Simpan</div>")
-            e.preventDefault()
             console.log(data)
         },
         errors:function(err){
