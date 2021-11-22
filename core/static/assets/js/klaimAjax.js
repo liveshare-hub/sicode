@@ -16,8 +16,9 @@ function uploadFile() {
     $.ajax({
         method:"POST",
         url:'/klaim/tambah/ajax',
-        contentType:"json",
+        contentType:false,
         data:data,
+        processData:false,
         success:function(res){
             console.log(res)
         },
