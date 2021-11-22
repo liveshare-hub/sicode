@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#id_simpan").on("click",function(){
     //    uploadFile()
-        var kpj = $("#id_kpj").text()    
+        var kpj = $("#id_kpj").val()    
         console.log(kpj)
         $.ajax({
            method:"POST",
@@ -12,10 +12,10 @@ $(document).ready(function() {
                'parklaring': $("#id_parklaring")[0].files[0],
                'no_rek_tk':$("#id_no_rek_tk")[0].files[0],
                'no_kpj':kpj,
-               'csrfmiddlewaretoken':$("input[name='csrfmiddlewaretoken']").val()
+               'csrfmiddlewaretoken':$("input[name='csrfmiddlewaretoken']").val(),
+               dataType:"json",
            },
-           dataType:"json",
-           processData:false,
+           
            success:function(data){
                console.log(data)
            },
