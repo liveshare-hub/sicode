@@ -258,12 +258,12 @@ def ajaxKlaim(request):
         # url13 = fss.url(file13)
         # url14 = fss.url(file14)
         # url15 = fss.url(file15)
-        DataKlaim.objects.create(
-            no_kpj_id=kpj.pk,
+        DataKlaim.objects.get_or_create(
             sebab_klaim_id=sebab_klaim,
             tipe_klaim_id=tipe_klaim,
             parklaring=url1,
-            no_rek_tk=url2
+            no_rek_tk=url2,
+            defaults={'no_kpj_id':'kpj.pk'}
 
         )
         return JsonResponse({'success':'Berhasil!'})
