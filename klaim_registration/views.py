@@ -265,7 +265,7 @@ def ajaxKlaim(request):
             no_rek_tk=url2
 
         )
-        return redirect("home-klaim")
+        return JsonResponse({'success':'Berhasil!'})
 
 
 @login_required(login_url='/accounts/login/')
