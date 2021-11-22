@@ -41,6 +41,7 @@ $("#id_kpj").focusout(function() {
             error:function(err){
                 console.log(err)
                 $("#id_nama").val("Format KPJ SALAH!!!")
+                $("#id_simpan").attr("disabled", true)
             }
         })
     }
