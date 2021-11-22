@@ -1,6 +1,25 @@
 $(document).ready(function() {
     $("#id_simpan").on("submit",function(){
-       uploadFile()
+    //    uploadFile()
+       $.ajax({
+           method:"POST",
+           url:'/klaim/tambah/ajax',
+           data:{
+               'tipe_klaim':$("#id_tipe_klaim").val(),
+               'sebab_klaim':$("#id_sebab_klaim").val(),
+               'parklaring': $("#id_parklaring")[0].files[0],
+               'no_rek_tk':$("#id_no_rek_tk")[0].files[0],
+               'kpj':$("#id_kpj").val(),
+               'csrfmiddlewaretoken':$("input[name='csrfmiddlewaretoken']").val()
+           },
+           contentType:"json",
+           success:function(data){
+               console.log(data)
+           },
+           errors:function(err){
+               console.log(err)
+           }
+       })
     })
 })
 
