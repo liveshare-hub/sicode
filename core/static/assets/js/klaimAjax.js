@@ -29,7 +29,7 @@ function uploadFile() {
         processData:false,
         data:data,
         success:function(data){
-            data.preventDefault();
+            
             $(".card-body").append("<div class='alert alert-success' role='alert'>Klaim Berhasil di Simpan</div>")
             console.log(data)
         },
