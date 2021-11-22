@@ -1,27 +1,3 @@
-$(document).ready(function() {
-    $("#id_simpan").on("click",function(){
-    //    uploadFile()
-        var kpj = $("#id_kpj").val()    
-        console.log(kpj)
-        $.ajax({
-           method:"POST",
-           url:'/klaim/tambah/ajax',
-           data:{
-               'tipe_klaim':$("#id_tipe_klaim").val(),
-               'sebab_klaim':$("#id_sebab_klaim").val(),
-               'parklaring': $("#id_parklaring")[0].files[0],
-               'no_rek_tk':$("#id_no_rek_tk")[0].files[0],
-               'no_kpj':kpj,
-               'csrfmiddlewaretoken':$("input[name='csrfmiddlewaretoken']").val(),
-               dataType:"json",
-               contentType:false,
-               processData:false
-           },
-       }).done(function(response){
-           console.log(response)
-       })
-    })
-})
 
 function uploadFile() {
     var data = new FormData()
@@ -46,7 +22,7 @@ function uploadFile() {
     data.append("csrfmiddlewaretoken", $("input[name='csrfmiddlewaretoken']").val())
     // console.log($("#id_parklaring")[0].files[0])
     $.ajax({
-        method:"POST",
+        type:"POST",
         url:'/klaim/tambah/ajax',
         contentType:false,
         data:data,
