@@ -14,6 +14,7 @@ $(document).ready(function() {
                'no_kpj':kpj,
                'csrfmiddlewaretoken':$("input[name='csrfmiddlewaretoken']").val(),
                dataType:"json",
+               processData:false
            },
            
            success:function(data){
