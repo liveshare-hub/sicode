@@ -244,7 +244,7 @@ def ajaxKlaim(request):
         file15 = fss.save(slip_gaji.name, slip_gaji)
         url1 = fss.url(filename1)
         url2 = fss.url(filename2)
-        DataKlaim.objects.create(
+        DataKlaim.objects.update_or_create(
             no_kpj_id=kpj.pk,
             sebab_klaim_id=sebab_klaim,
             tipe_klaim_id=tipe_klaim,
