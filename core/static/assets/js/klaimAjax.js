@@ -1,4 +1,5 @@
-function uploadFile() {
+function uploadFile(e) {
+    e.preventDefault()
     var data = new FormData()
     data.append("parklaring", $("#id_parklaring")[0].files[0])
     // data.append("surat_meninggal", $("#id_surat_meinggal")[0].files[0])

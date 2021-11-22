@@ -225,8 +225,8 @@ class toQRCode(models.Model):
             box_size=30,
             border=4,
         )
-        # qr.add_data('https://sicode.id/qr-code/{}/'.format(self.url_uuid))
-        qr.add_data('http://127.0.0.1/qr-code/{}/'.format(self.url_uuid))
+        qr.add_data('https://sicode.id/qr-code/{}/'.format(self.url_uuid))
+        # qr.add_data('http://127.0.0.1/qr-code/{}/'.format(self.url_uuid))
         qr.make(fit=False)
         # qrcode_image = qrcode.make(
         # 'http://127.0.0.1:8000/qr-code/{}/'.format(self.url_uuid))
@@ -236,7 +236,7 @@ class toQRCode(models.Model):
         draw = ImageDraw.Draw(canvas)
         canvas.paste(qrcode_image)
         # uid = uuid.uuid4()
-        fname = '{}.PNG'.format(self.tk_klaim.klaim.nama)
+        fname = '{}.PNG'.format(self.tk_klaim.klaim.no_kpj.data_tk.nama)
         buffer = BytesIO()
         canvas.save(buffer, 'PNG')
         # qrcode_image.save(buffer, 'PNG')
