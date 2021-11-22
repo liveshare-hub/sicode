@@ -34,6 +34,7 @@ $("#id_kpj").focusout(function() {
                 }else{
                     $("#id_nama").val("KPJ TIDAK DITEMUKAN")
                     $("#id_nik").val("KPJ TIDAK DITEMUKAN")
+                    console.log(data)
                 }
             },
             error:function(err){
