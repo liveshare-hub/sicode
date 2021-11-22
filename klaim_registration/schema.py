@@ -21,7 +21,7 @@ class Query(graphene.ObjectType):
     def resolve_all_kpjs(root, info, no_kpj):
 
         if info.context.user.is_authenticated or info.context.user.is_superuser:
-            return KPJ.objects.select_related('data_tk').filter(no_kpj=no_kpj)
+            return KPJ.objects.select_related('data_tk').filter(no_kpj=no_kpj, data_tk__hrd_id=info.context.user.pk)
         else:
             return KPJ.objects.none
 
