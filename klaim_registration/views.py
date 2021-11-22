@@ -207,6 +207,20 @@ def DaftarKlaim(request):
 def ajaxKlaim(request):
     if request.is_ajax:
         parklaring = request.FILES.get('parklaring')
+        surat_meninggal = request.FILES.get('surat_meninggal')
+        ktp_ahli_waris = request.FILES.get('ktp_ahli_waris')
+        kk_baru = request.FILES.get('kk_baru')
+        no_rek_waris = request.FILES.get('no_rek_waris')
+        form_I = request.FILES.get('form_I')
+        kronologis = request.FILES.get('kronologis')
+        ktp_saksi = request.FILES.get('ktp_saksi')
+        absen_1 = request.FILES.get('absen_1')
+        surat_pernyataan = request.FILES.get('surat_pernyataan')
+        form_II = request.FILES.get('form_II')
+        absensi_2 = request.FILES.get('absensi_2')
+        no_rek_perusahaan = request.FILES.get('no_rek_perusahaan')
+        no_rek_tk = request.FILES.get('no_rek_tk')
+        slip_gaji = request.FILES.get('slip_gaji')
         no_rek_tk = request.FILES.get('no_rek_tk')
         tipe_klaim = request.POST.get('tipe_klaim')
         sebab_klaim = request.POST.get('tipe_klaim')
@@ -215,6 +229,19 @@ def ajaxKlaim(request):
         fss = FileSystemStorage()
         filename1 = fss.save(parklaring.name, parklaring)
         filename2 = fss.save(no_rek_tk.name, no_rek_tk)
+        file3 = fss.save(surat_meninggal.name, surat_meninggal)
+        file4 = fss.save(ktp_ahli_waris.name, ktp_ahli_waris)
+        file5 = fss.save(kk_baru.name, kk_baru)
+        file6 = fss.save(no_rek_waris.name, no_rek_waris)
+        file7 = fss.save(form_I.name, form_I)
+        file8 = fss.save(kronologis.name, kronologis)
+        file9 = fss.save(ktp_saksi.name, ktp_saksi)
+        file10 = fss.save(absen_1.name, absen_1)
+        file11 = fss.save(surat_pernyataan.name, surat_pernyataan)
+        file12 = fss.save(form_II.name, form_II)
+        file13 = fss.save(absensi_2.name, absensi_2)
+        file14 = fss.save(no_rek_perusahaan.name, no_rek_perusahaan)
+        file15 = fss.save(slip_gaji.name, slip_gaji)
         url1 = fss.url(filename1)
         url2 = fss.url(filename2)
         DataKlaim.objects.create(
@@ -222,6 +249,19 @@ def ajaxKlaim(request):
             sebab_klaim_id=sebab_klaim,
             tipe_klaim_id=tipe_klaim,
             parklaring=url1,
+            surat_meninggal=file3,
+            ktp_ahli_waris=file4,
+            kk_baru=file5,
+            no_rek_waris=file6,
+            form_I=file7,
+            kronologis=file8,
+            ktp_saksi=file9,
+            absen_1=file10,
+            surat_pernyataan=file11,
+            form_II=file12,
+            absensi_2=file13,
+            no_rek_perusahaan=file14,
+            slip_gaji=file15,
             no_rek_tk=url2
 
         )
