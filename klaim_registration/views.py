@@ -205,7 +205,7 @@ def DaftarKlaim(request):
 
 @csrf_exempt
 def ajaxKlaim(request):
-    print(request.POST.get('kpj'))
+    print(request.POST.get('no_kpj'))
     if request.is_ajax:
         
         parklaring = request.FILES.get('parklaring')
@@ -227,7 +227,7 @@ def ajaxKlaim(request):
         # no_rek_tk = request.FILES.get('no_rek_tk')
         tipe_klaim = request.POST.get('tipe_klaim')
         sebab_klaim = request.POST.get('tipe_klaim')
-        no_kpj = request.POST.get('kpj')
+        no_kpj = request.POST.get('no_kpj')
         kpj = KPJ.objects.get(no_kpj=no_kpj)
         fss = FileSystemStorage()
         filename1 = fss.save(parklaring.name, parklaring)

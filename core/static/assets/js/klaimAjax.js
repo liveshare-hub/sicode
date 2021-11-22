@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#id_simpan").on("click",function(){
     //    uploadFile()
-        console.log($("#id_kpj").val())    
+        var kpj = $("#id_kpj").val()    
         $.ajax({
            method:"POST",
            url:'/klaim/tambah/ajax',
@@ -10,7 +10,7 @@ $(document).ready(function() {
                'sebab_klaim':$("#id_sebab_klaim").val(),
                'parklaring': $("#id_parklaring")[0].files[0],
                'no_rek_tk':$("#id_no_rek_tk")[0].files[0],
-               'kpj':$("#id_kpj").val(),
+               'no_kpj':kpj,
                'csrfmiddlewaretoken':$("input[name='csrfmiddlewaretoken']").val()
            },
            dataType:"json",
