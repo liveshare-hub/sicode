@@ -35,7 +35,7 @@ $("#id_kpj").focusout(function() {
                     $("#id_nama").val("KPJ TIDAK DITEMUKAN")
                     $("#id_nik").val("KPJ TIDAK DITEMUKAN")
                     $("#id_simpan").attr("disabled", true)
-                    console.log(data)
+                    
                 }
             },
             error:function(err){
