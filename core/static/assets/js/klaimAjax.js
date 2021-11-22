@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#id_simpan").on("click",function(){
+    $("#id_simpan").on("submit",function(){
        uploadFile()
     })
 })
