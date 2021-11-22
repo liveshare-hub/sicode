@@ -180,11 +180,12 @@ class DataKlaim(models.Model):
         super().save(*args, **kwargs)
 
 
-# @receiver(post_save, sender=DataKlaim)
-# def Approval(sender, instance, created, **kwargs):
-#     print(instance.no_kpj.data_tk.hrd.user.pk)
-#     if created:
-#         ApprovalHRD.objects.create(klaim=instance, hrd=instance.no_kpj.data_tk.hrd.user_id)
+@receiver(post_save, sender=DataKlaim)
+def Approval(sender, instance, created, **kwargs):
+    print(instance.no_kpj.data_tk.hrd.user.pk)
+    print(kwargs)
+    # if created:
+    #     ApprovalHRD.objects.create(klaim=instance, hrd=instance.no_kpj.data_tk.hrd.user_id)
 
 
 # class DaftarHRD(models.Model):
