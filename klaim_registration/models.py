@@ -207,6 +207,8 @@ class ApprovalHRD(models.Model):
     hrd = models.ForeignKey(Profile, on_delete=models.CASCADE)
     keterangan = models.TextField(null=True, blank=True)
 
+    def __str__(self):
+        return self.klaim.no_kpj.no_kpj
 
 class toQRCode(models.Model):
     tk_klaim = models.ForeignKey(ApprovalHRD, on_delete=models.CASCADE)
