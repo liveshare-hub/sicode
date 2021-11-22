@@ -184,7 +184,7 @@ class DataKlaim(models.Model):
 def Approval(sender, instance, created, **kwargs):
     print(instance.no_kpj.data_tk.hrd.id)
     if created:
-        ApprovalHRD.objects.create(klaim=instance, hrd=instance.no_kpj.data_tk.hrd.id)
+        ApprovalHRD.objects.create(klaim=instance, hrd=instance.no_kpj.data_tk.hrd.user)
 
 
 # class DaftarHRD(models.Model):
