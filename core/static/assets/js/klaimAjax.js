@@ -30,8 +30,9 @@ function uploadFile() {
         data:data,
         success:function(data){
             $("input").val("")
+            $("#id_kpj").attr("disabled", false)
             $(".card-body").prepend("<div class='alert alert-success' role='alert'>Klaim Berhasil di Simpan</div>")
-            console.log(data[0]['success'])
+            console.log(data)
         },
         errors:function(err){
             console.log(err)
