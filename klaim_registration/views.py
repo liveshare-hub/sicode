@@ -258,15 +258,19 @@ def ajaxKlaim(request):
     # url13 = fss.url(file13)
     # url14 = fss.url(file14)
     # url15 = fss.url(file15)
-    DataKlaim.objects.create(
-        sebab_klaim_id=sebab_klaim,
-        tipe_klaim_id=tipe_klaim,
-        parklaring=url1,
-        no_rek_tk=url2,
-        no_kpj_id=kpj.id
+    try:
+        DataKlaim.objects.create(
+            sebab_klaim_id=sebab_klaim,
+            tipe_klaim_id=tipe_klaim,
+            parklaring=url1,
+            no_rek_tk=url2,
+            no_kpj_id=kpj.id
 
-    )
-    return JsonResponse({'success':'Berhasil!'})
+        )
+    
+        return JsonResponse({'success':'Berhasil!'})
+    except:
+        return JsonResponse({'error':'Errors!'})
 
 
 @login_required(login_url='/accounts/login/')
