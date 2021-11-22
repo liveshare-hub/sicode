@@ -28,6 +28,7 @@ function uploadFile() {
         mimeType:"multipart/form-data",
         processData:false,
         success:function(e, data){
+            $(".card-body").append("<div class='alert alert-success' role='alert'>Klaim Berhasil di Simpan</div>")
             e.preventDefault()
             console.log(data)
         },
