@@ -258,31 +258,28 @@ def ajaxKlaim(request):
         url13 = fss.url(file13)
         url14 = fss.url(file14)
         url15 = fss.url(file15)
-        try:
-            DataKlaim.objects.create(
-                no_kpj_id=kpj.pk,
-                sebab_klaim_id=sebab_klaim,
-                tipe_klaim_id=tipe_klaim,
-                parklaring=url1,
-                surat_meninggal=url3,
-                ktp_ahli_waris=url4,
-                kk_baru=url5,
-                no_rek_waris=url6,
-                form_I=url7,
-                kronologis=url8,
-                ktp_saksi=url9,
-                absen_1=url10,
-                surat_pernyataan=url11,
-                form_II=url12,
-                absensi_2=url13,
-                no_rek_perusahaan=url14,
-                slip_gaji=url15,
-                no_rek_tk=url2
+        DataKlaim.objects.create(
+            no_kpj_id=kpj.pk,
+            sebab_klaim_id=sebab_klaim,
+            tipe_klaim_id=tipe_klaim,
+            parklaring=url1,
+            surat_meninggal=url3,
+            ktp_ahli_waris=url4,
+            kk_baru=url5,
+            no_rek_waris=url6,
+            form_I=url7,
+            kronologis=url8,
+            ktp_saksi=url9,
+            absen_1=url10,
+            surat_pernyataan=url11,
+            form_II=url12,
+            absensi_2=url13,
+            no_rek_perusahaan=url14,
+            slip_gaji=url15,
+            no_rek_tk=url2
 
-            )
-            return JsonResponse({'msg': 'Berhasil'})
-        except:
-            return JsonResponse({'error':'Gagal Simpan!!!'})
+        )
+        return redirect("home-klaim")
 
 
 @login_required(login_url='/accounts/login/')
