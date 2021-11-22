@@ -205,26 +205,27 @@ def DaftarKlaim(request):
 
 @csrf_exempt
 def ajaxKlaim(request):
-    parklaring = request.FILES.get('parklaring')
-    no_rek_tk = request.FILES.get('no_rek_tk')
-    tipe_klaim = request.POST.get('tipe_klaim')
-    sebab_klaim = request.POST.get('tipe_klaim')
-    no_kpj = request.POST.get('kpj')
-    kpj = KPJ.objects.get(no_kpj=no_kpj)
-    fss = FileSystemStorage()
-    filename1 = fss.save(parklaring.name, parklaring)
-    filename2 = fss.save(no_rek_tk.name, no_rek_tk)
-    url1 = fss.url(filename1)
-    url2 = fss.url(filename2)
-    DataKlaim.objects.create(
-        no_kpj_id=kpj.pk,
-        sebab_klaim_id=sebab_klaim,
-        tipe_klaim_id=tipe_klaim,
-        parklaring=url1,
-        no_rek_tk=url2
+    if request.is_ajax:
+        parklaring = request.FILES.get('parklaring')
+        no_rek_tk = request.FILES.get('no_rek_tk')
+        tipe_klaim = request.POST.get('tipe_klaim')
+        sebab_klaim = request.POST.get('tipe_klaim')
+        no_kpj = request.POST.get('kpj')
+        kpj = KPJ.objects.get(no_kpj=no_kpj)
+        fss = FileSystemStorage()
+        filename1 = fss.save(parklaring.name, parklaring)
+        filename2 = fss.save(no_rek_tk.name, no_rek_tk)
+        url1 = fss.url(filename1)
+        url2 = fss.url(filename2)
+        DataKlaim.objects.create(
+            no_kpj_id=kpj.pk,
+            sebab_klaim_id=sebab_klaim,
+            tipe_klaim_id=tipe_klaim,
+            parklaring=url1,
+            no_rek_tk=url2
 
-    )
-    return JsonResponse({'success': 'Berhasil'})
+        )
+        return JsonResponse({'success': 'Berhasil'})
 
 
 @login_required(login_url='/accounts/login/')
