@@ -203,10 +203,11 @@ def DaftarKlaim(request):
     return render(request, 'klaim_registration/klaim_form.html', {'form': form})
 
 
-@csrf_exempt
+# @csrf_exempt
 def ajaxKlaim(request):
     if request.is_ajax:
         parklaring = request.FILES.get('parklaring')
+        print(parklaring)
         # surat_meninggal = request.FILES.get('surat_meninggal')
         # ktp_ahli_waris = request.FILES.get('ktp_ahli_waris')
         # kk_baru = request.FILES.get('kk_baru')
