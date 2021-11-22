@@ -14,6 +14,7 @@ $(document).ready(function() {
                'csrfmiddlewaretoken':$("input[name='csrfmiddlewaretoken']").val()
            },
            dataType:"json",
+           processData:false,
            success:function(data){
                console.log(data)
            },
