@@ -46,8 +46,9 @@ $("#id_kpj").focusout(function() {
 });
 
 $("#clear").click(function(){
-    $("#id_kpj").attr("disabled", false).attr("value","")
-    $("#id_kpj").val("")
+    $("input").val("")
+    $("select").val("")
+    $("#id_kpj").attr("disabled", false)
 })
 
 String.prototype.replaceAt=function(index, char) {
