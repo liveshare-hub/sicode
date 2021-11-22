@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $("#id_simpan").on("click",function(){
     //    uploadFile()
-            
+        console.log($("#id_kpj").val())    
         $.ajax({
            method:"POST",
            url:'/klaim/tambah/ajax',
