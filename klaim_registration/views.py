@@ -242,6 +242,7 @@ def ajaxKlaim(request):
         file13 = fss.save(absensi_2.name, absensi_2)
         file14 = fss.save(no_rek_perusahaan.name, no_rek_perusahaan)
         file15 = fss.save(slip_gaji.name, slip_gaji)
+        print(file3, file4)
         url1 = fss.url(filename1)
         url2 = fss.url(filename2)
         url3 = fss.url(file3)
