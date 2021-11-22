@@ -185,7 +185,7 @@ def Approval(sender, instance, created, **kwargs):
     if created:
         print(instance.no_kpj.data_tk.hrd)
         print(kwargs)
-    #     ApprovalHRD.objects.create(klaim=instance, hrd=instance.no_kpj.data_tk.hrd.user_id)
+        ApprovalHRD.objects.create(klaim=instance, hrd=instance.no_kpj.data_tk.hrd)
 
 
 # class DaftarHRD(models.Model):
