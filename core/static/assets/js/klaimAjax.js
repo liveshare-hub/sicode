@@ -22,10 +22,11 @@ function uploadFile() {
     data.append("csrfmiddlewaretoken", $("input[name='csrfmiddlewaretoken']").val())
     // console.log($("#id_parklaring")[0].files[0])
     $.ajax({
-        type:"POST",
+        method:"POST",
         url:'/klaim/tambah/ajax',
         contentType:false,
         data:data,
+        mimeType:"multipart/form-data",
         processData:false,
         success:function(res){
             console.log(res)
