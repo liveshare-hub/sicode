@@ -244,28 +244,31 @@ def ajaxKlaim(request):
         file15 = fss.save(slip_gaji.name, slip_gaji)
         url1 = fss.url(filename1)
         url2 = fss.url(filename2)
-        DataKlaim.objects.update_or_create(
-            no_kpj_id=kpj.pk,
-            sebab_klaim_id=sebab_klaim,
-            tipe_klaim_id=tipe_klaim,
-            parklaring=url1,
-            surat_meninggal=file3,
-            ktp_ahli_waris=file4,
-            kk_baru=file5,
-            no_rek_waris=file6,
-            form_I=file7,
-            kronologis=file8,
-            ktp_saksi=file9,
-            absen_1=file10,
-            surat_pernyataan=file11,
-            form_II=file12,
-            absensi_2=file13,
-            no_rek_perusahaan=file14,
-            slip_gaji=file15,
-            no_rek_tk=url2
+        try:
+            DataKlaim.objects.create(
+                no_kpj_id=kpj.pk,
+                sebab_klaim_id=sebab_klaim,
+                tipe_klaim_id=tipe_klaim,
+                parklaring=url1,
+                surat_meninggal=file3,
+                ktp_ahli_waris=file4,
+                kk_baru=file5,
+                no_rek_waris=file6,
+                form_I=file7,
+                kronologis=file8,
+                ktp_saksi=file9,
+                absen_1=file10,
+                surat_pernyataan=file11,
+                form_II=file12,
+                absensi_2=file13,
+                no_rek_perusahaan=file14,
+                slip_gaji=file15,
+                no_rek_tk=url2
 
-        )
-        return JsonResponse({'success': 'Berhasil'})
+            )
+            return JsonResponse({'msg': 'Berhasil'})
+        except:
+            return JsonResponse({'error':'Gagal Simpan!!!'})
 
 
 @login_required(login_url='/accounts/login/')
