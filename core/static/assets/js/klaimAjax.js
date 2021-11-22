@@ -12,7 +12,7 @@ $(document).ready(function() {
                'kpj':$("#id_kpj").val(),
                'csrfmiddlewaretoken':$("input[name='csrfmiddlewaretoken']").val()
            },
-           contentType:"json",
+           dataType:"json",
            success:function(data){
                console.log(data)
            },
