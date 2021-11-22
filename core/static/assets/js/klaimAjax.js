@@ -16,13 +16,8 @@ $(document).ready(function() {
                dataType:"json",
                processData:false
            },
-           
-           success:function(data){
-               console.log(data)
-           },
-           errors:function(err){
-               console.log(err)
-           }
+       }).done(function(response){
+           console.log(response)
        })
     })
 })
