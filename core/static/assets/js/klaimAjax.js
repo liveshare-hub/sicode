@@ -1,5 +1,5 @@
-function uploadFile(e) {
-    e.preventDefault()
+function uploadFile() {
+    
     var data = new FormData()
     data.append("parklaring", $("#id_parklaring")[0].files[0])
     // data.append("surat_meninggal", $("#id_surat_meinggal")[0].files[0])
@@ -29,6 +29,7 @@ function uploadFile(e) {
         processData:false,
         data:data,
         success:function(data){
+            data.preventDefault();
             $(".card-body").append("<div class='alert alert-success' role='alert'>Klaim Berhasil di Simpan</div>")
             console.log(data)
         },
