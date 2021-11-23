@@ -261,6 +261,12 @@ def ajaxKlaim(request):
         return JsonResponse({'error': 'Errors!'})
 
 
+def detilKlaimAjax(request, pk):
+    tk = list(ApprovalHRD.objects.select_related('klaim', 'hrd').filter(
+        klaim_id=pk).values('klaim__parklaring', 'klaim__no_rek_tk'))
+    return JsonResponse({'data': tk})
+
+
 @login_required(login_url='/accounts/login/')
 def DaftarKlaimPK(request, pk):
     pk = KPJ.objects.select_related('data_tk').get(pk=pk)

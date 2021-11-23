@@ -11,6 +11,7 @@ urlpatterns = [
     path('tambah/tk/ajax', views.TambahTK_ajax, name='tambah-tk-ajax'),
     path('tambah/kpj/<int:pk>', views.tambah_kpj, name='tambah-kpj'),
     path('detil/tk/<int:pk>', views.DetilTK, name='detil-tk'),
+    path('ajax/tk/<int:pk>', views.detilKlaimAjax, name='detil-tk-ajax'),
     path('api/kpj', views.ListKPJ.as_view(), name='api-kpj'),
     path('klaim/tambah/ajax', views.ajaxKlaim, name='tambah-klaim-ajax'),
     path('klaim/tambah', views.DaftarKlaim, name='tambah-klaim'),
