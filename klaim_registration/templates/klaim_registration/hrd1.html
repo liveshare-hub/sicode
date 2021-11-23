@@ -126,8 +126,10 @@
 
 {% block javascripts %}
 <script>
-$("#simpan").on('submit','#formApprove', function(e) {
+$(document).ready(function(){
   console.log($("input[name=csrfmiddlewaretoken]").val())
+  $("#simpan").on('submit','#formApprove', function(e) {
+  
   e.preventDefault();
   $.ajax({
     method:'POST',
@@ -146,6 +148,7 @@ $("#simpan").on('submit','#formApprove', function(e) {
       console.log(err)
     }
   })
+})
 })
 </script>
 {% endblock %}
