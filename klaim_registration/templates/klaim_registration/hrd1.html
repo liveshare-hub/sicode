@@ -73,7 +73,7 @@
                           </select>
                           <div class="form-floating">
                             <textarea id="keterangan" class="form-control" placeholder="Leave a comment here"
-                              id="floatingTextarea2" style="height: 100px"></textarea>
+                              style="height: 100px"></textarea>
                             <label for="floatingTextarea2">keterangan</label>
                           </div>
                           <input hidden type="text" id="klaim_id" value="{{data.id}}">
@@ -128,29 +128,25 @@
 <script>
 $(document).ready(function(){
   $("#formApprove").on('submit', function() {
-    console.log($("#status").val())
-    console.log($("#klaim_id").val())
-  
-  console.log($("#keterangan").val())
-  
-  $.ajax({
-    method:'POST',
-    url:"{% url 'ajax-approval' %}",
-    data:{
-      id:$("#klaim_id").val(),
-      status:$("#status").val(),
-      keterangan:$("#keterangan").val(),
-      csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
-    },
-    dataType:"json",
-    success:function(res){
-      console.log(res)
-    },
-    error:function(err){
-      console.log(err)
-    }
-  })
-})
-})
+
+    $.ajax({
+      method:'POST',
+      url:"{% url 'ajax-approval' %}",
+      data:{
+        id:$("#klaim_id").val(),
+        status:$("#status").val(),
+        keterangan:$("#keterangan").val(),
+        csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
+      },
+      dataType:"json",
+      success:function(res){
+        console.log(res.val())
+      },
+      error:function(err){
+        console.log(err)
+      }
+    });
+  });
+});
 </script>
 {% endblock %}
