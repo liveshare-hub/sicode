@@ -172,17 +172,6 @@ def TambahTK_ajax(request):
     return render(request, 'klaim_registration/tambah_tk.html')
 
 
-# class KlaimListView(ListView):
-#     model = DataKlaim
-#     contex_object_name = 'datas'
-
-
-# class KlaimCreateView(CreateView):
-#     model = DataKlaim
-#     form_class = KlaimForm
-#     success_url = reverse_lazy('klaim_changelist')
-
-
 class KlaimUpdateView(UpdateView):
     model = DataKlaim
     form_class = KlaimFormPK
@@ -205,7 +194,7 @@ def DaftarKlaim(request):
 
 @csrf_exempt
 def ajaxKlaim(request):
-        
+
     parklaring = request.FILES.get('parklaring')
     # surat_meninggal = request.FILES.get('surat_meninggal')
     # ktp_ahli_waris = request.FILES.get('ktp_ahli_waris')
@@ -266,10 +255,10 @@ def ajaxKlaim(request):
             no_kpj_id=kpj.id
 
         )
-    
-        return JsonResponse({'success':'Berhasil!'})
+
+        return JsonResponse({'success': 'Berhasil!'})
     except:
-        return JsonResponse({'error':'Errors!'})
+        return JsonResponse({'error': 'Errors!'})
 
 
 @login_required(login_url='/accounts/login/')
@@ -292,6 +281,16 @@ def load_sebab(request):
     # print(klaim_id)
     sebab = SebabKlaim.objects.filter(tipe_id=klaim_id).order_by('kode')
     return render(request, 'klaim_registration/sebab_dropdown.html', {'sebab': sebab})
+
+
+def listApproval(request):
+    hrd = request.user.profile
+    datas = ApprovalHRD.objects.select_related(
+        'klaim', 'hrd').filter(hrd=request.user)
+    context = {
+        'datas': datas
+    }
+    return render(request, 'klaim_registration/hrd1.html', context)
 
 
 class ListKPJ(ListCreateAPIView):
