@@ -301,6 +301,8 @@ def ajaxApproval(request):
         )
         return JsonResponse({'success': 'Data Berhasil Di Simpan'})
 
+# def validasi_berkas(request):
+
 
 class ListKPJ(ListCreateAPIView):
     serializer_class = KPJSerializer

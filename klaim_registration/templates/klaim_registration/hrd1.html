@@ -30,13 +30,20 @@
               <tbody>
                 {% for data in datas %}
                 <tr id="{{data.id}}" class="align-middle">
-                  <td>{{forloop.counter}}
+                  <td>{{forloop.counter}}</td>
+                  {% if data.klaim.tipe_klaim == 1 and data.klaim.parklaring is not None %}
                   <td>
-                    <a href="#" data-id={{data.id}} data-toggle="modal" data-target="#detailModal{{data.id}}"
-                      id="dataKlaim{{data.id}">
-                      {{data.klaim}}
-                    </a>
+                    <a href="#" data-toggle="tooltip" title="Kelengkapan Berkas">{{data.klaim}}</a>
+                    <div class="tooltip bs-tooltip-bottom" role="tooltip">
+                      <div class="arrow"></div>
+                      <div class="tooltip-inner">
+                        <svg class="c-sidebar-nav-icon">
+                          <use xlink:href="/static/assets/icons/arrow-thick-right.svg"></use>
+                        </svg> Parklaring
+                      </div>
+                    </div>
                   </td>
+                  {% endif %}
   
                   {% if data.keterangan is None %}
                   <td></td>

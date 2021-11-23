@@ -106,7 +106,7 @@ def activate_email(request, uidb64, token):
         msg = 'Akun sudah aktif. Silahkan login di <a href="/accounts/login/">sini</a>'
         return HttpResponse(msg)
     else:
-        return HttpResponse('Akctivation link is invalid!')
+        return HttpResponse('Activation link is invalid!')
 
 
 @login_required(login_url='/accounts/login/')
