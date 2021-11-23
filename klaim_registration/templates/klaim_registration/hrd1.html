@@ -127,9 +127,10 @@
 {% block javascripts %}
 <script>
 $("#simpan").on('submit','#formApprove', function(e) {
+  console.log($("input[name=csrfmiddlewaretoken]").val())
   e.preventDefault();
   $.ajax({
-    type:'POST',
+    method:'POST',
     url:"{% url 'ajax-approval' %}",
     data:{
       id:$("#klaim_id").val(),
