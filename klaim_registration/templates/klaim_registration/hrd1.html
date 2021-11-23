@@ -63,7 +63,7 @@
                       </div>
   
                       <div class="modal-body">
-                        <form id="formApprove" action="" enctype='multipart/form-data'>
+                        <form id="formApprove" method="POST" enctype='multipart/form-data'>
                           {% csrf_token %}
                           <select id="status" class="form-select" aria-label="Default select example">
                             <option selected>Pilih status...</option>
