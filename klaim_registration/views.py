@@ -283,10 +283,11 @@ def load_sebab(request):
     return render(request, 'klaim_registration/sebab_dropdown.html', {'sebab': sebab})
 
 
+@login_required(login_url='/accounts/login/')
 def listApproval(request):
     hrd = request.user.profile
     datas = ApprovalHRD.objects.select_related(
-        'klaim', 'hrd').filter(hrd=request.user)
+        'klaim', 'hrd').filter(hrd=hrd)
     context = {
         'datas': datas
     }
