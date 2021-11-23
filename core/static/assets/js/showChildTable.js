@@ -20,7 +20,9 @@ function format ( d ) {
 
 $(document).ready(function() {
     var id = $("#klaim_id").val();
-    var table = $("#tableKlaim tbody").on('click', 'td.dt-control', function(){
+    var table = $("#tableKlaim").row()
+    console.log(table)
+    $("#tableKlaim tbody").on('click', 'td.dt-control', function(){
         var tr = $(this).closest('tr');
         var row = table.row(tr);
 
