@@ -294,7 +294,6 @@ def listApproval(request):
     return render(request, 'klaim_registration/hrd1.html', context)
 
 
-@csrf_exempt
 def ajaxApproval(request):
     if request.is_ajax:
         ApprovalHRD.objects.filter(pk=request.POST.get('id')).update(
