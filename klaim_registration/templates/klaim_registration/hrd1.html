@@ -127,7 +127,9 @@
 {% block javascripts %}
 <script>
 $(document).ready(function(){
-  console.log($("input[name=csrfmiddlewaretoken]").val())
+  console.log($("#klaim_id").val())
+  console.log($("#status").val())
+  console.log($("#keterangan").val())
   $("#simpan").on('submit','#formApprove', function(e) {
   
   e.preventDefault();
