@@ -31,9 +31,9 @@
                 {% for data in datas %}
                 <tr id="{{data.id}}" class="align-middle">
                   <td>{{forloop.counter}}</td>
-                  {% if data.klaim.tipe_klaim == 1 and data.klaim.parklaring is not None %}
                   <td>
                     <a href="#" data-toggle="tooltip" title="Kelengkapan Berkas">{{data.klaim}}</a>
+                    {% if data.klaim.tipe_klaim == 1 and data.klaim.parklaring is not None %}
                     <div class="tooltip bs-tooltip-bottom" role="tooltip">
                       <div class="arrow"></div>
                       <div class="tooltip-inner">
@@ -42,8 +42,9 @@
                         </svg> Parklaring
                       </div>
                     </div>
+                    {% endif %}
                   </td>
-                  {% endif %}
+                  
   
                   {% if data.keterangan is None %}
                   <td></td>
