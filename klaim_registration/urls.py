@@ -18,6 +18,7 @@ urlpatterns = [
     path('klaim/edit/<int:pk>', views.KlaimUpdateView.as_view(), name='klaim-edit'),
     path('ajax/load-klaims', views.load_sebab, name='ajax_load_sebab'),
     path('hrd/approval', views.listApproval, name='list-approval'),
+    path('hrd/approval/ajax', views.ajaxApproval, name='ajax-approval'),
     # path('qr-code/<str:uid>/', views.detail_tk, name='detail-tk'),
     # path('email/<int:id>/sent/', views.sent_mail, name='sent-mail'),
     # path('klaim/zip/<int:id>/', views.zipAll, name='zip-file'),

@@ -294,6 +294,15 @@ def listApproval(request):
     return render(request, 'klaim_registration/hrd1.html', context)
 
 
+@csrf_exempt
+def ajaxApproval(request):
+    if request.is_ajax:
+        ApprovalHRD.objects.filter(pk=request.POST.get('id')).update(
+            status=request.POST.get('status'), keterangan=request.POST.get('keterangan')
+        )
+        return JsonResponse({'success': 'Data Berhasil Di Simpan'})
+
+
 class ListKPJ(ListCreateAPIView):
     serializer_class = KPJSerializer
     permission_classes = [permissions.AllowAny, ]

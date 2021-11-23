@@ -108,49 +108,6 @@
                   </div>
                   <!-- /.modal-dialog-->
                 </div>
-  
-                <!-- MODAL DETAIL -->
-                <!-- <div class="modal fade" id="detailModal{{data.id}}1" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-                              <div class="modal-dialog">
-                                  <div class="modal-content" id="detail-modal">
-                                      <div class="modal-header">
-                                          <h5 class="modal-title" id="detailModalLabel">Detail Approval</h5>
-                                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                      </div>
-                                          <div class="modal-body">
-                                              <div class="row">
-                                                  <div class="col">
-                                                      <div class="card">
-                                                          <div class="card-header" id="detailModal">
-                                                              Detail Tenaga Kerja - <b></b>
-                                                          </div>
-                                                          <div class="card-body">
-                                                              <div class="form-group row">
-                                                                  <label class="col-sm-3 col-form-label">Nama</label>
-                                                                  <div class="col-md-9">
-                                                                      <p class="form-control-static">{{data.klaim.nama}}</p>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="form-group row">
-                                                                  <label class="col-md-3 col-form-label">No. KTP/NIK</label>
-                                                                  <div class="col-md-9">
-                                                                      <p class="form-control-static">{{data.klaim.nik}}</p>
-                                                                  </div>
-                                                              </div>
-                                                              <div class="form-group row">
-                                                                  <label class="col-md-3 col-form-label">Tempat/Tgl.Lahir</label>
-                                                                  <div class="col-md-9">
-                                                                      <p class="form-control-static">{{data.klaim.tempat_lahir}}/{{data.klaim.tgl_lahir}}</p>
-                                                                  </div>
-                                                              </div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                  </div>
-                              </div>
-                          </div>             -->
                 {% endfor %}
               </tbody>
             </table>
@@ -168,5 +125,26 @@
 {% endblock %}
 
 {% block javascripts %}
-
+<script>
+$("#simpan").on('submit','#formApprove', function(e) {
+  e.preventDefault();
+  $.ajax({
+    type:'POST',
+    url:"{% url 'ajax-approval' %}",
+    data:{
+      id:$("#klaim_id").val(),
+      status:$("#status").val(),
+      keterangan:$("#keterangan").val(),
+      csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val()
+    },
+    dataType:"json",
+    success:function(res){
+      console.log(res)
+    },
+    error:function(err){
+      console.log(err)
+    }
+  })
+})
+</script>
 {% endblock %}
