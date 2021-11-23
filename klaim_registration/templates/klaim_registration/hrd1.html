@@ -127,7 +127,7 @@
 {% block javascripts %}
 <script>
 $(document).ready(function(){
-  $("#simpan").on('submit','#formApprove', function() {
+  $("#formApprove").on('submit', function() {
     console.log($("#status").val())
     console.log($("#klaim_id").val())
   
