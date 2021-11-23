@@ -127,12 +127,12 @@
 {% block javascripts %}
 <script>
 $(document).ready(function(){
-  $("#simpan").on('submit','#formApprove', function(e) {
+  $("#simpan").on('submit','#formApprove', function() {
     console.log($("#status").val())
     console.log($("#klaim_id").val())
   
   console.log($("#keterangan").val())
-  e.preventDefault();
+  
   $.ajax({
     method:'POST',
     url:"{% url 'ajax-approval' %}",
