@@ -127,11 +127,11 @@
 {% block javascripts %}
 <script>
 $(document).ready(function(){
-  console.log($("#klaim_id").val())
-  console.log($("#status").val())
-  console.log($("#keterangan").val())
   $("#simpan").on('submit','#formApprove', function(e) {
+    console.log($("#status").val())
+    console.log($("#klaim_id").val())
   
+  console.log($("#keterangan").val())
   e.preventDefault();
   $.ajax({
     method:'POST',
