@@ -213,20 +213,22 @@ class ApprovalHRD(models.Model):
         return self.klaim.no_kpj.no_kpj
 
     def save(self, *args, **kwargs):
+        url = "https://sicode.id/qr-code/{}".format(self.url_uuid)
         qr = qrcode.QRCode(
             version=20,
             error_correction=qrcode.constants.ERROR_CORRECT_M,
             box_size=50,
             border=2,
         )
-        qr.add_data('https://sicode.id/qr-code/{}'.format(self.url_uuid))
+        # qr.add_data('https://sicode.id/qr-code/{}'.format(self.url_uuid))
         # qr.add_data('http://127.0.0.1/qr-code/{}/'.format(self.url_uuid))
-        qr.make(fit=False)
+        # qr.make(fit=False)
         # qrcode_image = qrcode.make(
         # 'http://127.0.0.1:8000/qr-code/{}/'.format(self.url_uuid))
-        qrcode_image = qr.make_image(fill_color="black", back_color="white")
+        # qrcode_image = qr.make_image(fill_color="black", back_color="white")
+        qrcode_image = qrcode.make(url)
 
-        canvas = Image.new('RGB', (600, 600), 'white')
+        canvas = Image.new('RGB', (450, 450), 'white')
         draw = ImageDraw.Draw(canvas)
         canvas.paste(qrcode_image)
         # uid = uuid.uuid4()
