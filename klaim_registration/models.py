@@ -226,7 +226,7 @@ class ApprovalHRD(models.Model):
         # 'http://127.0.0.1:8000/qr-code/{}/'.format(self.url_uuid))
         qrcode_image = qr.make_image(fill_color="black", back_color="white")
 
-        canvas = Image.new('RGB', (300, 300), 'white')
+        canvas = Image.new('RGB', (600, 600), 'white')
         draw = ImageDraw.Draw(canvas)
         canvas.paste(draw)
         # uid = uuid.uuid4()
