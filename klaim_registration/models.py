@@ -205,7 +205,7 @@ class ApprovalHRD(models.Model):
     #                           default='DALAM PEMERIKSAAN', max_length=20)
     klaim = models.ForeignKey(DataKlaim, on_delete=models.CASCADE)
     hrd = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    url_uuid = models.UUIDField(default=uuid.uuid4(), editable=False)
+    url_uuid = models.UUIDField(default=uuid.uuid4())
     img_svg = models. ImageField(upload_to='qrcode/')
     # keterangan = models.TextField(null=True, blank=True)
 
@@ -228,7 +228,7 @@ class ApprovalHRD(models.Model):
 
         canvas = Image.new('RGB', (300, 300), 'white')
         draw = ImageDraw.Draw(canvas)
-        canvas.paste(qrcode_image)
+        canvas.paste(draw)
         # uid = uuid.uuid4()
         fname = '{}.PNG'.format(self.klaim.no_kpj.data_tk.nama)
         buffer = BytesIO()
