@@ -20,15 +20,7 @@ function format ( d ) {
 
 $(document).ready(function() {
     var id = $("#klaim_id").val();
-    var table = $("#tableKlaim").DataTable({
-        "ajax":$.ajax({
-            url:`/ajax/tk/${id}`,
-            type:"GET",
-            success:function(res){
-                console.log(res)
-            }
-        }),
-    });
+    var table = $("#tableKlaim").DataTable({});
 
     $("#tableKlaim tbody").on('click', 'td.details-control', function(){
         var tr = $(this).closest('tr');
@@ -41,8 +33,16 @@ $(document).ready(function() {
         }
         else {
             // Open this row
-            row.child( format(row.data()) ).show();
-            tr.addClass('shown');
+            $.ajax({
+                url:`/ajax/tk/${id}`,
+                type:"GET",
+                success:function(res){
+                    console.log(res)
+                    row.child( format(row.data(res)) ).show();
+                    tr.addClass('shown');
+                }
+            })
+            
         }
     })
 })
