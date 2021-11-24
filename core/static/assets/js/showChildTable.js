@@ -28,16 +28,6 @@ $(document).ready(function() {
                 console.log(res)
             }
         }),
-        "columns":[
-            {
-                "data":null
-            },
-           {
-               "data":null
-           },
-        ],
-        "order":[[1, 'asc']]
-
     });
 
     $("#tableKlaim tbody").on('click', 'td.details-control', function(){
