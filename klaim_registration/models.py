@@ -207,7 +207,7 @@ class ApprovalHRD(models.Model):
     hrd = models.ForeignKey(Profile, on_delete=models.CASCADE)
     url_uuid = models.UUIDField(default=uuid.uuid4(), editable=False)
     img_svg = models. ImageField(upload_to='qrcode/')
-    keterangan = models.TextField(null=True, blank=True)
+    # keterangan = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.klaim.no_kpj.no_kpj
@@ -272,4 +272,4 @@ class ApprovalHRD(models.Model):
 #         self.img_svg.save(fname, File(buffer), save=False)
 #         canvas.close()
 #         # qrcode_image.close()
-        super().save(*args, **kwargs)
+        # super().save(*args, **kwargs)

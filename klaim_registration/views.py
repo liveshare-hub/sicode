@@ -2,16 +2,19 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.hashers import make_password
+# from django.contrib.auth.hashers import make_password
 # from django.contrib import messages
 # from django.contrib.auth.models import User, Group
+from django.utils.html import strip_tags
 from django.db.models import Subquery, OuterRef, Q
 from django.http import JsonResponse
 from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 # from dal import autocomplete
-import random
-import string
+# import random
+# import string
+
+from django.conf import settings
 
 from django_filters.rest_framework.backends import DjangoFilterBackend
 from rest_framework import permissions, filters
@@ -21,7 +24,7 @@ from klaim_registration.serializer import KPJSerializer
 
 from .form import DataTKForm, KPJForm, KlaimFormPK
 from .models import KPJ, DataKlaim, ApprovalHRD, DataTK, SebabKlaim
-from authentication.models import Perusahaan, Profile
+# from authentication.models import Perusahaan, Profile
 # from .decorators import admin_only
 
 from django.core.mail import EmailMessage, EmailMultiAlternatives
@@ -308,6 +311,38 @@ def ajaxApproval(request):
         return JsonResponse({'success': 'Data Berhasil Di Simpan'})
 
 # def validasi_berkas(request):
+
+def sent_mail(request, pk):
+    tk_id = ApprovalHRD.objects.select_related('klaim','hrd').get(pk=pk)
+    qrcode = tk_id.img_svg.url
+    to = tk_id.klaim.no_kpj.data_tk.email
+    context = {
+        'nama':tk_id.klaim.no_kpj.data_tk.nama,
+        'qrcode':qrcode
+    }
+    html_content = render_to_string('klaim_registration/email.html', context)
+    text_content = strip_tags(html_content)
+    email = EmailMultiAlternatives(
+        #subject
+        f"DETAIL DATA TK A.N {tk_id.klaim.no_kpj.data_tk.nama}",
+        #content
+        text_content,
+        #from email
+        settings.EMAIL_HOST_USER,
+        #to email
+        [to]
+    )
+    email.attach_alternative(html_content, "text/html")
+    filename = '/home/sicm6455/python/' + qrcode
+    attachment = open(filename, 'rb')
+    part = MIMEBase('application', 'octet-stream')
+    part.set_payload((attachment).read())
+    encoders.encode_base64(part)
+    part.add_header('Content-Disposition', "attachment; filename= "+filename)
+    email.attach(part)
+    email.send()
+
+    return JsonResponse({'success':'Email Berhasil Terkirim'})
 
 
 class ListKPJ(ListCreateAPIView):
