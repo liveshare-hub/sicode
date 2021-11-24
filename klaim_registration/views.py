@@ -347,6 +347,14 @@ def sent_mail(request, pk):
 
     return JsonResponse({'success':'Email Berhasil Terkirim'})
 
+def detail_tk(request, uid):
+    datas = ApprovalHRD.objects.select_related('klaim','hrd').filter(
+        url_uuid=uid)
+
+    context = {
+        'datas': datas
+    }
+    return render(request, 'klaim_registration/detail_tk.html', context)
 
 class ListKPJ(ListCreateAPIView):
     serializer_class = KPJSerializer
