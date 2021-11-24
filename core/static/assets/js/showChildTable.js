@@ -45,7 +45,7 @@ $(document).ready(function() {
                     
                 }
             })
-            row.child( format(key) ).show();
+            row.child( format(row.data()) ).show();
             tr.addClass('shown');
         }
     })
