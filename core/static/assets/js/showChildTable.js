@@ -25,20 +25,22 @@ $(document).ready(function() {
     $("#tableKlaim tbody").on('click', 'td.details-control', function(){
         var tr = $(this).closest('tr');
         var row = table.row(tr);
-
+        $.ajax({
+            type:'GET',
+            url:`/detil/tk/${id}`,
+            dataType:"json",
+            success:function(data){
+                console.log(data)
+            }
+        })
+        
         if (row.child.isShown()){
             row.child.hide();
             tr.removeClass('shown')
         }
         else{
-            $.ajax({
-                type:'GET',
-                url:`/detil/tk/${id}`,
-                dataType:"json",
-                success:function(data){
-                    console.log(data)
-                }
-            })
+          row.child(format(tr.data('child-value'))).show();
+          tr.addClass('shown');
         }
     })
 })
