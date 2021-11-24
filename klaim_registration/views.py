@@ -314,8 +314,8 @@ def ajaxApproval(request):
 # def validasi_berkas(request):
 
 def sent_mail(request, pk):
-    tk_id = ApprovalHRD.objects.select_related('klaim','hrd').get(pk=pk)
-    if tk_id:
+    try:
+        tk_id = ApprovalHRD.objects.select_related('klaim','hrd').get(pk=pk)
         qrcode = tk_id.img_svg
         to = tk_id.klaim.no_kpj.data_tk.email
         context = {
@@ -346,7 +346,7 @@ def sent_mail(request, pk):
         email.send()
 
         return JsonResponse({'success':'Email Berhasil Terkirim'})
-    else:
+    except ApprovalHRD.DoesNotExist:
         return JsonResponse({'Errors':'Data Tidak Ditemukan'})
 
 
