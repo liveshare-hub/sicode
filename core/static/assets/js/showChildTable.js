@@ -38,15 +38,16 @@ $(document).ready(function() {
                 url:`/ajax/tk/${id}`,
                 type:"GET",
                 success:function(res){
-                    console.log(res)
+                    
                     res.forEach(function(item){
+                        console.log(item)
                         format(item)
                     })
-                    row.child( format(row.data()) ).show();
-                    tr.addClass('shown');
+                    
                 }
             })
-            
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
         }
     })
 })
