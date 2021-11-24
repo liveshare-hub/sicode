@@ -4,11 +4,11 @@ function format ( d ) {
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
         '<tr>'+
             '<td>Paklaring:</td>'+
-            '<td>'+d[0]+'</td>'+
+            '<td>'+d['data']+'</td>'+
         '</tr>'+
         '<tr>'+
             '<td>Extension number:</td>'+
-            '<td>'+d.klaim__no_rek_tk+'</td>'+
+            '<td>'+d['data']+'</td>'+
         '</tr>'+
         '<tr>'+
             '<td>Extra info:</td>'+
