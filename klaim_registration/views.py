@@ -263,7 +263,7 @@ def ajaxKlaim(request):
 
 def detilKlaimAjax(request, pk):
     tk = list(ApprovalHRD.objects.select_related('klaim', 'hrd').filter(
-        klaim_id=pk).values('klaim__parklaring', 'klaim__no_rek_tk'))
+        pk=pk).values('klaim__parklaring', 'klaim__no_rek_tk'))
     return JsonResponse({'data': tk})
 
 
