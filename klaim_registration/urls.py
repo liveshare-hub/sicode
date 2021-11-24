@@ -21,7 +21,7 @@ urlpatterns = [
     path('hrd/approval', views.listApproval, name='list-approval'),
     path('hrd/approval/ajax', views.ajaxApproval, name='ajax-approval'),
     # path('qr-code/<str:uid>/', views.detail_tk, name='detail-tk'),
-    path('email/<int:id>/sent/', views.sent_mail, name='sent-mail'),
+    path('email/<int:pk>/sent', views.sent_mail, name='sent-mail'),
     # path('klaim/zip/<int:id>/', views.zipAll, name='zip-file'),
     # re_path(
     #     r'^npp-autocomplete/$',

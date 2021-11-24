@@ -314,6 +314,7 @@ def ajaxApproval(request):
 
 def sent_mail(request, pk):
     tk_id = ApprovalHRD.objects.select_related('klaim','hrd').get(pk=pk)
+    print(tk_id)
     qrcode = tk_id.img_svg.url
     to = tk_id.klaim.no_kpj.data_tk.email
     context = {
