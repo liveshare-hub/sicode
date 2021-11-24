@@ -33,19 +33,20 @@ $(document).ready(function() {
         }
         else {
             // Open this row
-            $.ajax({
-                url:`/ajax/tk/${id}`,
-                type:"GET",
-                success:function(res){
-                    
-                    for(key in res){
-                        console.log(key)
-                        format(key)
+            row.child( format(row.data(
+                $.ajax({
+                    url:`/ajax/tk/${id}`,
+                    type:"GET",
+                    success:function(res){
+                        
+                        for(key in res){
+                            console.log(key)
+                            format(key)
+                        }
+                        
                     }
-                    
-                }
-            })
-            row.child( format(row.data()) ).show();
+                })
+            )) ).show();
             tr.addClass('shown');
         }
     })
