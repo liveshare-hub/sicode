@@ -31,8 +31,8 @@ $(document).ready(function() {
         }),
         "columns":[
             {
-                "data":res['data'][0]['klaim__parklaring'],
-                "data":res['data'][0]['klaim__no_rek_tk']
+                "data":"klaim__parklaring",
+                "data":"klaim__no_rek_tk"
             }
         ],
         "order":[[1, 'asc']]
