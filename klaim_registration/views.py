@@ -318,7 +318,7 @@ def sent_mail(request, pk):
     qrcode = tk_id.img_svg
     to = tk_id.klaim.no_kpj.data_tk.email
     im = Image.open(qrcode.file)
-    print(qrcode.file)
+    print(qrcode.url)
     bg = Image.new("RGB", (450,450), "white")
     bg.paste(im, (0,0), im)
     bg.save(qrcode.name + ".jpg", quality=95)
