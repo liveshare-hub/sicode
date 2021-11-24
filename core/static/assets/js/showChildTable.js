@@ -36,7 +36,7 @@ $(document).ready(function() {
                     tr.removeClass('shown')
                 }
                 else{
-                  row.child(format(row.data('child-value'))).show();
+                  row.child(format(row.data())).show();
                   tr.addClass('shown');
                 }
             }
