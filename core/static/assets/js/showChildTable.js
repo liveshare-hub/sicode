@@ -21,7 +21,7 @@ function format ( d ) {
 $(document).ready(function() {
     var id = $("#klaim_id").val();
     var table = $("#tableKlaim").DataTable({
-        "ajax":`{% url 'detil-tk-ajax' ${id} %}`,
+        "ajax":`{% url 'detil-tk-ajax' pk=${id} %}`,
         "columns":[
             {
                 "data":null
