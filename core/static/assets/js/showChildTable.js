@@ -21,18 +21,14 @@ function format ( d ) {
 $(document).ready(function() {
     var id = $("#klaim_id").val();
     var table = $("#tableKlaim").DataTable({
-        "ajax":$.ajax({
-            type:'GET',
-            url:`/ajax/tk/${id}`,
-            dataType:"json",
-            success:function(res){
-                console.log(res)
-            }
-        }),
+        "ajax":`{% url 'detil-tk-ajax' ${id} %}`,
         "columns":[
             {
+                "data":null
+            },
+            {
                 "data":"klaim__parklaring",
-                "data":"klaim__no_rek_tk"
+                "data":"klaim__parklaring"
             }
         ],
         "order":[[1, 'asc']]
