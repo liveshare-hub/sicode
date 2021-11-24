@@ -314,7 +314,7 @@ def ajaxApproval(request):
 
 def sent_mail(request, pk):
     tk_id = ApprovalHRD.objects.select_related('klaim','hrd').get(pk=pk)
-    qrcode = tk_id.img_svg.url
+    qrcode = tk_id.img_svg
     to = tk_id.klaim.no_kpj.data_tk.email
     context = {
         'nama':tk_id.klaim.no_kpj.data_tk.nama,
@@ -334,7 +334,7 @@ def sent_mail(request, pk):
         [to]
     )
     email.attach_alternative(html_content, "text/html")
-    filename = '/home/sicm6455/python/' + qrcode
+    filename = '/home/sicm6455/python/' + qrcode.url
     attachment = open(filename, 'rb')
     part = MIMEBase('application', 'octet-stream')
     part.set_payload((attachment).read())
