@@ -317,11 +317,6 @@ def sent_mail(request, pk):
     tk_id = ApprovalHRD.objects.select_related('klaim','hrd').get(pk=pk)
     qrcode = tk_id.img_svg
     to = tk_id.klaim.no_kpj.data_tk.email
-    im = Image.open(qrcode.file)
-    print(dir(qrcode))
-    bg = Image.new("RGB", (450,450), "white")
-    bg.paste(im, (0,0), im)
-    bg.save(qrcode.name + ".jpg", quality=95)
     context = {
         'nama':tk_id.klaim.no_kpj.data_tk.nama,
         'propic':tk_id.klaim.no_kpj.data_tk.propic,
