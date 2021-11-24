@@ -39,7 +39,7 @@ $(document).ready(function() {
                 type:"GET",
                 success:function(res){
                     console.log(res)
-                    res.forEach()
+                    res.forEach(format(d))
                     row.child( format(row.data()) ).show();
                     tr.addClass('shown');
                 }
