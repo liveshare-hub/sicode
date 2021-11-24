@@ -4,7 +4,7 @@ function format ( d ) {
     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
         '<tr>'+
             '<td>Paklaring:</td>'+
-            '<td>'+d['data']+'</td>'+
+            '<td>'+d.klaim__parklaring+'</td>'+
         '</tr>'+
         '<tr>'+
             '<td>Extension number:</td>'+
