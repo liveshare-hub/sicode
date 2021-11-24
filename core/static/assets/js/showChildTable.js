@@ -20,11 +20,12 @@ function format ( d ) {
 
 $(document).ready(function() {
     var id = $("#klaim_id").val();
-    var table = $("#tableKlaim")
-    
-    $("#tableKlaim tbody").on('click', 'td.dt-control', function(){
+    var table = $("#tableKlaim").DataTable({});
+
+    $("#tableKlaim tbody").on('click', 'td.details-control', function(){
         var tr = $(this).closest('tr');
-        console.log(tr)
+        var row = table.row(tr);
+        console.log(row)
 
         // if (row.child.isShown()){
         //     row.child.hide();
