@@ -26,10 +26,8 @@ $(document).ready(function() {
             {
                 "data":null
             },
-            {
-                "data":"klaim__parklaring",
-                "data":"klaim__parklaring"
-            }
+            {"data":"klaim__parklaring"},
+            {"data":"klaim__no_rek_tk"}
         ],
         "order":[[1, 'asc']]
 
