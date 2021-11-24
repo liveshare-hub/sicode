@@ -25,6 +25,7 @@ $(document).ready(function() {
     $("#tableKlaim tbody").on('click', 'td.details-control', function(){
         var tr = $(this).closest('tr');
         var row = table.row(tr);
+        console.log(row.data())
         
         if ( row.child.isShown() ) {
             // This row is already open - close it
@@ -38,7 +39,8 @@ $(document).ready(function() {
                 type:"GET",
                 success:function(res){
                     console.log(res)
-                    row.child( format(row.data(res)) ).show();
+                    res.forEach()
+                    row.child( format(row.data()) ).show();
                     tr.addClass('shown');
                 }
             })
