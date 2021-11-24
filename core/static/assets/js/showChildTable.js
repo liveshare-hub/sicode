@@ -27,7 +27,7 @@ $(document).ready(function() {
         var row = table.row(tr);
         $.ajax({
             type:'GET',
-            url:`ajax/tk/${id}`,
+            url:`/ajax/tk/${id}`,
             dataType:"json",
             success:function(data){
                 console.log(data)
