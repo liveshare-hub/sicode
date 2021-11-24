@@ -20,7 +20,7 @@ from rest_framework.generics import ListCreateAPIView
 from klaim_registration.serializer import KPJSerializer
 
 from .form import DataTKForm, KPJForm, KlaimFormPK
-from .models import KPJ, DataKlaim, ApprovalHRD, DataTK, SebabKlaim, toQRCode
+from .models import KPJ, DataKlaim, ApprovalHRD, DataTK, SebabKlaim
 from authentication.models import Perusahaan, Profile
 # from .decorators import admin_only
 
