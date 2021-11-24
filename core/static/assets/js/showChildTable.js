@@ -20,25 +20,25 @@ function format ( d ) {
 
 $(document).ready(function() {
     var id = $("#klaim_id").val();
-    var table = $("#tableKlaim").row()
+    var table = $("#tableKlaim").row
     console.log(table)
     $("#tableKlaim tbody").on('click', 'td.dt-control', function(){
         var tr = $(this).closest('tr');
-        var row = table.row(tr);
+        console.log(tr)
 
-        if (row.child.isShown()){
-            row.child.hide();
-            tr.removeClass('shown')
-        }
-        else{
-            $.ajax({
-                type:'GET',
-                url:`/detil/tk/${id}`,
-                dataType:"json",
-                success:function(data){
-                    console.log(data)
-                }
-            })
-        }
+        // if (row.child.isShown()){
+        //     row.child.hide();
+        //     tr.removeClass('shown')
+        // }
+        // else{
+        //     $.ajax({
+        //         type:'GET',
+        //         url:`/detil/tk/${id}`,
+        //         dataType:"json",
+        //         success:function(data){
+        //             console.log(data)
+        //         }
+        //     })
+        // }
     })
 })
