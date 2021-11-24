@@ -31,16 +31,16 @@ $(document).ready(function() {
             dataType:"json",
             success:function(data){
                 console.log(data)
+                if (row.child.isShown()){
+                    row.child.hide();
+                    tr.removeClass('shown')
+                }
+                else{
+                  row.child(format(tr.data('child-value'))).show();
+                  tr.addClass('shown');
+                }
             }
         })
         
-        if (row.child.isShown()){
-            row.child.hide();
-            tr.removeClass('shown')
-        }
-        else{
-          row.child(format(tr.data('child-value'))).show();
-          tr.addClass('shown');
-        }
     })
 })
