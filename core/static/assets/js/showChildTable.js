@@ -25,7 +25,6 @@ $(document).ready(function() {
     $("#tableKlaim tbody").on('click', 'td.details-control', function(){
         var tr = $(this).closest('tr');
         var row = table.row(tr);
-        console.log(row)
 
         if (row.child.isShown()){
             row.child.hide();
