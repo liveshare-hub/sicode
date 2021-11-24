@@ -21,7 +21,13 @@ function format ( d ) {
 $(document).ready(function() {
     var id = $("#klaim_id").val();
     var table = $("#tableKlaim").DataTable({
-        "ajax":`{% url 'detil-tk-ajax' pk=${id} %}`,
+        "ajax":$.ajax({
+            url:`/ajax/tk/${id}`,
+            type:"GET",
+            success:function(res){
+                console.log(res)
+            }
+        }),
         "columns":[
             {
                 "data":null
