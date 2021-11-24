@@ -264,7 +264,7 @@ def ajaxKlaim(request):
     except:
         return JsonResponse({'error': 'Errors!'})
 
-
+@csrf_exempt
 def detilKlaimAjax(request, pk):
     tk = list(ApprovalHRD.objects.select_related('klaim', 'hrd').filter(
         pk=pk).values('klaim__parklaring', 'klaim__no_rek_tk'))
