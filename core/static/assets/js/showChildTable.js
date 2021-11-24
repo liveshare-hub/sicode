@@ -27,19 +27,19 @@ $(document).ready(function() {
         var row = table.row(tr);
         console.log(row)
 
-        // if (row.child.isShown()){
-        //     row.child.hide();
-        //     tr.removeClass('shown')
-        // }
-        // else{
-        //     $.ajax({
-        //         type:'GET',
-        //         url:`/detil/tk/${id}`,
-        //         dataType:"json",
-        //         success:function(data){
-        //             console.log(data)
-        //         }
-        //     })
-        // }
+        if (row.child.isShown()){
+            row.child.hide();
+            tr.removeClass('shown')
+        }
+        else{
+            $.ajax({
+                type:'GET',
+                url:`/detil/tk/${id}`,
+                dataType:"json",
+                success:function(data){
+                    console.log(data)
+                }
+            })
+        }
     })
 })
