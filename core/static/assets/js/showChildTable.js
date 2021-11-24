@@ -20,27 +20,38 @@ function format ( d ) {
 
 $(document).ready(function() {
     var id = $("#klaim_id").val();
-    var table = $("#tableKlaim").DataTable({});
+    var table = $("#tableKlaim").DataTable({
+        "ajax":$.ajax({
+            type:'GET',
+            url:`/ajax/tk/${id}`,
+            dataType:"json",
+            success:function(res){
+                console.log(res)
+            }
+        }),
+        "columns":[
+            {
+                "data":res['data'][0]['klaim__parklaring'],
+                "data":res['data'][0]['klaim__no_rek_tk']
+            }
+        ],
+        "order":[[1, 'asc']]
+
+    });
 
     $("#tableKlaim tbody").on('click', 'td.details-control', function(){
         var tr = $(this).closest('tr');
         var row = table.row(tr);
-        $.ajax({
-            type:'GET',
-            url:`/ajax/tk/${id}`,
-            dataType:"json",
-            success:function(data){
-                console.log(data)
-                if (row.child.isShown()){
-                    row.child.hide();
-                    tr.removeClass('shown')
-                }
-                else{
-                  row.child(format(row.data())).show();
-                  tr.addClass('shown');
-                }
-            }
-        })
         
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
     })
 })
