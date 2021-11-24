@@ -39,10 +39,10 @@ $(document).ready(function() {
                 type:"GET",
                 success:function(res){
                     
-                    res.forEach(function(item){
-                        console.log(item)
-                        format(item)
-                    })
+                    for(key in res){
+                        console.log(key)
+                        format(key)
+                    }
                     
                 }
             })
