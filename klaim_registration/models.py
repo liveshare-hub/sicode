@@ -201,22 +201,16 @@ def Approval(sender, instance, created, **kwargs):
 
 
 class ApprovalHRD(models.Model):
-    status = models.CharField(choices=STATUS_APPROVAL,
-                              default='DALAM PEMERIKSAAN', max_length=20)
+    # status = models.CharField(choices=STATUS_APPROVAL,
+    #                           default='DALAM PEMERIKSAAN', max_length=20)
     klaim = models.ForeignKey(DataKlaim, on_delete=models.CASCADE)
     hrd = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    url_uuid = models.UUIDField(default=uuid.uuid4(), editable=False)
+    img_svg = models. ImageField(upload_to='qrcode/')
     keterangan = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.klaim.no_kpj.no_kpj
-
-class toQRCode(models.Model):
-    tk_klaim = models.ForeignKey(ApprovalHRD, on_delete=models.CASCADE)
-    url_uuid = models.UUIDField(default=uuid.uuid4(), editable=False)
-    img_svg = models.ImageField(upload_to='qrcode/')
-
-    def __str__(self):
-        return self.tk_klaim.klaim.nama
 
     def save(self, *args, **kwargs):
         qr = qrcode.QRCode(
@@ -236,11 +230,46 @@ class toQRCode(models.Model):
         draw = ImageDraw.Draw(canvas)
         canvas.paste(qrcode_image)
         # uid = uuid.uuid4()
-        fname = '{}.PNG'.format(self.tk_klaim.klaim.no_kpj.data_tk.nama)
+        fname = '{}.PNG'.format(self.klaim.no_kpj.data_tk.nama)
         buffer = BytesIO()
         canvas.save(buffer, 'PNG')
         # qrcode_image.save(buffer, 'PNG')
         self.img_svg.save(fname, File(buffer), save=False)
         canvas.close()
         # qrcode_image.close()
+        super().save(*args, **kwargs)
+
+# class toQRCode(models.Model):
+#     tk_klaim = models.ForeignKey(ApprovalHRD, on_delete=models.CASCADE)
+#     url_uuid = models.UUIDField(default=uuid.uuid4(), editable=False)
+#     img_svg = models.ImageField(upload_to='qrcode/')
+
+#     def __str__(self):
+#         return self.tk_klaim.klaim.nama
+
+#     def save(self, *args, **kwargs):
+#         qr = qrcode.QRCode(
+#             version=20,
+#             error_correction=qrcode.constants.ERROR_CORRECT_M,
+#             box_size=30,
+#             border=4,
+#         )
+#         qr.add_data('https://sicode.id/qr-code/{}/'.format(self.url_uuid))
+#         # qr.add_data('http://127.0.0.1/qr-code/{}/'.format(self.url_uuid))
+#         qr.make(fit=False)
+#         # qrcode_image = qrcode.make(
+#         # 'http://127.0.0.1:8000/qr-code/{}/'.format(self.url_uuid))
+#         qrcode_image = qr.make_image(fill_color="black", back_color="white")
+
+#         canvas = Image.new('RGB', (300, 300), 'white')
+#         draw = ImageDraw.Draw(canvas)
+#         canvas.paste(qrcode_image)
+#         # uid = uuid.uuid4()
+#         fname = '{}.PNG'.format(self.tk_klaim.klaim.no_kpj.data_tk.nama)
+#         buffer = BytesIO()
+#         canvas.save(buffer, 'PNG')
+#         # qrcode_image.save(buffer, 'PNG')
+#         self.img_svg.save(fname, File(buffer), save=False)
+#         canvas.close()
+#         # qrcode_image.close()
         super().save(*args, **kwargs)

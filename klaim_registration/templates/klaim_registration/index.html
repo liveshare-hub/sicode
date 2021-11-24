@@ -151,7 +151,7 @@ $("#warning-alert").fadeTo(2000, 500).slideUp(500, function(){
 $(document).ready(function() {
   var nik = $("td#id_kpj").text()
   var anik = $("a#id_kpj").text()
-  console.log(anik)
+  
   if (anik === 'Add KPJ') {
     $("a#id_add-kpj").remove();
     var html = "<input type='button' class='btn btn-sm btn-success' value='Add KPJ' disabled>"
