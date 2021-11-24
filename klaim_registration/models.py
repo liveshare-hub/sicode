@@ -219,7 +219,7 @@ class ApprovalHRD(models.Model):
             box_size=30,
             border=4,
         )
-        qr.add_data('https://sicode.id/qr-code/{}/'.format(self.url_uuid))
+        qr.add_data('https://sicode.id/qr-code/{}'.format(self.url_uuid))
         # qr.add_data('http://127.0.0.1/qr-code/{}/'.format(self.url_uuid))
         qr.make(fit=False)
         # qrcode_image = qrcode.make(
@@ -227,7 +227,7 @@ class ApprovalHRD(models.Model):
         qrcode_image = qr.make_image(fill_color="black", back_color="white")
 
         canvas = Image.new('RGB', (600, 600), 'white')
-        draw = ImageDraw.Draw(canvas)
+        draw = ImageDraw.Draw(qrcode_image)
         canvas.paste(draw)
         # uid = uuid.uuid4()
         fname = '{}.PNG'.format(self.klaim.no_kpj.data_tk.nama)
