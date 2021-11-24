@@ -32,7 +32,9 @@ $(document).ready(function() {
             {
                 "data":null
             },
-           
+           {
+               "data":null
+           },
         ],
         "order":[[1, 'asc']]
 
