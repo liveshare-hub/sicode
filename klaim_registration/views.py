@@ -346,7 +346,7 @@ def sent_mail(request, pk):
         email.send()
 
         return JsonResponse({'success':'Email Berhasil Terkirim'})
-    except ApprovalHRD.DoesNotExist:
+    except:
         return JsonResponse({'Errors':'Data Tidak Ditemukan'})
 
 
