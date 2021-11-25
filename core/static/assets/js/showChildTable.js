@@ -1,4 +1,5 @@
 /* Formatting function for row details - modify as you need */
+var items;
 function GetData(datas) {
     return $.ajax({
         url:`/ajax/tk/${datas}`,
@@ -9,7 +10,7 @@ function GetData(datas) {
 
 function format ( d ) {
     // `d` is the original data object for the row
-    var items = GetData(d)
+    items = GetData(d)
     console.log(items[0])
     return (
         
