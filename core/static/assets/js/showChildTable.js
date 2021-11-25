@@ -11,7 +11,7 @@ function GetData(datas) {
 function format ( d ) {
     // `d` is the original data object for the row
     items = GetData(d)
-    console.log(items[0])
+    console.log(items)
     return (
         
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
