@@ -5,7 +5,7 @@ function format ( d ) {
         url:`/ajax/tk/${d}`,
         type:'GET',
         success:function(data){
-            data
+            return data
         }
     })
     console.log(items.responseJSON)
