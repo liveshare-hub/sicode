@@ -6,16 +6,18 @@ function format ( d ) {
             url:`/ajax/tk/${d}`,
             type:'GET',
             success:function(data){
-                '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
+                $.each(data, function(i, item) {
+                    '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
                 '<tr>'+
                     '<td>Paklaring:</td>'+
-                    '<td>'+data.klaim__parklaring+'</td>'+
+                    '<td>'+item[0].klaim__parklaring+'</td>'+
                 '</tr>'+
                 '<tr>'+
                     '<td>No Rek. TK:</td>'+
-                    '<td>'+data.klaim__no_rek_tk+'</td>'+
+                    '<td>'+item[0].klaim__no_rek_tk+'</td>'+
                 '</tr>'+
                 '</table>'
+                })
             }
         })
     )
