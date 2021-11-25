@@ -8,10 +8,7 @@ function format ( d ) {
             success:function(data){
                 $.each(data, function(i, item) {
                    console.log(item[0].klaim__parklaring)
-                   var $tr = $('<tr>').append(
-                       $('<td>').text(item[0].klaim__parklaring)
-                   );
-                   console.log($tr.wrap('<p>').html())
+                   tr.innerHTML = item[0].klaim__parklaring
                 })
             }
         })
