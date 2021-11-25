@@ -24,6 +24,7 @@ function format ( d ) {
             console.log(err)
         }
     })
+}
 //     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
 //         '<tr>'+
 //             '<td>Paklaring:</td>'+
