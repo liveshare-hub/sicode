@@ -10,7 +10,6 @@ function format ( ) {
             data += '<div>Hidden Value: ' + res + '</div>'
         }
     })
-   return data
 }
 //     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
 //         '<tr>'+
