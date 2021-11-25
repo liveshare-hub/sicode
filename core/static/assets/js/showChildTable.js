@@ -14,7 +14,7 @@ function GetData(datas) {
 
 function format ( d ) {
     // `d` is the original data object for the row
-    var items = GetData(d)
+    var items = GetData(d).responseJSON
     console.log(items)
     return (
         
