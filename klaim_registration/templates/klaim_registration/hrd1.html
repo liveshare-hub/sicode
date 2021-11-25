@@ -29,7 +29,7 @@
               </thead>
               <tbody>
                 {% for data in datas %}
-                <tr id="{{data.id}}" class="align-middle">
+                <tr id="{{data.id}}" class="align-middle" data-child-value="hidden {{data.id}}">
                   <td class="details-control">{{forloop.counter}}</td>
                   <td>
                     <a href="#" data-toggle="tooltip" title="Kelengkapan Berkas">{{data.klaim}}</a>
