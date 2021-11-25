@@ -1,9 +1,9 @@
 /* Formatting function for row details - modify as you need */
-function format ( ) {
+function format ( d ) {
     // `d` is the original data object for the row
     var id = $("#klaim_id").val()
     $.ajax({
-        url:`/ajax/tk/${id}`,
+        url:`/ajax/tk/${d}`,
         type:'GET',
         success:function(res){
             console.log(res)
@@ -43,7 +43,7 @@ $(document).ready(function() {
         }
         else {
             // Open this row
-            row.child( format(tr.data()) ).show();
+            row.child( format(tr.data('child-value')) ).show();
             tr.addClass('shown');
         }
     })
