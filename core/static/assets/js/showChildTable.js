@@ -5,13 +5,11 @@ function format ( d ) {
         url:`/ajax/tk/${d}`,
         type:'GET',
         success:function(data){
-            $.each(data, function(i, item){
-                return item
-            })
+            data
         }
     })
     console.log(items)
-    var m = JSON.stringify(items.responseText)
+    var m = JSON.stringify(items)
     console.log(m)
     return (
         
