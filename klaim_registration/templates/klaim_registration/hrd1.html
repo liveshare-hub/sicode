@@ -21,6 +21,7 @@
               id="tableKlaim">
               <thead>
                 <tr>
+                  <th></th>
                   <th>#</th>
                   <th>Klaim</th>
                   <th>Keterangan</th>
@@ -29,7 +30,7 @@
               </thead>
               <tbody>
                 {% for data in datas %}
-                <tr id="{{data.id}}" class="align-middle" data-child-value="hidden {{data.id}}">
+                <tr data-child-value="hidden {{data.id}}">
                   <td class="details-control">{{forloop.counter}}</td>
                   <td>
                     <a href="#" data-toggle="tooltip" title="Kelengkapan Berkas">{{data.klaim}}</a>
