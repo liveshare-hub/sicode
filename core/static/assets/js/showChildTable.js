@@ -10,7 +10,7 @@ function format ( d ) {
             })
         }
     })
-    var m = JSON.stringify(items)
+    var m = JSON.stringify(items.responseJSON)
     console.log(m)
     return (
         
