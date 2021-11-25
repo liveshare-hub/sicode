@@ -1,30 +1,7 @@
 /* Formatting function for row details - modify as you need */
 function format ( d ) {
     // `d` is the original data object for the row
-    var id = $("#klaim_id").val();
-    $.ajax({
-        url:`/ajax/tk/${id}`,
-        type:'GET',
-        success:function(data){
-            '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        '<tr>'+
-            '<td>Paklaring:</td>'+
-            '<td>'+d.klaim__parklaring+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extension number:</td>'+
-            '<td>'+d['data']+'</td>'+
-        '</tr>'+
-        '<tr>'+
-            '<td>Extra info:</td>'+
-            '<td>And any further details here (images etc)...</td>'+
-        '</tr>'+
-    '</table>';
-        },
-        error:function(err){
-            console.log(err)
-        }
-    })
+   return '<div>Hidden Value: ' + value + '</div>'
 }
 //     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
 //         '<tr>'+
