@@ -11,7 +11,7 @@ function format ( d ) {
         }
     })
     console.log(items)
-    var m = JSON.stringify(items.responseJSON.data)
+    var m = JSON.stringify(items.data)
     console.log(m)
     return (
         
