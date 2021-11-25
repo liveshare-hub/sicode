@@ -1,14 +1,19 @@
 /* Formatting function for row details - modify as you need */
-function format ( d ) {
-    // `d` is the original data object for the row
-    var items = $.ajax({
-        url:`/ajax/tk/${d}`,
+function GetData(datas) {
+    $.ajax({
+        url:`/ajax/tk/${datas}`,
         type:'GET',
+        dataType:"json",
         success:function(data){
             return data
         }
     })
-    console.log(items.responseJSON)
+}
+
+function format ( d ) {
+    // `d` is the original data object for the row
+    var items = GetData(d)
+    console.log(items)
     var m = JSON.stringify(items)
     console.log(m)
     return (
@@ -16,7 +21,7 @@ function format ( d ) {
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
         '<tr>'+
         '<td>Paklaring:</td>'+
-        '<td>'+m+'</td>'+
+        '<td>'+'</td>'+
         '</tr>'+
         '</table>'
         
