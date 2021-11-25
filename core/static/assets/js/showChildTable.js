@@ -1,7 +1,15 @@
 /* Formatting function for row details - modify as you need */
-function format ( d ) {
+function format ( ) {
     // `d` is the original data object for the row
-   return '<div>Hidden Value: ' + d + '</div>'
+    var id = $("#klaim_id").val()
+    $.ajax({
+        url:`/ajax/tk/${id}`,
+        type:'GET',
+        success:function(res){
+            console.log(res)
+        }
+    })
+   return '<div>Hidden Value: ' + res + '</div>'
 }
 //     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
 //         '<tr>'+
@@ -35,7 +43,7 @@ $(document).ready(function() {
         }
         else {
             // Open this row
-            row.child( format(tr.data('child-value')) ).show();
+            row.child( format(tr.data()) ).show();
             tr.addClass('shown');
         }
     })
