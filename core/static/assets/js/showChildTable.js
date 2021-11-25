@@ -1,11 +1,11 @@
 /* Formatting function for row details - modify as you need */
-var myData;
-function GetData(datas) {
+function GetData() {
+    var id = $("#klaim_id").val();
     return $.ajax({
-        url:`/ajax/tk/${datas}`,
+        url:`/ajax/tk/${id}`,
         type:'GET',
         success:function(data){
-            myData = data
+            return data
         }
         
         
@@ -14,8 +14,8 @@ function GetData(datas) {
 
 function format ( d ) {
     // `d` is the original data object for the row
-    var items = GetData(d)
-    console.log(items.responseJSON['data'])
+    
+    console.log(d)
     return (
         
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
