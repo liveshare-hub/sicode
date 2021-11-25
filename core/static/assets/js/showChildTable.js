@@ -1,6 +1,7 @@
 /* Formatting function for row details - modify as you need */
 function format ( d ) {
     // `d` is the original data object for the row
+    console.log(d)
     var id = $("#klaim_id").val()
     $.ajax({
         url:`/ajax/tk/${d}`,
