@@ -10,7 +10,7 @@ function GetData(datas) {
 function format ( d ) {
     // `d` is the original data object for the row
     var items = GetData(d)
-    console.log(items[0].responseJSON)
+    console.log(items.responseJSON)
     var m = JSON.stringify(items)
     console.log(m)
     return (
