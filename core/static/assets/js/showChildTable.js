@@ -8,7 +8,7 @@ function format ( d ) {
             data
         }
     })
-    console.log(items)
+    console.log(items.responseJSON)
     var m = JSON.stringify(items)
     console.log(m)
     return (
