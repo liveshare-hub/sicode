@@ -16,7 +16,7 @@ function format ( d ) {
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
         '<tr>'+
         '<td>Paklaring:</td>'+
-        '<td>'+items.responseJSON+'</td>'+
+        '<td>'+items.data+'</td>'+
         '</tr>'+
         '</table>'
         
