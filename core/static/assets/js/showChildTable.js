@@ -10,8 +10,9 @@ function format ( d ) {
             })
         }
     })
-    var m = JSON.stringify(items.responseJSON)
-    console.log(m)
+    console.log(items)
+    // var m = JSON.stringify(items.responseJSON)
+    // console.log(m)
     return (
         
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
