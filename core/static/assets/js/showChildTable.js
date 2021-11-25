@@ -7,15 +7,15 @@ function format ( d ) {
             type:'GET',
             success:function(data){
                 $.each(data, function(i, item) {
-                   return '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
-                        '<tr>'+
-                        '<td>Paklaring:</td>'+
-                        '<td>'+item[0].klaim__parklaring+'</td>'+
-                        '</tr>'+
-                        '</table>'
+                   return item
                 })
             }
-        })
+        }),  '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
+        '<tr>'+
+        '<td>Paklaring:</td>'+
+        '<td>'+item[0].klaim__parklaring+'</td>'+
+        '</tr>'+
+        '</table>'
         
     )
     
