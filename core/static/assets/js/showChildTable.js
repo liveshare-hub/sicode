@@ -6,7 +6,7 @@ function format ( d ) {
         type:'GET',
         success:function(data){
             $.each(data, function(i, item){
-                console.log(item)
+                return item
             })
         }
     })
@@ -14,7 +14,7 @@ function format ( d ) {
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
         '<tr>'+
         '<td>Paklaring:</td>'+
-        '<td>'+'</td>'+
+        '<td>'+items.klaim__parklaring+'</td>'+
         '</tr>'+
         '</table>'
         
