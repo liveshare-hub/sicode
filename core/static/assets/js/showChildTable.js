@@ -3,8 +3,9 @@ function GetData(datas) {
     $.ajax({
         url:`/ajax/tk/${datas}`,
         type:'GET',
-        dataType:"json",
+        
         success:function(data){
+            console.log(data)
             return data
         }
     })
