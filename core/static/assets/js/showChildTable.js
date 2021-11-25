@@ -7,16 +7,7 @@ function format ( d ) {
             type:'GET',
             success:function(data){
                 $.each(data, function(i, item) {
-                    '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
-                '<tr>'+
-                    '<td>Paklaring:</td>'+
-                    '<td>'+item[0].klaim__parklaring+'</td>'+
-                '</tr>'+
-                '<tr>'+
-                    '<td>No Rek. TK:</td>'+
-                    '<td>'+item[0].klaim__no_rek_tk+'</td>'+
-                '</tr>'+
-                '</table>'
+                   console.log(item[0].klaim__parklaring)
                 })
             }
         })
