@@ -2,7 +2,7 @@
 function GetData(datas) {
     return $.ajax({
         url:`/ajax/tk/${datas}`,
-        type:'GET',
+        
         
     })
 }
