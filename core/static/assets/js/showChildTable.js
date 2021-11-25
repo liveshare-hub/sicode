@@ -10,13 +10,14 @@ function format ( d ) {
             })
         }
     })
-    
+    var m = JSON.stringify(items)
+    console.log(m)
     return (
         
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
         '<tr>'+
         '<td>Paklaring:</td>'+
-        '<td>'+items.data+'</td>'+
+        '<td>'+m+'</td>'+
         '</tr>'+
         '</table>'
         
