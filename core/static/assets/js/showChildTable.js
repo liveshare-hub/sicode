@@ -1,7 +1,7 @@
 /* Formatting function for row details - modify as you need */
 function format ( d ) {
     // `d` is the original data object for the row
-    console.log(d)
+    return console.log(d)
     
 }
 //     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
