@@ -5,16 +5,16 @@ function format ( d ) {
         url:`/ajax/tk/${d}`,
         type:'GET',
         success:function(data){
-            return data
+            $.each(data, function(i, item){
+                console.log(item)
+            })
         }
     })
     return (
-        $.each(items.responseJSON, function(i, item){
-            console.log(item)
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
         '<tr>'+
         '<td>Paklaring:</td>'+
-        '<td>'+item[0].klaim__parklaring+'</td>'+
+        '<td>'+'</td>'+
         '</tr>'+
         '</table>'
         })
