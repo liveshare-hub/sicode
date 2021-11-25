@@ -7,7 +7,7 @@ function format ( ) {
         type:'GET',
         success:function(res){
             console.log(res)
-            data += '<div>Hidden Value: ' + res + '</div>'
+            return '<div>Hidden Value: ' + res + '</div>'
         }
     })
 }
