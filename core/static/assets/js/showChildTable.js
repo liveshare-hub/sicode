@@ -8,7 +8,16 @@ function format ( d ) {
             return data
         }
     })
-    return console.log(items)
+    return (
+        $.each(items, function(i, item){
+        '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
+        '<tr>'+
+        '<td>Paklaring:</td>'+
+        '<td>'+item[0].klaim__parklaring+'</td>'+
+        '</tr>'+
+        '</table>'
+        })
+    )
     
 }
 //     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
