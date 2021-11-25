@@ -17,7 +17,7 @@ function format ( d ) {
         '<td>'+'</td>'+
         '</tr>'+
         '</table>'
-        })
+        
     )
     
 }
