@@ -1,6 +1,7 @@
 /* Formatting function for row details - modify as you need */
 function format ( d ) {
     // `d` is the original data object for the row
+    var id = $("#klaim_id").val();
     $.ajax({
         url:`/ajax/tk/${id}`,
         type:'GET',
@@ -43,7 +44,7 @@ function format ( d ) {
 
 
 $(document).ready(function() {
-    var id = $("#klaim_id").val();
+    
     var table = $("#tableKlaim").DataTable({});
 
     $("#tableKlaim tbody").on('click', 'td.details-control', function(){
