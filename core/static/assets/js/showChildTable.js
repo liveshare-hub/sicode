@@ -3,7 +3,7 @@ function GetData(datas) {
     $.ajax({
         url:`/ajax/tk/${datas}`,
         type:'GET',
-        
+        async:true,
         success:function(data){
             console.log(data)
             return data
