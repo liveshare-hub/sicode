@@ -10,15 +10,18 @@ function format ( d ) {
             })
         }
     })
-    console.log(items)
+    
     return (
-        
-        '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
+        $.each(items.responseJSON, function(i, item){
+            '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
         '<tr>'+
         '<td>Paklaring:</td>'+
-        '<td>'+items+'</td>'+
+        '<td>'+item.klaim__parklaring+'</td>'+
         '</tr>'+
         '</table>'
+
+        })
+        
         
     )
     
