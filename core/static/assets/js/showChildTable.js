@@ -14,7 +14,7 @@ function format ( d ) {
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
         '<tr>'+
         '<td>Paklaring:</td>'+
-        '<td>'+items.klaim__parklaring+'</td>'+
+        '<td>'+items+'</td>'+
         '</tr>'+
         '</table>'
         
