@@ -1,14 +1,14 @@
 /* Formatting function for row details - modify as you need */
 function format ( d ) {
     // `d` is the original data object for the row
-    $.ajax({
+    var items = $.ajax({
         url:`/ajax/tk/${d}`,
         type:'GET',
         success:function(data){
             return data
         }
     })
-    return console.log(data)
+    return console.log(items)
     
 }
 //     return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
