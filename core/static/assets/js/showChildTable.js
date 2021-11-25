@@ -58,7 +58,7 @@ $(document).ready(function() {
         }
         else {
             // Open this row
-            row.child( format(row.data('child-value')) ).show();
+            row.child( format(tr.data('child-value')) ).show();
             tr.addClass('shown');
         }
     })
