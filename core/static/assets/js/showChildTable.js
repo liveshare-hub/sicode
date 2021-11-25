@@ -10,7 +10,7 @@ function format ( d ) {
     })
     return (
         $.each(items, function(i, item){
-            console.log(item)
+            console.log(i)
         '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
         '<tr>'+
         '<td>Paklaring:</td>'+
