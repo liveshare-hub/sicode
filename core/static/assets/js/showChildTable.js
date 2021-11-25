@@ -12,16 +12,13 @@ function format ( d ) {
     })
     
     return (
-        $.each(items.responseJSON, function(i, item){
-            '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
+        
+        '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">'+
         '<tr>'+
         '<td>Paklaring:</td>'+
-        '<td>'+item.klaim__parklaring+'</td>'+
+        '<td>'+items.responseJSON.data[0].klaim__parklaring+'</td>'+
         '</tr>'+
         '</table>'
-
-        })
-        
         
     )
     
