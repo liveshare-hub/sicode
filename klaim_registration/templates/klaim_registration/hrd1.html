@@ -61,62 +61,6 @@
                   </td>
   
                 </tr>
-                <!-- Modal Status Approval-->
-                <div class="modal fade" id="exampleModal{{data.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Approval {{data.klaim.nama}}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-  
-                      <div class="modal-body">
-                        <form id="formApprove" method="POST" enctype='multipart/form-data'>
-                          {% csrf_token %}
-                          <select id="status" class="form-select" aria-label="Default select example">
-                            <option selected>Pilih status...</option>
-                            <option value="DALAM PEMERIKSAAN">DALAM PEMERIKSAAN</option>
-                            <option value="DISETUJUI">DISETUJUI</option>
-                            <option value="DITOLAK">DITOLAK</option>
-                          </select>
-                          <div class="form-floating">
-                            <textarea id="keterangan" class="form-control" placeholder="Leave a comment here"
-                              style="height: 100px"></textarea>
-                            <label for="floatingTextarea2">keterangan</label>
-                          </div>
-                          <input hidden type="text" id="klaim_id" value="{{data.id}}">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button id="simpan" type="submit" class="btn btn-primary">Save changes</button>
-                      </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-  
-                <div class="modal fade" id="detailModal{{data.id}}" tabindex="-1" role="dialog"
-                  aria-labelledby="myModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">Modal title</h4>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">×</span></button>
-                      </div>
-                      <div class="modal-body">
-                        <p>One fine body…</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                        <button class="btn btn-primary" type="button">Save changes</button>
-                      </div>
-                    </div>
-                    <!-- /.modal-content-->
-                  </div>
-                  <!-- /.modal-dialog-->
-                </div>
                 {% endfor %}
               </tbody>
             </table>
