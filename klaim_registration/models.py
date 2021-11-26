@@ -131,7 +131,7 @@ class DataTK(models.Model):
         buffer = BytesIO()
         canvas.save(buffer, 'jpeg')
         # qrcode_image.save(buffer, 'PNG')
-        self.img_svg.save(fname, File(buffer), save=False)
+        self.qr_code_tk.save(fname, File(buffer), save=False)
         canvas.close()
 
         super().save(*args, **kwargs)
