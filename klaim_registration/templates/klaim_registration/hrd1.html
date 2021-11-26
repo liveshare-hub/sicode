@@ -36,7 +36,7 @@
                   <td>
                     <a href="#" data-toggle="tooltip" title="Kelengkapan Berkas">{{data.klaim}}</a>
                   </td>
-                  {% if data.klaim.paklaring and data.klaim.no_rek_tk %}
+                  {% if data.klaim.paklaring or data.klaim.no_rek_tk %}
                   <td>
                     <table>
                       <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
