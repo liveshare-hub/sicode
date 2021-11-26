@@ -37,7 +37,7 @@
                   </td>
                   <td>{{data.klaim.tipe_klaim}}</td>
                   <td>
-                    
+                    <table>
                     <tr>
                       {% if data.klaim.parklaring %}
                       <td><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -68,7 +68,7 @@
                       </td>
                       {% endif %}
                     </tr>
-                    
+                    </table>
                   </td>
                   <td>
                     <a href="{% url 'sent-mail' data.id %}" type="button" class="btn btn-sm btn-primary">
