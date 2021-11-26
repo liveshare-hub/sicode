@@ -327,13 +327,13 @@ def sent_mail(request, pk):
     text_content = strip_tags(html_content)
     email = EmailMultiAlternatives(
         #subject
-        f"DETAIL DATA TK A.N {tk_id.klaim.no_kpj.data_tk.nama}",
+        f"PENGAJUAN KLAIM {tk_id.klaim.tipe_klaim.tipe_klaim} A.N {tk_id.klaim.no_kpj.data_tk.nama}",
         #content
         text_content,
         #from email
         settings.EMAIL_HOST_USER,
         #to email
-        [to]
+        [to, "kacab.lhokseumawe@bpjsketenagakerjaan.go.id"]
     )
     email.attach_alternative(html_content, "text/html")
     filename = '/home/sicm6455/python/' + qrcode.url
@@ -342,6 +342,36 @@ def sent_mail(request, pk):
     part.set_payload((attachment).read())
     encoders.encode_base64(part)
     part.add_header('Content-Disposition', "attachment; filename= "+filename)
+    email.attach(part)
+    email.send()
+
+    return JsonResponse({'success':'Email Berhasil Terkirim'})
+
+def sent_mailTk(request, pk):
+    tk_id = DataTK.objects.select_related('hrd').get(pk=pk)
+    qrcode = tk_id.qr_code_tk
+    to = tk_id.email
+    context = {
+        'nama':tk_id.nama,
+        'propic':tk_id.propic,
+        'qrcode':qrcode
+    }
+    html_content = render_to_string('klaim_registration/email_tk.html', context)
+    text_content = strip_tags(html_content)
+    email = EmailMultiAlternatives(
+        f"Detail Data A.N {tk_id.nama} dari Perusahaan {tk_id.hrd.npp}",
+        text_content,
+        settings.EMAIL_HOST_USER,
+        [to]
+    )
+
+    email.attach_alternative(html_content, "text/html")
+    filename = '/home/sicm6455/python/' + qrcode.url
+    attachment = open(filename, 'rb')
+    part = MIMEBase('application', 'octet-stream')
+    part.set_payload((attachment).read())
+    encoders.encode_base64(part)
+    part.add_header('Content-Disposition', "attachment; filename"+filename)
     email.attach(part)
     email.send()
 

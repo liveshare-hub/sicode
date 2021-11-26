@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from PIL import Image, ImageDraw
-import uuid
+import uuid, hashlib
 from django.db.models.signals import post_save
 from django.dispatch.dispatcher import receiver
 import qrcode
@@ -93,6 +93,9 @@ class DataTK(models.Model):
         upload_to='tk/paklaring/', validators=[EKSTENSI_VALIDATOR], blank=True, null=True)
     # file_lain = models.FileField(
     #     upload_to='lain/', null=True, blank=True, validators=[EKSTENSI_VALIDATOR])
+    qr_code_tk = models.ImageField(upload_to='qrcode/tk/')
+    url_id = models.CharField(max_length=64)
+    edited_on = models.DateTimeField(auto_created=True)
     created_on = models.DateField(auto_now_add=True)
 
     class Meta:
@@ -102,6 +105,35 @@ class DataTK(models.Model):
     def __str__(self):
         return '{} - {}'.format(self.nik, self.nama)
 
+    def save(self, *args, **kwargs):
+        self.url_id = hashlib.sha256(self.nama+self.nik).hexdigest()
+        url = "https://sicode.id/qr-code/tk/{}".format(self.url_id)
+        qr = qrcode.QRCode(
+            version=20,
+            error_correction=qrcode.constants.ERROR_CORRECT_M,
+            box_size=50,
+            border=2,
+        )
+        # qr.add_data('https://sicode.id/qr-code/{}'.format(self.url_uuid))
+        # qr.add_data('http://127.0.0.1/qr-code/{}/'.format(self.url_uuid))
+        # qr.make(fit=False)
+        # qrcode_image = qrcode.make(
+        # 'http://127.0.0.1:8000/qr-code/{}/'.format(self.url_uuid))
+        # qrcode_image = qr.make_image(fill_color="black", back_color="white")
+        qrcode_image = qrcode.make(url)
+
+        canvas = Image.new('RGB', (450, 450), 'white')
+        draw = ImageDraw.Draw(canvas)
+        canvas.paste(qrcode_image)
+        # uid = uuid.uuid4()
+        fname = '{}.jpg'.format(self.nama)
+        buffer = BytesIO()
+        canvas.save(buffer, 'jpeg')
+        # qrcode_image.save(buffer, 'PNG')
+        self.img_svg.save(fname, File(buffer), save=False)
+        canvas.close()
+
+        super().save(*args, **kwargs)
 
 class KPJ(models.Model):
     data_tk = models.ForeignKey(
