@@ -321,6 +321,7 @@ def sent_mail(request, pk):
     context = {
         'nama':tk_id.klaim.no_kpj.data_tk.nama,
         'propic':tk_id.klaim.no_kpj.data_tk.propic,
+        'klaim':tk_id.klaim.tipe_klaim.tipe_klaim,
         'qrcode':qrcode
     }
     html_content = render_to_string('klaim_registration/email.html', context)
