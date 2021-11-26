@@ -22,7 +22,8 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Klaim</th>
+                  <th>Nama TK</th>
+                  <th>Jenis Klaim</th>
                   <th>Keterangan</th>
                   <th>Action</th>
                 </tr>
@@ -34,7 +35,7 @@
                   <td>
                     <a href="#" data-toggle="tooltip" title="Kelengkapan Berkas">{{data.klaim}}</a>
                   </td>
-                  
+                  <td></td>
                   <td>
                     <table>
                     <tr>
@@ -68,6 +69,7 @@
                       {% endif %}
                     </tr>
                     </table>
+                  </td>
                   <td>
                     <a href="{% url 'sent-mail' data.id %}" type="button" class="btn btn-sm btn-primary">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
