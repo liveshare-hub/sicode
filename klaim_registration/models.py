@@ -106,8 +106,8 @@ class DataTK(models.Model):
         return '{} - {}'.format(self.nik, self.nama)
 
     def save(self, *args, **kwargs):
-        strings = self.nama+self.nik
-        self.url_id = hashlib.sha256(str(strings).encode('utf-8')).hexdigest()
+        strings = str(self.nama+self.nik).encode('utf-8')
+        self.url_id = hashlib.sha256(strings).hexdigest()
         url = "https://sicode.id/qr-code/tk/{}".format(self.url_id)
         qr = qrcode.QRCode(
             version=20,
