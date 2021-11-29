@@ -23,7 +23,6 @@ $("#id_NIK").focusout(function() {
             }),
             dataType:"json",
             success:function(data){
-                console.log(data)
                 var dataNama = data['data']['allTk']
                 if(dataNama.length != 0){
                     $("#id_simpan").attr("disabled", false);
@@ -33,7 +32,6 @@ $("#id_NIK").focusout(function() {
                     
                     $("#id_hasil").val(nama)
                     $("#id_pk").val(id)
-                    console.log(id)
                     $("#id_NIK").attr("disabled",true).attr("value",nik)
                 }else{
                     $("#id_hasil").val("NIK TIDAK DITEMUKAN")
