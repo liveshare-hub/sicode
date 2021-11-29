@@ -59,7 +59,7 @@ function SimpanData() {
 
     $.ajax({
         method:"POST",
-        url:url,
+        url:'/tambah/kpj/ajax',
         contentType:false,
         processData:false,
         data:data,
