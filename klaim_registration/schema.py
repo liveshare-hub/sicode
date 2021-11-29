@@ -18,7 +18,7 @@ class DataTKType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     all_kpjs = graphene.List(KPJType, no_kpj=graphene.String())
-    all_tk = graphene.List(DataTKType)
+    all_tk = graphene.List(DataTKType, nik=graphene.String())
 
     def resolve_all_kpjs(root, info, no_kpj):
 
