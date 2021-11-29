@@ -1,7 +1,6 @@
 var superQuery = `query ($nik: String!) {allTk(nik:$nik){
-    dataTk{
-        nama
-    }
+    nama
+    id
 }}`
 
 var reg = new RegExp('^\\d+$');
@@ -28,10 +27,13 @@ $("#id_NIK").focusout(function() {
                 var dataNama = data['data']['allTk']
                 if(dataNama.length != 0){
                     $("#id_simpan").attr("disabled", false);
-                    var nama = dataNama[0]['dataTk']['nama']
-                    var nik = dataNama[0]['dataTk']['nik']
+                    var nama = dataNama[0]['nama']
+                    var nik = dataNama[0]['nik']
+                    var id = dataNama[0]['id']
                     
                     $("#id_hasil").val(nama)
+                    $("#id_pk").val(id)
+                    console.log(id)
                     $("#id_nik").attr("disabled",true).attr("value",nik)
                 }else{
                     $("#id_hasil").val("NIK TIDAK DITEMUKAN")
@@ -47,6 +49,32 @@ $("#id_NIK").focusout(function() {
         })
     }
 });
+
+function SimpanData() {
+    var data = new FormData()
+    data.append("nik", $("#id_nik").val())
+    data.append("tgl_keps", $("#id_tgl_keps").val())
+    data.append("tgl_na", $("#id_tgl_na").val())
+    data.append("csrfmiddlewaretoken", $("input[name='csrfmiddlewaretoken']").val())
+
+    $.ajax({
+        method:"POST",
+        url:url,
+        contentType:false,
+        processData:false,
+        data:data,
+        success:function(res){
+            $("input").val("")
+            $("#id_nik").attr("disabled", false)
+            $(".card-body").prepend("<div class='alert alert-success' role='alert'>KPJ Berhasil di Simpan</div>")
+            // console.log(data)
+        },
+        error:function(err){
+            console.log(err)
+        }
+    })
+}
+
 
 $("#clear").click(function(){
     $("input").val("")
