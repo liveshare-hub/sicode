@@ -116,7 +116,7 @@ def tambah_kpj(request, pk):
 
 @login_required(login_url='/accounts/login/')
 def KPJAjax(request):
-    return render(request, '/klaim_registration/input_kpj_ajax.html')
+    return render(request, 'klaim_registration/input_kpj_ajax.html')
 
 
 @csrf_exempt
