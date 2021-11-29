@@ -31,7 +31,7 @@ function SimpanData() {
     })
 }
 
-$("#id_kpj").focusout(function() {
+$("#id_nik").focusout(function() {
     var nik = $(this).val()
     var VAL = $(this).val()
     if((kpj.length !== 11) || (!reg.test(VAL))){
