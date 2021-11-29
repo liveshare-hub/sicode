@@ -78,5 +78,6 @@ function SimpanData() {
 
 $("#clear").click(function(){
     $("input").val("")
+    $("#id_NIK").attr("disabled", false)
     $("#id_simpan").attr("disabled", false)
 })
