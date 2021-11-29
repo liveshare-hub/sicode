@@ -122,7 +122,7 @@ def KPJAjax(request):
 @csrf_exempt
 def tambah_kpjAjax(request, pk):
     tk_id = DataTK.objects.get(pk=pk)
-    no_kpj = request.POST.get('no_kpj')
+    no_kpj = request.POST.get('kpj')
     tgl_keps = request.POST.get('tgl_keps')
     tgl_na = request.POST.get('tgl_na')
     try:

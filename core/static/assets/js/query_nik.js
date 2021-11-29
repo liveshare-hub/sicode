@@ -50,7 +50,7 @@ function SimpanData() {
     var pk = $("#id_pk").val()
     var data = new FormData()
     data.append("pk", $("#id_pk").val())
-    data.append("no_kpj", $("#id_kpj").val())
+    data.append("kpj", $("#id_kpj").val())
     data.append("tgl_keps", $("#id_tgl_keps").val())
     data.append("tgl_na", $("#id_tgl_na").val())
     data.append("csrfmiddlewaretoken", $("input[name='csrfmiddlewaretoken']").val())
