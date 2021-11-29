@@ -11,7 +11,7 @@ $("#id_NIK").focusout(function() {
     var nik = $(this).val()
     var VAL = $(this).val()
     console.log(nik)
-    if((nik.length !== 11) || (!reg.test(VAL))){
+    if((nik.length !== 16) || (!reg.test(VAL))){
         $("#id_hasil").val("FORMAT NIK SALAH!")
     }else{
         $.ajax({
