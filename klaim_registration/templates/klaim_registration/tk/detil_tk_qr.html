@@ -34,6 +34,7 @@
                         <div class="col-md-6"><label class="labels">Email</label><input type="text" class="form-control" value="{{data.email}}" disabled></div>
                         <div class="col-md-6"><label class="labels">Status Perkawinan</label><input type="text" class="form-control" value="{{data.get_status_display}}" disabled></div>
                         {% if data.status == 'MENIKAH'%}
+                        <div class="row mt-3">
                             <table class="table table-bordered">
                                 <thead>
                                     <th></th>
@@ -58,6 +59,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </div>
                         {% endif %}
                     </div>
                 </div>
