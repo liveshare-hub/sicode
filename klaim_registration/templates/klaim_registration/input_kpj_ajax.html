@@ -22,34 +22,34 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="id_NIK">NIK</label>
-                                <input type="text" class="form-control" name="" id="id_NIK" maxlength="16">
+                                <input type="text" class="form-control" name="nik" id="id_NIK" maxlength="16">
+                                <span><button type="button" id="clear" class="btn btn-sm btn-primary float-right mt-2">hapus</button></span>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="id_hasil">Hasil</label>
                                 <input type="text" class="form-control" name="" id="id_hasil" value="" disabled>
                             
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="id_no_kpj">No. KPJ</label>
-                                {{form.no_kpj}}
-                            </div>
-                            
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="id_tgl_keps">Blth Keps.</label>
-                                {{form.tgl_keps}}
+                            <div class="form-group col-md-4">
+                                <label for="id_no_kpj">No. KPJ</label>
+                                <input type="text" class="form-control" name="kpj" id="id_no_kpj" maxlength="11">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
+                                <label for="id_tgl_keps">Blth Keps.</label>
+                                <input type="date" class="form-control" name="tgl_keps" id="id_tgl_keps">
+                            </div>
+                            <div class="form-group col-md-4">
                                 <label for="id_tgl_na">Blth NA.</label>
-                                {{form.tgl_na}}
+                                <input type="text" class="form-control" name="tgl_na" id="id_tgl_na">
                             </div>
                         </div>
                     
                     </div>
                         <div class="form-group">
                             
-                            <button type="submit" name="submit" class="btn btn-primary float-right">Submit</button>
+                            <button type="button" name="submit" class="btn btn-primary float-right" id="id_simpan" onclick="SimpanData()">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -61,11 +61,6 @@
 
 {% block javascripts %}
 <script>
-//    $('#add_more').click(function() {
-  //      var form_idx = $('#id_kpj_set-TOTAL_FORMS').val();
-    //    console.log(form_idx)
-      //  $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
-        //$('#id_kpj_set-TOTAL_FORMS').val(parseInt(form_idx) + 1);
-    //});
+<script src="/static/assets/js/query_nik.js"></script>
 </script>
 {% endblock  %}

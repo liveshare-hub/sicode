@@ -1,10 +1,35 @@
-var superQuery = `query ($nik: Int!) {allKpjs(nik:$nik){
+var superQuery = `query ($nik: String!) {allKpjs(nik:$nik){
     dataTk{
         nama
     }
 }}`
 
 var reg = new RegExp('^\\d+$');
+
+function SimpanData() {
+    var data = new FormData()
+    data.append("nik", $("#id_nik").val())
+    data.append("tgl_keps", $("#id_tgl_keps").val())
+    data.append("tgl_na", $("#id_tgl_na").val())
+    data.append("csrfmiddlewaretoken", $("input[name='csrfmiddlewaretoken']").val())
+
+    $.ajax({
+        method:"POST",
+        url:url,
+        contentType:false,
+        processData:false,
+        data:data,
+        success:function(res){
+            $("input").val("")
+            $("#id_nik").attr("disabled", false)
+            $(".card-body").prepend("<div class='alert alert-success' role='alert'>KPJ Berhasil di Simpan</div>")
+            // console.log(data)
+        },
+        error:function(err){
+            console.log(err)
+        }
+    })
+}
 
 $("#id_kpj").focusout(function() {
     var nik = $(this).val()
@@ -22,18 +47,16 @@ $("#id_kpj").focusout(function() {
             }),
             dataType:"json",
             success:function(data){
-                var dataNama = data['data']['allKpjs']
+                var dataNama = data['data']['allTk']
                 if(dataNama.length != 0){
                     $("#id_simpan").attr("disabled", false);
                     var nama = dataNama[0]['dataTk']['nama']
                     var nik = dataNama[0]['dataTk']['nik']
                     
-                    $("#id_nama").val(nama)
-                    $("#id_nik").val(nik.replaceAt(4,"*"))
-                    $("#id_kpj").attr("disabled",true).attr("value",kpj)
+                    $("#id_hasil").val(nama)
+                    $("#id_nik").attr("disabled",true).attr("value",nik)
                 }else{
-                    $("#id_nama").val("KPJ TIDAK DITEMUKAN")
-                    $("#id_nik").val("KPJ TIDAK DITEMUKAN")
+                    $("#id_hasil").val("NIK TIDAK DITEMUKAN")
                     $("#id_simpan").attr("disabled", true)
                     
                 }
@@ -49,17 +72,5 @@ $("#id_kpj").focusout(function() {
 
 $("#clear").click(function(){
     $("input").val("")
-    $("select").val("")
-    $("#id_kpj").attr("disabled", false)
     $("#id_simpan").attr("disabled", false)
 })
-
-String.prototype.replaceAt=function(index, char) {
-    var a = this.split("");
-    for(; index < a.length; index++){
-        a[index] = char;
-        
-        return a.join("");
-    }
-}
-// console.log(kpj)
