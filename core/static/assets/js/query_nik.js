@@ -31,9 +31,9 @@ function SimpanData() {
     })
 }
 
-console.log($("#id_nik").val())
 
 $("#id_nik").focusout(function() {
+    console.log($("#id_nik").val())
     var nik = $(this).val()
     var VAL = $(this).val()
     console.log(nik)
