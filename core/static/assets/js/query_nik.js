@@ -34,7 +34,7 @@ function SimpanData() {
 $("#id_nik").focusout(function() {
     var nik = $(this).val()
     var VAL = $(this).val()
-    if((kpj.length !== 11) || (!reg.test(VAL))){
+    if((nik.length !== 11) || (!reg.test(VAL))){
         $("#id_hasil").val("FORMAT KPJ SALAH!")
     }else{
         $.ajax({
