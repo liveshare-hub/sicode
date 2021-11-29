@@ -47,6 +47,7 @@ $("#id_kpj").focusout(function() {
             }),
             dataType:"json",
             success:function(data){
+                console.log(data)
                 var dataNama = data['data']['allTk']
                 if(dataNama.length != 0){
                     $("#id_simpan").attr("disabled", false);
