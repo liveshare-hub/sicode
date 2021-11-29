@@ -4,14 +4,16 @@ from graphene_django import DjangoObjectType
 from .models import KPJ, DataTK
 # from django.db.models import Q
 
+
 class KPJType(DjangoObjectType):
     class Meta:
         model = KPJ
 
+
 class DataTKType(DjangoObjectType):
     class Meta:
         model = DataTK
-        fields = ("id","nama","nik")
+        fields = ("id", "nama", "nik")
 
 
 class Query(graphene.ObjectType):
@@ -22,6 +24,12 @@ class Query(graphene.ObjectType):
 
         if info.context.user.is_authenticated or info.context.user.is_superuser:
             return KPJ.objects.select_related('data_tk').filter(no_kpj=no_kpj, data_tk__hrd_id=info.context.user.pk)
+        else:
+            return KPJ.objects.none
+
+    def resolve_all_tk(root, info, nik):
+        if info.context.user.is_authenticated or info.context.user.is_superuser:
+            return DataTK.objects.select_related('hrd').filter(nik=nik, hrd_id=info.context.user.pk)
         else:
             return KPJ.objects.none
 

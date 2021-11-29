@@ -115,6 +115,29 @@ def tambah_kpj(request, pk):
 
 
 @login_required(login_url='/accounts/login/')
+def KPJAjax(request):
+    return render(request, '/klaim_registration/input_kpj_ajx.html')
+
+
+@csrf_exempt
+def tambah_kpjAjax(request, pk):
+    tk_id = DataTK.objects.get(pk=pk)
+    no_kpj = request.POST.get('no_kpj')
+    tgl_keps = request.POST.get('tgl_keps')
+    tgl_na = request.POST.get('tgl_na')
+    try:
+        KPJ.objects.create(
+            data_tk_id=tk_id.pk,
+            no_kpj=no_kpj,
+            tgl_keps=tgl_keps,
+            tgl_na=tgl_na
+        )
+        return JsonResponse({'success': 'KPJ Berhasil di Simpan!'})
+    except:
+        return JsonResponse({'error': 'Gagal! Silahkan cek kembali!'})
+
+
+@login_required(login_url='/accounts/login/')
 def DetilTK(request, pk):
     datas = DataTK.objects.select_related('hrd').filter(pk=pk)
     data_kpj = KPJ.objects.select_related('data_tk').filter(data_tk__id=pk)
@@ -196,6 +219,7 @@ def DaftarKlaim(request):
     return render(request, 'klaim_registration/klaim_form.html', {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 @csrf_exempt
 def ajaxKlaim(request):
 
@@ -264,6 +288,7 @@ def ajaxKlaim(request):
     except:
         return JsonResponse({'error': 'Errors!'})
 
+
 @csrf_exempt
 def detilKlaimAjax(request, pk):
     tk = list(ApprovalHRD.objects.select_related('klaim', 'hrd').filter(
@@ -313,27 +338,28 @@ def ajaxApproval(request):
 
 # def validasi_berkas(request):
 
+
 def sent_mail(request, pk):
 
-    tk_id = ApprovalHRD.objects.select_related('klaim','hrd').get(pk=pk)
+    tk_id = ApprovalHRD.objects.select_related('klaim', 'hrd').get(pk=pk)
     qrcode = tk_id.img_svg
     to = tk_id.klaim.no_kpj.data_tk.email
     context = {
-        'nama':tk_id.klaim.no_kpj.data_tk.nama,
-        'propic':tk_id.klaim.no_kpj.data_tk.propic,
-        'klaim':tk_id.klaim.tipe_klaim.tipe_klaim,
-        'qrcode':qrcode
+        'nama': tk_id.klaim.no_kpj.data_tk.nama,
+        'propic': tk_id.klaim.no_kpj.data_tk.propic,
+        'klaim': tk_id.klaim.tipe_klaim.tipe_klaim,
+        'qrcode': qrcode
     }
     html_content = render_to_string('klaim_registration/email.html', context)
     text_content = strip_tags(html_content)
     email = EmailMultiAlternatives(
-        #subject
+        # subject
         f"PENGAJUAN KLAIM {tk_id.klaim.tipe_klaim.tipe_klaim} A.N {tk_id.klaim.no_kpj.data_tk.nama}",
-        #content
+        # content
         text_content,
-        #from email
+        # from email
         settings.EMAIL_HOST_USER,
-        #to email
+        # to email
         [to, "kacab.lhokseumawe@bpjsketenagakerjaan.go.id"]
     )
     email.attach_alternative(html_content, "text/html")
@@ -346,18 +372,20 @@ def sent_mail(request, pk):
     email.attach(part)
     email.send()
 
-    return JsonResponse({'success':'Email Berhasil Terkirim'})
+    return JsonResponse({'success': 'Email Berhasil Terkirim'})
+
 
 def sent_mailTk(request, pk):
     tk_id = DataTK.objects.select_related('hrd').get(pk=pk)
     qrcode = tk_id.qr_code_tk
     to = tk_id.email
     context = {
-        'nama':tk_id.nama,
-        'propic':tk_id.propic,
-        'qrcode':qrcode
+        'nama': tk_id.nama,
+        'propic': tk_id.propic,
+        'qrcode': qrcode
     }
-    html_content = render_to_string('klaim_registration/email_tk.html', context)
+    html_content = render_to_string(
+        'klaim_registration/email_tk.html', context)
     text_content = strip_tags(html_content)
     email = EmailMultiAlternatives(
         f"Detail Data A.N {tk_id.nama} dari Perusahaan {tk_id.hrd.npp}",
@@ -376,16 +404,18 @@ def sent_mailTk(request, pk):
     email.attach(part)
     email.send()
 
-    return JsonResponse({'success':'Email Berhasil Terkirim'})
+    return JsonResponse({'success': 'Email Berhasil Terkirim'})
+
 
 def detail_tk(request, uid):
-    datas = ApprovalHRD.objects.select_related('klaim','hrd').filter(
+    datas = ApprovalHRD.objects.select_related('klaim', 'hrd').filter(
         url_uuid=uid)
 
     context = {
         'datas': datas
     }
     return render(request, 'klaim_registration/detail_tk.html', context)
+
 
 class ListKPJ(ListCreateAPIView):
     serializer_class = KPJSerializer
