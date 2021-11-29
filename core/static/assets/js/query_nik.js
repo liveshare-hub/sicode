@@ -31,11 +31,14 @@ function SimpanData() {
     })
 }
 
+console.log($("#id_nik").val())
+
 $("#id_nik").focusout(function() {
     var nik = $(this).val()
     var VAL = $(this).val()
+    console.log(nik)
     if((nik.length !== 11) || (!reg.test(VAL))){
-        $("#id_hasil").val("FORMAT KPJ SALAH!")
+        $("#id_hasil").val("FORMAT NIK SALAH!")
     }else{
         $.ajax({
             method:"POST",
