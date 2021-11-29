@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
 from PIL import Image, ImageDraw
-import uuid, hashlib
+import uuid
+import hashlib
 from django.db.models.signals import post_save
 from django.dispatch.dispatcher import receiver
 import qrcode
@@ -108,7 +109,7 @@ class DataTK(models.Model):
     def save(self, *args, **kwargs):
         strings = str(self.nama+self.nik).encode('utf-8')
         self.url_id = hashlib.sha256(strings).hexdigest()
-        url = "https://sicode.id/qr-code/tk/{}".format(self.url_id)
+        url = "https://sicode.id/detail/tk/{}".format(self.url_id)
         qr = qrcode.QRCode(
             version=20,
             error_correction=qrcode.constants.ERROR_CORRECT_M,
@@ -135,6 +136,7 @@ class DataTK(models.Model):
         canvas.close()
 
         super().save(*args, **kwargs)
+
 
 class KPJ(models.Model):
     data_tk = models.ForeignKey(
@@ -218,7 +220,8 @@ def Approval(sender, instance, created, **kwargs):
     print(instance.no_kpj.data_tk.hrd.user.pk)
     if created:
         # hrd = DataKlaim.objects.select_related('no_kpj').get(no_kpj_id=kwargs)
-        ApprovalHRD.objects.create(klaim=instance, hrd_id=instance.no_kpj.data_tk.hrd.user.pk)
+        ApprovalHRD.objects.create(
+            klaim=instance, hrd_id=instance.no_kpj.data_tk.hrd.user.pk)
 
 
 # class DaftarHRD(models.Model):
@@ -246,7 +249,7 @@ class ApprovalHRD(models.Model):
         return self.klaim.no_kpj.no_kpj
 
     def save(self, *args, **kwargs):
-        url = "https://sicode.id/qr-code/{}".format(self.url_uuid)
+        url = "https://sicode.id/detail/klaim/{}".format(self.url_uuid)
         qr = qrcode.QRCode(
             version=20,
             error_correction=qrcode.constants.ERROR_CORRECT_M,
