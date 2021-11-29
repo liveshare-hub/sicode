@@ -63,7 +63,7 @@ function SimpanData() {
         data:data,
         success:function(res){
             $("input").val("")
-            $("#id_nik").attr("disabled", false)
+            $("#id_NIK").attr("disabled", false)
             $(".card-body").prepend("<div class='alert alert-success' role='alert'>KPJ Berhasil di Simpan</div>")
             // console.log(data)
         },
