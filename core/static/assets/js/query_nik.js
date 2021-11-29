@@ -47,7 +47,9 @@ $("#id_NIK").focusout(function() {
 });
 
 function SimpanData() {
+    var pk = $("#id_pk").val()
     var data = new FormData()
+    data.append("pk", $("#id_pk").val())
     data.append("nik", $("#id_nik").val())
     data.append("tgl_keps", $("#id_tgl_keps").val())
     data.append("tgl_na", $("#id_tgl_na").val())
@@ -55,7 +57,7 @@ function SimpanData() {
 
     $.ajax({
         method:"POST",
-        url:'/tambah/kpj/ajax',
+        url:`/tambah/kpj/ajax/${pk}`,
         contentType:false,
         processData:false,
         data:data,
