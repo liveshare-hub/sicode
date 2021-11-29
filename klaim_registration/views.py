@@ -408,6 +408,14 @@ def sent_mailTk(request, pk):
 
 
 def detail_tk(request, uid):
+    datas = DataTK.objects.select_related('hrd').filter(url_id=uid)
+    context = {
+        'datas': datas
+    }
+    return render(request, 'klaim_registration/tk/detil_tk_qr.html', context)
+
+
+def detail_klaim(request, uid):
     datas = ApprovalHRD.objects.select_related('klaim', 'hrd').filter(
         url_uuid=uid)
 

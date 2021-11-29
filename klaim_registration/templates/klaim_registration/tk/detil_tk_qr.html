@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/static/assets/vendors/bootstrap-5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Detail TK - {{datas.0.nama}}</title>
+</head>
+<body>
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{datas.0.propic.url}}"><span class="font-weight-bold">{{datas.0.nama}}</span><span class="text-black-50">{{datas.0.email}}</span><span> </span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile</h4>
+                    </div>
+                    {% for data in datas %}
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Nama</label><input type="text" class="form-control" value="{{data.nama}}" disabled></div>
+                        <div class="col-md-6"><label class="labels">NIK</label><input type="text" class="form-control" value="{{data.nik}}" disabled></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Tempat Lahir</label><input type="text" class="form-control" value="{{data.tempat_lahir}}" disabled></div>
+                        <div class="col-md-6"><label class="labels">Tgl. Lahir</label><input type="date" class="form-control" value="{{data.tgl_lahir}}" disabled></div>
+                        <div class="col-md-12"><label class="labels">Alamat</label><textarea class="form-control" value="{{data.alamat}}" disabled></textarea></div>
+                        <div class="col-md-6"><label class="labels">Nama Gadis Ibu Kandung</label><input type="text" class="form-control" value="{{data.nama_ibu}}" disabled></div>
+                        <div class="col-md-6"><label class="labels">No Handphone</label><input type="text" class="form-control" value="{{data.no_hp}}" disabled></div>
+                        <div class="col-md-6"><label class="labels">Email</label><input type="text" class="form-control" value="{{data.email}}" disabled></div>
+                        <div class="col-md-6"><label class="labels">Status Perkawinan</label><input type="text" class="form-control" value="{{data.get_status_display}}" disabled></div>
+                        {% if data.status == 'MENIKAH'%}
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th></th>
+                                    <th>Nama</th>
+                                    <th>Tgl. Lahir</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Suami/Istri</td>
+                                        <td>Anak Ke - I</td>
+                                        <td>Anak Ke - II</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{data.nama_pasangan}}</td>
+                                        <td>{{data.nama_anak_s}}</td>
+                                        <td>{{data.nama_anak_d}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{data.tgl_lahir_pasangan}}</td>
+                                        <td>{{data.tgl_lahir_s}}</td>
+                                        <td>{{data.tgl_lahir_d}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">    
+                    <div class="col-md-12"><label class="labels">No Rekening</label><input type="text" class="form-control" value="{{data.no_rekening}}" disabled></div> <br>
+                    <div class="col-md-12"><label class="labels">Nama</label><input type="text" class="form-control" value="{{data.nama_rekening}}" disabled></div><br>
+                    <div class="col-md-12">
+                        <ul class="list-group">
+                            <li class="list-group-item">Kartu Keluarga <a href="{{data.file_kk.url}}" class="btn btn-sm btn-primary">Lihat</a></li>
+                            <li class="list-group-item">KTP <a href="{{data.file_ktp.url}}" class="btn btn-sm btn-primary">Lihat</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+<script src="/static/assets/js/jquery.min.js"></script>
+<script src="/static/assets/vendors/bootstrap-5.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
