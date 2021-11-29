@@ -6,32 +6,6 @@ var superQuery = `query ($nik: String!) {allTk(nik:$nik){
 
 var reg = new RegExp('^\\d+$');
 
-function SimpanData() {
-    var data = new FormData()
-    data.append("nik", $("#id_nik").val())
-    data.append("tgl_keps", $("#id_tgl_keps").val())
-    data.append("tgl_na", $("#id_tgl_na").val())
-    data.append("csrfmiddlewaretoken", $("input[name='csrfmiddlewaretoken']").val())
-
-    $.ajax({
-        method:"POST",
-        url:url,
-        contentType:false,
-        processData:false,
-        data:data,
-        success:function(res){
-            $("input").val("")
-            $("#id_nik").attr("disabled", false)
-            $(".card-body").prepend("<div class='alert alert-success' role='alert'>KPJ Berhasil di Simpan</div>")
-            // console.log(data)
-        },
-        error:function(err){
-            console.log(err)
-        }
-    })
-}
-
-
 $("#id_nik").focusout(function() {
     console.log($("#id_nik").val())
     var nik = $(this).val()
