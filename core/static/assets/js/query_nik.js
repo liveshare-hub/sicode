@@ -6,8 +6,8 @@ var superQuery = `query ($nik: String!) {allTk(nik:$nik){
 
 var reg = new RegExp('^\\d+$');
 
-$("#id_nik").focusout(function() {
-    console.log($("#id_nik").val())
+$("#id_NIK").focusout(function() {
+    console.log($("#id_NIK").val())
     var nik = $(this).val()
     var VAL = $(this).val()
     console.log(nik)
