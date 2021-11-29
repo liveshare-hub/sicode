@@ -34,7 +34,7 @@ $("#id_NIK").focusout(function() {
                     $("#id_hasil").val(nama)
                     $("#id_pk").val(id)
                     console.log(id)
-                    $("#id_nik").attr("disabled",true).attr("value",nik)
+                    $("#id_NIK").attr("disabled",true).attr("value",nik)
                 }else{
                     $("#id_hasil").val("NIK TIDAK DITEMUKAN")
                     $("#id_simpan").attr("disabled", true)
