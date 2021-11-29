@@ -25,6 +25,7 @@ urlpatterns = [
     path('detail/tk/<str:uid>', views.detail_tk, name='detail-tk'),
     path('detail/klaim/<str:uid>', views.detail_klaim, name='detail-klaim'),
     path('email/<int:pk>/sent', views.sent_mail, name='sent-mail'),
+    path('email/tk/<int:pk>/sent', views.sent_mailTk, name='sent-mail-tk'),
     # path('email/tk/<int:pk>', views)
     # path('klaim/zip/<int:id>/', views.zipAll, name='zip-file'),
     # re_path(
