@@ -1,4 +1,4 @@
-var superQuery = `query ($nik: String!) {allKpjs(nik:$nik){
+var superQuery = `query ($nik: String!) {allTk(nik:$nik){
     dataTk{
         nama
     }
