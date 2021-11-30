@@ -66,22 +66,22 @@ h1:nth-child(1):after {
   background: black;
   animation: typewriter var(--typewriterSpeed)
       steps(var(--typewriterCharacters)) 1s forwards,
-    blink 750ms steps(var(--typewriterCharacters))ease-out;
+    blink 750ms steps(var(--typewriterCharacters)) infinite;
 }
 
 h1:nth-child(2):after {
   width: 0.125em;
   background: black;
   animation: typewriter var(--typewriterSpeed)
-      steps(var(--typewriterCharacters)+10) 1s forwards,
-    blink 750ms steps(var(--typewriterCharacters)) ease-out;
+      steps(var(--typewriterCharacters)) 1s forwards,
+    blink 750ms steps(var(--typewriterCharacters)) infinite;
 }
 
 h1:nth-child(3):after {
   width: 0.125em;
   background: black;
   animation: typewriter var(--typewriterSpeed)
-      steps(var(--typewriterCharacters)+15) 1s forwards,
+      steps(var(--typewriterCharacters)) 1s forwards,
     blink 750ms steps(var(--typewriterCharacters)) infinite;
 }
 
