@@ -62,7 +62,7 @@ h1:nth-child(3):before {
 }
 
 h1:nth-child(1):after {
-  width: 0.125em;
+  width: 0.1em;
   background: black;
   animation: typewriter var(--typewriterSpeed)
       steps(var(--typewriterCharacters)) 1s forwards,
@@ -70,7 +70,7 @@ h1:nth-child(1):after {
 }
 
 h1:nth-child(2):after {
-  width: 0.125em;
+  width: 0.11em;
   background: black;
   animation: typewriter var(--typewriterSpeed)
       steps(var(--typewriterCharacters)) 1s forwards,
@@ -78,7 +78,7 @@ h1:nth-child(2):after {
 }
 
 h1:nth-child(3):after {
-  width: 0.125em;
+  width: 0.111em;
   background: black;
   animation: typewriter var(--typewriterSpeed)
       steps(var(--typewriterCharacters)) 1s forwards,
