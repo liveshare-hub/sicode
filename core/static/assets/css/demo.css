@@ -1,12 +1,12 @@
 .content.text h1 {
-  border-right: .15em solid orange;
+  border-right: .15em solid white;
   font-family: monospace;
   font-size: 20px;
   white-space: nowrap;
   overflow: hidden;
 }
 .content.text h1:nth-child(1) {
-  width: 11.5em;
+  width: 9.5em;
   -webkit-animation: type 2s steps(40, end);
   animation: type 2s steps(40, end);
   -webkit-animation-fill-mode: forwards;
@@ -14,7 +14,7 @@
 }
 
 .content.text h1:nth-child(2) {
-  width: 6.5em;
+  width: 5.5em;
   opacity: 0;
   -webkit-animation: type2 2s steps(40, end);
   animation: type2 2s steps(40, end);
@@ -25,7 +25,7 @@
 }
 
 .content.text h1:nth-child(3) {
-  width: 7.3em;
+  width: 6.3em;
   opacity: 0;
   -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
   animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
@@ -40,7 +40,7 @@
     width: 0;
   }
   99.9% {
-    border-right: .15em solid orange;
+    border-right: .15em solid white;
   }
   100% {
     border: none;
@@ -52,7 +52,7 @@
     width: 0;
   }
   99.9% {
-    border-right: .15em solid orange;
+    border-right: .15em solid white;
   }
   100% {
     border: none;
@@ -67,7 +67,7 @@
     opacity: 1;
   }
   99.9% {
-    border-right: .15em solid orange;
+    border-right: .15em solid white;
   }
   100% {
     opacity: 1;
@@ -83,7 +83,7 @@
     opacity: 1;
   }
   99.9% {
-    border-right: .15em solid orange;
+    border-right: .15em solid white;
   }
   100% {
     opacity: 1;
@@ -122,6 +122,6 @@
 }
 @-webkit-keyframes blink {
   50% {
-    border-color: tranparent;
+    border-color: transparent;
   }
 }
