@@ -1,11 +1,11 @@
 h1 {
   font-family: monospace;
-  font-size: 28px;
+  font-size: 20px;
   overflow: hidden;
   white-space: nowrap;
 }
 .content.text h1:nth-child(1) {
-  width: 15.5em;
+  width: 11.5em;
   -webkit-animation: type 2s steps(40, end);
   animation: type 2s steps(40, end);
   -webkit-animation-fill-mode: forwards;
@@ -13,7 +13,7 @@ h1 {
 }
 
 .content.text h1:nth-child(2) {
-  width: 7.5em;
+  width: 5.5em;
   opacity: 0;
   -webkit-animation: type2 2s steps(40, end);
   animation: type2 2s steps(40, end);
@@ -24,7 +24,7 @@ h1 {
 }
 
 .content.text h1:nth-child(3) {
-  width: 9.3em;
+  width: 7.3em;
   opacity: 0;
   -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
   animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
