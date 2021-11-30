@@ -90,8 +90,8 @@ class DataTK(models.Model):
         upload_to='tk/kk/', validators=[EKSTENSI_VALIDATOR], blank=True, null=True)
     file_ktp = models.FileField(
         upload_to='tk/ktp/', validators=[EKSTENSI_VALIDATOR], blank=True, null=True)
-    file_paklaring = models.FileField(
-        upload_to='tk/paklaring/', validators=[EKSTENSI_VALIDATOR], blank=True, null=True)
+    # file_paklaring = models.FileField(
+    #     upload_to='tk/paklaring/', validators=[EKSTENSI_VALIDATOR], blank=True, null=True)
     # file_lain = models.FileField(
     #     upload_to='lain/', null=True, blank=True, validators=[EKSTENSI_VALIDATOR])
     qr_code_tk = models.ImageField(upload_to='qrcode/tk/')
@@ -242,7 +242,7 @@ class ApprovalHRD(models.Model):
     klaim = models.ForeignKey(DataKlaim, on_delete=models.CASCADE)
     hrd = models.ForeignKey(Profile, on_delete=models.CASCADE)
     url_uuid = models.UUIDField(default=uuid.uuid4())
-    img_svg = models. ImageField(upload_to='qrcode/')
+    img_svg = models. ImageField(upload_to='qrcode/klaim/tk/')
     # keterangan = models.TextField(null=True, blank=True)
 
     def __str__(self):
