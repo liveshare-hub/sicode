@@ -4,6 +4,10 @@
   --typewriterCharacters: 34;
 }
 
+h1 {
+  font-family: monospace;
+}
+
 h1::before,
 h1::after {
   content:"";
@@ -36,6 +40,6 @@ h1::after {
 
 @keyframes blink {
   to {
-    background: transparet;
+    background: transparent;
   }
 }
