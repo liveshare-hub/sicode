@@ -26,10 +26,10 @@ h1 {
 .content.text h1:nth-child(3) {
   width: 5.3em;
   opacity: 0;
-  -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
-  animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
-  -webkit-animation-delay: 4s;
-  animation-delay: 4s;
+  -webkit-animation: type3 2s steps(40, end), blink .5s step-end infinite alternate;
+  animation: type3 2s steps(40, end), blink .5s step-end infinite alternate;
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
