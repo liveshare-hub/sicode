@@ -34,9 +34,9 @@
           <li class="c-header-nav-item dropdown"><a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
               <div class="c-avatar">
               {% if request.user.is_authenticated and request.user.profile.propic %}
-              <img class="c-avatar-img" src="{{propic.propic.url}}" alt="user@email.com">
+              <img class="c-avatar-img" src="{{propic.propic.url}}" alt="{{request.user.profile.nama}}">
               {% else %}
-              <img class="c-avatar-img" src="/static/assets/img/avatars/6.jpg" alt="user@email.com">
+              <img class="c-avatar-img" src="/static/assets/img/avatars/6.jpg" alt="{{request.user.profile.nama}}">
               {% endif %}
               </div>
             </a>
