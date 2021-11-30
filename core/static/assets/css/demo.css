@@ -3,18 +3,18 @@ h1 {
   font-size: 28px;
 }
 .content.text h1:nth-child(1) {
-  width: 8.3em;
-  -webkit-animation: type 2s steps(40, end);
-  animation: type 2s steps(40, end);
+  width: 12.5em;
+  -webkit-animation: type 2s steps(5, end);
+  animation: type 2s steps(5, end);
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
 
 .content.text h1:nth-child(2) {
-  width: 6.5em;
+  width: 7.5em;
   opacity: 0;
-  -webkit-animation: type2 2s steps(40, end);
-  animation: type2 2s steps(40, end);
+  -webkit-animation: type2 2s steps(5, end);
+  animation: type2 2s steps(5, end);
   -webkit-animation-delay: 2s;
   animation-delay: 2s;
   -webkit-animation-fill-mode: forwards;
@@ -22,10 +22,10 @@ h1 {
 }
 
 .content.text h1:nth-child(3) {
-  width: 7.3em;
+  width: 9.3em;
   opacity: 0;
-  -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
-  animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
+  -webkit-animation: type3 5s steps(5, end), blink .5s step-end infinite alternate;
+  animation: type3 5s steps(5, end), blink .5s step-end infinite alternate;
   -webkit-animation-delay: 4s;
   animation-delay: 4s;
   -webkit-animation-fill-mode: forwards;
