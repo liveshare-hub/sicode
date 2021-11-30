@@ -89,7 +89,7 @@ h1:nth-child(3):after {
 
 @keyframes typewriter {
   to {
-    left: 100%;
+    left: 50%;
   }
 }
 
