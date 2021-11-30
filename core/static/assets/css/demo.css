@@ -5,9 +5,9 @@ h1 {
   white-space: nowrap;
 }
 .content.text h1:nth-child(1) {
-  width: 11.5em;
-  -webkit-animation: type 2s steps(40, end);
-  animation: type 2s steps(40, end);
+  width: 8.5em;
+  -webkit-animation: type 2s steps(30, end);
+  animation: type 2s steps(30, end);
   -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
 }
