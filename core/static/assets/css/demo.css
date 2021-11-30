@@ -19,7 +19,7 @@ h1::after {
 }
 
 h1::before {
-  background: var(--bg-color);
+  background: rgba(106, 145, 165, 0.92);
   animation: typewriter var(--typewriterSpeed)
     steps(var(--typewriterCharacters)) 1s forwards;
 }
