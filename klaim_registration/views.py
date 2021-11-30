@@ -43,8 +43,12 @@ from email import encoders
 @login_required(login_url='/accounts/login/')
 def dashboard(request):
     hrd_id = request.user.profile.pk
-    tk = DataTK.objects.select_related('hrd').filter(hrd_id=hrd_id).count()
-    tk_klaim = ApprovalHRD.objects.select_related('klaim','hrd').filter(hrd_id=hrd_id)
+    if request.user.is_superuser:
+        tk = DataTK.objects.all().count()
+        tk_klaim = ApprovalHRD.objects.all().count()
+    else:
+        tk = DataTK.objects.select_related('hrd').filter(hrd_id=hrd_id).count()
+        tk_klaim = ApprovalHRD.objects.select_related('klaim','hrd').filter(hrd_id=hrd_id)
     context = {
         'jlh_tk':tk,
         'tk_klaim':tk_klaim
