@@ -66,7 +66,7 @@ h1:nth-child(1):after {
   background: black;
   animation: typewriter var(--typewriterSpeed)
       steps(var(--typewriterCharacters)) 1s forwards,
-    blink 750ms steps(var(--typewriterCharacters));
+    blink 750ms steps(var(--typewriterCharacters))ease-out;
 }
 
 h1:nth-child(2):after {
@@ -74,7 +74,7 @@ h1:nth-child(2):after {
   background: black;
   animation: typewriter var(--typewriterSpeed)
       steps(var(--typewriterCharacters)+10) 1s forwards,
-    blink 750ms steps(var(--typewriterCharacters));
+    blink 750ms steps(var(--typewriterCharacters)) ease-out;
 }
 
 h1:nth-child(3):after {
