@@ -6,7 +6,8 @@ from . import views
 # from .views import nppAutoComplete
 
 urlpatterns = [
-    path('', views.index, name='home-klaim'),
+    path('', views.dashboard, name='dashboard'),
+    path('info', views.index, name='home-klaim'),
     path('tambah/tk', views.TambahTK, name='tambah-tk'),
     path('tambah/tk/ajax', views.TambahTK_ajax, name='tambah-tk-ajax'),
     path('tambah/kpj', views.KPJAjax, name="add-kpj"),

@@ -39,6 +39,17 @@ from email.mime.base import MIMEBase
 from email import encoders
 
 
+
+@login_required(login_url='/accounts/login/')
+def dashboard(request):
+    hrd_id = request.user.profile.pk
+    tk = DataTK.objects.select_related('hrd').filter(hrd_id=hrd_id).count()
+    context = {
+        'jlh_tk':tk
+    }
+
+    return render(request, 'klaim_registration/dashboard.html', context)
+
 @login_required(login_url='/accounts/login/')
 def index(request):
 
