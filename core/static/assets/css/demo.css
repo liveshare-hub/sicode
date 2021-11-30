@@ -1,7 +1,7 @@
 .content.text h1 {
   border-right: .15em solid white;
   font-family: monospace;
-  font-size: 20px;
+  font-size: 18px;
   white-space: nowrap;
   overflow: hidden;
 }
