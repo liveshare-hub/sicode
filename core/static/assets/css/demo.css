@@ -51,13 +51,13 @@ h1:nth-child(1):before {
 
 h1:nth-child(2):before {
   background: var(--bg-color);
-  animation: typewriter var(--typewriterSpeed)
+  animation: typewriter2 var(--typewriterSpeed)
     steps(var(--typewriterCharacters)) 1s forwards;
 }
 
 h1:nth-child(3):before {
   background: var(--bg-color);
-  animation: typewriter var(--typewriterSpeed)
+  animation: typewriter3 var(--typewriterSpeed)
     steps(var(--typewriterCharacters)) 1s forwards;
 }
 
@@ -72,7 +72,7 @@ h1:nth-child(1):after {
 h1:nth-child(2):after {
   width: 0.11em;
   background: black;
-  animation: typewriter var(--typewriterSpeed)
+  animation: typewriter2 var(--typewriterSpeed)
       steps(var(--typewriterCharacters)) 1s forwards,
     blink 750ms steps(var(--typewriterCharacters)) infinite;
 }
@@ -80,7 +80,7 @@ h1:nth-child(2):after {
 h1:nth-child(3):after {
   width: 0.111em;
   background: black;
-  animation: typewriter var(--typewriterSpeed)
+  animation: typewriter3 var(--typewriterSpeed)
       steps(var(--typewriterCharacters)) 1s forwards,
     blink 750ms steps(var(--typewriterCharacters)) infinite;
 }
@@ -88,8 +88,14 @@ h1:nth-child(3):after {
 
 
 @keyframes typewriter {
-  to {
-    left: 50%;
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
   }
 }
 
