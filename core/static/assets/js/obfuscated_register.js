@@ -37,8 +37,9 @@ $(document).ready(function() {
     e.preventDefault();
     
     $.ajax({
-      type:'POST',
+      method:'POST',
       url:"/accounts/register/ajax",
+      mode:'same-origin',
       async:true,
       data: {
         username:$("#id_username").val(),
