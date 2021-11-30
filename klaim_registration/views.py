@@ -44,8 +44,10 @@ from email import encoders
 def dashboard(request):
     hrd_id = request.user.profile.pk
     tk = DataTK.objects.select_related('hrd').filter(hrd_id=hrd_id).count()
+    tk_klaim = ApprovalHRD.objects.select_related('klaim','hrd').filter(hrd_id=hrd_id)
     context = {
-        'jlh_tk':tk
+        'jlh_tk':tk,
+        'tk_klaim':tk_klaim
     }
 
     return render(request, 'klaim_registration/dashboard.html', context)
