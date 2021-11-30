@@ -1,7 +1,7 @@
 :root {
   --bg-color: hsl(49 37% 94%);
   --typewriterSpeed: 6s;
-  --typewriterCharacters: 34;
+  --typewriterCharacters: 17;
 }
 
 h1 {
@@ -34,7 +34,7 @@ h1::after {
 
 @keyframes typewriter {
   to {
-    left:100%
+    left:100%;
   }
 }
 
